@@ -1,0 +1,1033 @@
+---------------------
+Preparation Questions
+---------------------
+
+.. toctree::
+   :hidden:
+   :maxdepth: 0
+
+
+.. raw:: html
+
+   <p>
+   By 11:59 AM before lecture, submit your answer
+   to 1) each lecture's question
+   and 2) <strong>own questions</strong> via https://github.gatech.edu/cs3210-fall2017 using your own prep repo cs3210-prep-YOUR-USERNAME 
+   as a file named
+   <span id='lecno'> "lec[n].txt" (e.g,, "lec2.txt" for the second lecture)</span>.
+   </p>
+
+.. raw:: html
+   :file: q.html
+
+intro
+-----
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/xs6cDaXbsUA" frameborder="0" allowfullscreen></iframe>
+
+(optional)
+Watch Peter Denning's talk, "Perspectives on OS Foundations",
+presented at the SOSP History Day Workshop (SOSP'15).
+
+tools
+-----
+
+.. raw:: html
+
+    <iframe width="420" height="315" src="https://www.youtube.com/embed/4XpnKHJAok8" frameborder="0" allowfullscreen></iframe>
+
+Read the `Tools <lab/tools.html>`__ page, install the software, and
+submit the below the output of below commands?
+
+.. code-block:: sh
+
+    $ git --version
+    $ qemu-system-i386 --version
+    $ uname -a
+    $ lsb_release -a
+
+If you have more time, watch Linus's talk on git and give us any
+questions if you have. We will address your questions during the
+tutorial.
+
+boot
+----
+
+Let's first understand your hardware, starting from the CPU
+information. What's your CPU and could you interpret each
+fields of *your* output?
+
+.. code-block:: sh
+
+    $ cat /proc/cpuinfo
+    processor       : 0
+    vendor_id       : GenuineIntel
+    cpu family      : 6
+    model           : 61
+    model name      : Intel(R) Core(TM) i7-5600U CPU @ 2.60GHz
+    stepping        : 4
+    microcode       : 0x21
+    cpu MHz         : 2832.273
+    cache size      : 4096 KB
+    physical id     : 0
+    siblings        : 4
+    core id         : 0
+    cpu cores       : 2
+    apicid          : 0
+    initial apicid  : 0
+    fpu             : yes
+    fpu_exception   : yes
+    cpuid level     : 20
+    wp              : yes
+    flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr
+      pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht
+      tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon
+      pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu
+      pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg
+      fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt
+      tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm
+      3dnowprefetch ida arat epb pln pts dtherm intel_pt tpr_shadow
+      vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2
+      smep bmi2 erms invpcid rtm rdseed adx smap xsaveopt
+    bugs            :
+    bogomips        : 5189.72
+    clflush size    : 64
+    cache_alignment : 64
+    address sizes   : 39 bits physical, 48 bits virtual
+    ...
+
+Read Appendix A/B and answer three questions below (concisely as possible):
+
+1. Due to sector granularity, the call to readseg in the text is
+   equivalent to
+   ``readseg((uchar*)0x100000, 0xb500, 0x1000)``. In practice, this sloppy behavior turns
+   out not to be a problem. Why doesn't the sloppy readsect cause problems?
+2. Suppose you wanted ``bootmain()`` to load the kernel at 0x200000 instead of
+   0x100000, and you did so by modifying ``bootmain()`` to add 0x100000 to the va of each
+   ELF section. Something would go wrong. What?
+3. It seems potentially dangerous for the boot loader to copy the ELF
+   header to memory at the arbitrary location 0x10000.
+   Why doesn't it call malloc to obtain the memory it needs?
+
+unix
+----
+
+.. raw:: html
+
+    <iframe width="420" height="315" src="https://www.youtube.com/embed/tc4ROCJYbm0" frameborder="0" allowfullscreen></iframe>
+
+What kind of UNIX's features do you see on today's operating systems?
+and what's not? Do you see any missing features that are prevalent
+in modern, commodity operating systems?
+
+basic
+-----
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/de2Hsvxaf8M" frameborder="0" allowfullscreen></iframe>
+
+Read Bitwise operators, Pointers and Pointers to structures and answer the questions below:
+
+.. code-block:: sh
+
+    #1 what will be output if you will execute following c code?
+
+      int array[] = {0,1,2,3};
+      int* x = array + 1;
+      int a = ++*x;
+      int b = a + *x;
+      printf("%d\n", b);
+      return 0;
+
+    1) 0
+    2) 1
+    3) 2
+    4) 3
+    5) 4
+    > ANSWER :
+
+    #2 what will be output if you will execute following c code?
+
+      #define WHATISTHIS(a,b,c) ((a >> (b + 1 - c)) & ~(~0 << c))
+      #define PRNT(a) \
+              printf("value = 0x%08x\n",a);
+
+
+      int main()
+      {
+              unsigned x = 3210;
+              int p = 10;
+              int n = 4;
+              PRNT(WHATISTHIS(x,p,n));
+
+              return 0;
+      }
+
+    1) value = 0x00000009
+    2) value = 0x00030120
+    3) value = 0x00000010
+    4) value = 0x00000004
+    5) Compilation error
+    > ANSWER :
+
+    #3 what will be output if you will execute following c code?
+
+      int array[4] = {1,2,3,4};
+      if(array[0] - array[1] < sizeof(array)) printf("%d",array[sizeof(char)]);
+      else printf("%d", array[sizeof(short)]);
+
+    1) 1
+    2) 2
+    3) 3
+    4) 4
+    5) Compilation error
+    > ANSWER :
+
+    #4 Save the source code below as test.c
+
+      int main()
+      {
+        const char* str1 = "hello";
+        static char* str2 = "cs3210";
+        printf("%s %s", str1, str2);
+      }
+
+      # Follows the commands below, submit your ouput
+      $gcc -o test test.c
+      $readelf -S ./test
+      $objdump -s -j .rodata ./test
+      $objdump -s -j .text ./test
+      $objdump -s -j .data ./test
+
+
+If you have more time, Please watch the youtube video. If you have a
+question, Please write down with you answer.
+You just need to write your answer the right next to ">ANSWER:",
+attach your output and save your file as tut2.txt and submit the file
+in our submission site.
+
+
+memory
+------
+
+Please, read the set of article before the tutorial:
+
+Caches:
+
+1. `Cache basics
+   <http://arstechnica.com/gadgets/2002/07/caching/>`__
+
+2. `What every programmer should know about memory
+   <https://people.freebsd.org/~lstewart/articles/cpumemory.pdf>`__ (optoinal)
+
+
+Linux process filesystem:
+
+3. `Man-page of proc pseudo file system
+   <http://man7.org/linux/man-pages/man5/proc.5.html>`__
+   or ``man 5 proc``
+
+Concisely answer the following based on the readings:
+
+1. Can you extract the `working set size
+   <https://en.wikipedia.org/wiki/Working_set_size>`_
+   of a program in Linux from the userspace?
+2. What is the L1, L2 and LLC size of your system?
+3. Consider you are working on x86 system.
+   What will be the size of this structure and why?
+
+.. code-block:: c
+
+    struct f {
+        char *p;
+        char c;
+    };
+
+isolation
+---------
+
+This is a program that dumps a memory region that you specify. We are
+going to see **two types of memory isolation** by using this toy program.
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <err.h>
+    #include <ctype.h>
+
+    int main(int argc, char *argv[])
+    {
+      if (argc != 2)
+        errx(1, "[usage] %s [mem-addr]", argv[0]);
+
+      unsigned char *addr = (char *)strtol(argv[1], NULL, 16);
+      for (int i = 0; i < 4; i ++) {
+        printf("%016lx: ", (unsigned long)(addr + i*0x10));
+        for (int j = 0; j < 0x10; j ++)
+          printf("%02x ", *(addr + i*0x10 + j));
+        printf("| ");
+        for (int j = 0; j < 0x10; j ++) {
+          char c = *(addr + i*0x10 + j);
+          printf("%c", isprint(c) ? c : '.');
+        }
+        printf("\n");
+      }
+      return 0;
+    }
+
+To compile, try ``gcc -std=c99 -o memdump memdump.c`` after saving the above
+snippet as ``memdump.c``. To run, ``./memdump [ADDR]``, and "[ADDR]"
+should be the address that you want to read (e.g., "0x0000" to read
+the virtual address 0.
+
+1. Explain the above program.
+2. Try,
+
+.. code-block:: sh
+
+    $ ./memdump 0x0
+    zsh: segmentation fault  ./memdump 0x0
+
+    $ dmesg | tail -1
+    [50612] memdump[136]: segfault at 0 ip 000000000804855e sp 00000000ffa032f0 error 4 in mem-dump[8048000+1000]
+
+What happen? Could you explain/interpret the line?
+
+3. Let's try to access a memory region in kernel. Pick any reasonable
+   virtual address depending on your architecture (32-bit or 64-bit).
+
+.. code-block:: sh
+
+   $ ./memdump 0xfffffffffffff00
+   zsh: segmentation fault  ./memdump 0xfffffffffffff00
+
+   $ dmesg | tail -1
+   [50809] traps: memdump[139] general protection ip:4006dd sp:7fff412ae540 error:0 in a.out[400000+1000]
+
+What happen? Could you explain/interpret the line?
+
+4. Also, could you find a memory region that you can safely access
+   through ``memdump``?
+
+5. (Exercises 2 in the xv6 book)
+   KERNBASE limits the amount of memory a single process can use, which might be
+   irritating on a machine with a full 4 GB of RAM. Would raising KERNBASE allow a
+   process to use more memory?
+
+
+bootloader
+----------
+
+Please, read the set of pages before the tutorial:
+
+1. `Linux Inside: Kernel booting process
+   <https://0xax.gitbooks.io/linux-insides/content/Booting/linux-bootstrap-1.html>`__
+
+2. `Master Boot Record <https://wiki.archlinux.org/index.php/Master_Boot_Record>`__
+
+3. `GNU GRUB Manual 2.00
+   <http://www.gnu.org/software/grub/manual/grub.html>`__ (optoinal)
+
+Concisely answer the following questions based on reading above:
+
+1. When attempting to boot from a hard drive, what does the BIOS try to find?
+   (hint: a boot sector) where is the boot sector stored in?
+
+2. There are a number of bootloaders that can boot Linux, such as GRUB 2 and
+   syslinux. Is there anything else? Specify two more.
+
+3. What is the difference vmlinuz and vmlinux? why do we need kernel compression
+   and decompression?
+
+4. Follows the commands below, submit your output
+
+.. code-block:: sh
+
+  $ lsblk
+  $ grub-install -V
+
+
+pagetable
+---------
+
+1. Explain how 'test.c' and 'readvirt.c' work.
+
+.. code-block:: c
+
+    // gcc -o test test.c
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+
+    int main(int argc, char *argv[])
+    {
+      char buf[1024];
+      for (int i = 0; i < sizeof(buf); i ++)
+        buf[i] = i;
+
+      printf("/proc/%d/pagemap, buf=%p\n", getpid(), buf);
+      getchar();
+
+      return 0;
+    }
+
+.. code-block:: c
+
+    // gcc -o readvirt readvirt.c
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <fcntl.h>
+    #include <sys/mman.h>
+    #include <unistd.h>
+    #include <err.h>
+    #include <ctype.h>
+    #include <stdint.h>
+    #include <inttypes.h>
+
+    int main(int argc, char *argv[])
+    {
+      if (argc != 3)
+        err(1, "[usage] %s [/proc/self/pagemap] [vaddr]", argv[0]);
+
+      off_t vaddr = strtoul(argv[2], NULL, 16);
+      size_t PAGE_SIZE = sysconf(_SC_PAGE_SIZE);
+
+      int fd = open(argv[1], O_RDONLY);
+      if (fd == -1)
+        err(1, "failed to open pagemap");
+
+      // Q?
+      // Only use for 64-bit 
+      //uint64_t off = ((uint64_t)vaddr / PAGE_SIZE) * sizeof(uint64_t);
+      // Only use for 32-bit 
+      uint64_t off = ((uint32_t)vaddr / PAGE_SIZE) * sizeof(uint64_t);
+      if (lseek(fd, off, SEEK_SET) != off)
+        err(1, "failed to lseek");
+
+      uint64_t pfn;
+      if (read(fd, &pfn, sizeof(pfn)) != sizeof(pfn))
+        err(1, "failed to read pfn");
+
+      // Q?
+      printf("0x%" PRIx64 ", pfn=%" PRIu64 "\n",
+             pfn, pfn & 0x7FFFFFFFFFFFFF);
+
+      close(fd);
+
+      return EXIT_SUCCESS;
+    }
+
+By using 'readvirt', we are going to find out the physical page of the
+'buf' in the 'test' program. In doing so, you need two important
+things, 1) /proc/kcore (an core interface to the live kernel), and 2)
+the base virtual address of direct mapping (KERNBASE in xv6). In
+Linux (64-bit), 0xFFFF880000000000 is your KERNBASE.  In Linux (32-bit),
+0xC0000000 is your KERNBASE.  
+
+.. code-block:: sh
+
+    $ ./test
+    /proc/9986/pagemap, buf=0xbf9e2a0c
+
+    $ sudo ./readvirt /proc/9986/pagemap 0xbf9e2a0c
+    0x860000000002cc28, pfn=183336
+
+    $ sudo gdb -c /proc/kcore
+
+    (gdb) x/30d 0xc0000000 + 183336*4096 + 0xa0c
+    0xecc28a0c: 0 1 2 3 4 5 6 7
+    0xecc28a14: 8 9 10  11  12  13  14  15
+    0xecc28a1c: 16  17  18  19  20  21  22  23
+    0xecc28a24: 24  25  26  27  28  29
+
+
+2. Please locate the physical page of 'buf' of 'test' (similar to
+   above), and explain to us how you locate the buf.
+
+3. Please locate the physical page for the 'main' function of 'test',
+   and disassemble the code region to validate the content of the
+   physical page.
+
+weird
+-----
+
+Please go through the following links:
+
+1. `Exploitation and state machines
+   <http://www.slideshare.net/scovetta/fundamentals-of-exploitationrevisited>`__
+
+2. `Exploit Programming
+   <http://langsec.org/papers/Bratus.pdf>`__ (till page 4 before
+   "Exploitation and the Fundamental Questions in Computing" section)
+
+Concisely answer the following question based on the readings
+and another question on page table traversal:
+
+1. What do you really understand by "weird machines"? (2-3 sentence)
+
+2. Describe at least two examples of "weird machines". (2-3 sentences for each)
+
+3. How can you traverse the table directory/entry in JOS? Write a code snippet
+   to perform the page directory and page table traversal.
+
+vmapps
+------
+
+1. If xv6 had not used super pages, what would be the right
+   declaration for `entrypgdir`?
+
+2. Say you were an instructor and wanted to evaluate the understanding
+   of your students on xv6 (Chap 0-2). Please come up with two good
+   questions for quiz1 and provide to us. We plan to include a
+   few questions made by students for quiz1.
+
+lazyalloc
+---------
+
+Please, read the links below.
+
+1. `C dynamic memory allocation
+   <https://en.wikipedia.org/wiki/C_dynamic_memory_allocation>`__
+
+2. `Man-page of sbrk
+   <http://man7.org/linux/man-pages/man2/sbrk.2.html>`__
+   or ``man 2 sbrk``
+
+3. `Virtual Memory management
+   <http://www3.physnet.uni-hamburg.de/physnet/Tru64-Unix/HTML/AQTLLATE/DOCU_012.HTM>`__
+
+Concisely answer the following based on the readings:
+
+1. What is lazy memory allocation?
+2. What is difference between lazy allocation policy and eager reservation policy?
+3. When page fault happens,  how does Kernel allocate physical memory?
+
+pre-proposal
+------------
+
+Please take a look on the `final project page <https://tc.gtisc.gatech.edu/cs3210/2016/fall/proj.html>`__.
+
+Please submit one page summary of your idea along with your
+background. No more than 4 to a team. Please have each team member submit the same file with the names of all the team members at the top. You might want to follow this structure:
+
+1. Background
+2. Final Project Idea
+
+div
+---
+
+.. code-block:: c
+
+    #include "types.h"
+    #include "user.h"
+
+    int
+    main(int argc, char **argv)
+    {
+      int x, y, z;
+    
+      if (argc < 3){
+        printf(2, "usage: div x y\n");
+        exit();
+      }
+      x = atoi(argv[1]);
+      y = atoi(argv[2]);
+      z  = x / y;
+      printf(1, "%d / %d = %d\n", x, y, z);
+      exit();
+    }
+
+Save the above code as `div.c` and modify `Makefile` to include the
+`div` program to the xv6 fs image. Please do each step and explain
+in detail.
+
+1. open `div.asm` and find the `idivl` instruction (e.g., at 0x62)
+2. set a breakpoint at `idivl` (e.g., b \*0x62)
+3. run `div 1 0` in xv6 shell
+4. `info registers`, what's `cs` & `esp`?
+5. single step: `si`
+6. check registers again: in kernel now!
+7. `x/6x $esp`?
+8. run to `trap()`: who set `tf1->trapno`?
+
+locking
+-------
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <err.h>
+    #include <pthread.h>
+    
+    int count = 0;
+    
+    void* run(void *arg)
+    {
+      register int cnt = *(int *)arg;
+      for (register int i = 0; i < cnt; i++) {
+        asm volatile("incl %0"
+                     : "+m"(count)
+                     : "m"(count)
+                     : "memory");
+      }
+      return NULL;
+    }
+    
+    int main(int argc, char *argv[])
+    {
+      int ncpu = atoi(argv[1]);
+      int upto = atoi(argv[2]);
+    
+      pthread_t *tids = malloc(ncpu * sizeof(pthread_t));
+      
+      for (int i = 0; i < ncpu ; i ++) {
+        if (pthread_create(&tids[i], NULL, run, &upto))
+          err(1, "failed to creat a thread");
+      }
+      for (int i = 0; i < ncpu ; i ++)
+        pthread_join(tids[i], NULL);
+    
+      printf("cpu = %d, count = %d\n", ncpu, count);
+      
+      return 0;
+    }
+
+Save the above code to 'count.c' and compile like below:
+
+.. code-block:: sh
+
+    $ gcc -std=gnu99 -pthread -o count count.c 
+
+1. Explain the code, and run the program like below:
+
+.. code-block:: sh
+
+    $ ./count 1 1000
+    cpu = 1, count = 1000
+    
+    $ ./count 2 1000
+    cpu = 2, count = 2000
+    
+2. Interestingly, the total number of count is often not quite
+   correct. Please explain why that is happening?
+
+.. code-block:: sh
+
+    $ ./count 2 1000
+    cpu = 2, count = 1029
+
+3. How to fix this problem?
+
+.. code-block:: sh
+
+    $ ./count 4 100000
+    cpu = 4, count = 400000
+
+
+threads
+-------
+
+Please, read the first part of chapter 5 to understand what happens when a 
+kernel switches task from one process to other. Also look into the 
+following fork() method in proc.c file in xv6. 
+
+.. code-block:: c
+
+    int fork(void)
+    {
+      int i, pid;
+      struct proc *np;
+
+      // Allocate process.
+      if((np = allocproc()) == 0)
+        return -1;
+
+      if((np->pgdir = copyuvm(proc->pgdir, proc->sz)) == 0){
+        kfree(np->kstack);
+        np->kstack = 0;
+        np->state = UNUSED;
+        return -1;
+      }
+
+      np->sz = proc->sz;
+      np->parent = proc;
+      *np->tf = *proc->tf;
+
+      // Clear %eax so that fork returns 0 in the child.
+      np->tf->eax = 0;
+
+      for(i = 0; i < NOFILE; i++)
+      if(proc->ofile[i])
+        np->ofile[i] = filedup(proc->ofile[i]);
+
+      np->cwd = idup(proc->cwd);
+      safestrcpy(np->name, proc->name, sizeof(proc->name));
+      pid = np->pid;
+
+      acquire(&ptable.lock);
+      np->state = RUNNABLE;
+      release(&ptable.lock);
+      return pid;
+    }
+
+Concisely answer the following based on the readings, and code:
+
+1. What happens when kernel switches stack from one process to other?
+2. Why is copyuvm() called? Also, will this be required when parent and child 
+   process share address space?
+3. How is the acquire and release method implemented in xv6?
+
+sched
+-----
+
+.. code-block:: c
+    
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <err.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <sys/time.h>
+    
+    double now()
+    {
+      struct timeval tv;
+      gettimeofday(&tv, 0);
+      return tv.tv_sec + tv.tv_usec / 1000000.0;
+    }
+    
+    int count = 0;
+    
+    void* run(int cnt)
+    {
+      double beg = now();
+      for (register int i = 0; i < cnt; i++) {
+        asm volatile("incl %0"
+                     : "+m"(count)
+                     : "m"(count)
+                     : "memory");
+      }
+      double end = now();
+    
+      printf("%d: %.2f sec\n", getpid(), end - beg);
+    
+      return NULL;
+    }
+    
+    int main(int argc, char *argv[])
+    {
+      if (argc < 4) {
+        printf("[usage] %s [#proc] [count] [cmd]\n", argv[0]);
+        exit(1);
+      }
+    
+      if (getuid() != 0) {
+        printf("need to run as a root\n");
+        exit(2);
+      }
+    
+      int ncpu = atoi(argv[1]);
+      int upto = atoi(argv[2]);
+
+      // invoke n processes
+      int *child = malloc(sizeof(int) * ncpu);
+      for (int i = 0; i < ncpu; i ++) {
+        if ((child[i] = fork()) == 0) {
+          printf("%d: runs\n", getpid());
+          run(upto);
+          exit(0);
+        }
+      }
+    
+      // run a command over child pids
+      for (int i = 3; i < argc; i ++) {
+        char cmd[256];
+        snprintf(cmd, sizeof(cmd), "%s %d", argv[i], child[i-3]);
+        printf("execute: %s\n", cmd);
+        system(cmd);
+      }
+      
+      int status;
+      for (int i = 0; i < ncpu; i ++)
+        wait(&status);
+    
+      return 0;
+    }
+
+1. Build the benchmark program by running `gcc -o count count.c`. Explain
+   how this benchmark works.
+
+2. In Linux, users can change the scheduling policy of processes through
+   a `chrt <http://linux-tips.org/t/how-to-use-chrt-command/268>`__ (or `man chrt`)
+   command. Explain their four scheduling policies.
+
+3. Run the command below and explain its result. (-f:  SCHED_FIFO)
+
+.. code-block:: sh
+
+   $ sudo ./count 10 10000000000 "chrt -f -p 99"
+
+4. How to sort all processes according to their pid
+   (i.e., as their execution time)? What are the proper commands
+   at "???"
+
+.. code-block:: sh
+
+    $ sudo ./count 5 1000000000 "???" ...
+    30433: runs
+    30434: runs
+    30435: runs
+    execute: ...
+    30436: runs
+    30437: runs
+    execute: ...
+    execute: ...
+    execute: ...
+    execute: ...
+    30433: 2.55 sec
+    30434: 2.56 sec
+    30435: 2.57 sec
+    30436: 2.59 sec
+    30437: 4.44 sec
+
+coordination
+------------
+
+Read "5. Scheduling" and answer the following question.
+
+Sleep has to check `lk != &ptable.lock` to avoid a deadlock.
+It could eliminate the special case by replacing (2817-2820)
+
+.. code-block:: c
+
+    if(lk != &ptable.lock){
+        acquire(&ptable.lock);
+        release(lk);
+    }
+
+
+with
+
+.. code-block:: c
+
+    release(lk);
+    acquire(&ptable.lock);
+
+Doing this would break `sleep()`. How?
+
+concurrent-kv
+-------------
+
+..
+
+  XXX. make it better ..
+
+Read the provided `kv.c <r/kv.c>`__  code. This is the
+baseline code that you will modify in your tutorial 
+to make it scalable while ensuring locking. You do not
+need to submit any answers for this tutorial prep.
+
+fsck
+----
+
+We are going to add a new file entry to the `fs.img` by handcrafting
+the image file (i.e., by using a hex editor such as hexedit, GHex, or
+wxhexeditor). `dumpfs.c` is a tool that helps you parse `fs.img`.
+Please download `dumpfs.c <r/dumpfs.c>`__  and compile as below.
+
+.. code-block:: sh
+
+    $ cd xv6
+    $ make qemu
+
+    $ gcc -Werror -Wall -std=gnu11 -o dumpfs dumpfs.c
+    $ ./dumpfs
+    > sizeof(superblock) = 8
+    size = 000003e8 (Size of file system image (blocks))
+    nblocks = 000003ad (Number of data blocks)
+    ninodes = 000000c8 (Number of inodes)
+    nlog = 0000001e (Number of log blocks)
+    logstart = 00000002 (Block number of first log block)
+    inodestart = 00000020 (Block number of first inode block)
+    bmapstart = 0000003a (Block number of first free map block)
+    > inode = 1 (offset = 0x4040)
+      type = T_DIR    (File type)
+      nlink = 00000001 (Number of links to inode in file system)
+      size = 00000200 (Size of file (bytes))
+    [00] = 0000003b    ->  ................ ................ ..README 
+      01 -> .
+      01 -> ..
+      02 -> README
+      03 -> cat
+      04 -> echo
+      05 -> forktest
+      06 -> grep
+      07 -> init
+      08 -> kill
+      09 -> ln
+      10 -> ls
+      11 -> mkdir
+      12 -> rm
+      13 -> sh
+      14 -> stressfs
+      15 -> usertests
+      16 -> wc
+      17 -> zombie
+      18 -> console
+      
+
+How could you add a new dirent { inum = 19, name = "hello" } at the end
+of the first inode (ino = 1)? Try to boot (`make qemu`) and 
+run `ls` on xv6 with the modified `fs.img`. 
+HINT. Where is the actual block that contains the dirents?
+
+mkfs
+----
+
+In xv6, `mkfs.c' is a standalone program for creating the file system `fs.img`.
+Please read carefully through the code to see how it works. Answer the following 
+questions.
+
+1. How large can each file be in xv6 and why is this limitation?
+
+2. How can you increase the maximum size of a file? Discuss the steps.
+
+3. Next, look at the `wsect()` and `rsect()` functions in xv6. For every block that 
+   should be written or read it does a lseek() to the actual block location. 
+   Can you modify the `wsect()` and `rsect()` to support simple memory copy operation to 
+   read or write a block? 
+
+HINT: First, when you open the file, `mmap()` the file to a global pointer. 
+Then use the global pointer inside `wsect()` and  `rsect()` as shown in code 
+snippet below. Also, when you mmap the file, make sure to seek and write a dummy 
+byte to the last location.
+
+.. code-block:: c
+
+    void
+    wsect(uint sec, void *buf)
+    {
+      uint offset = sec * BSIZE;
+      
+      //copy to the global mmap pointer here
+    }
+    
+    void
+    rsect(uint sec, void *buf)
+    {
+      uint offset = sec * BSIZE;
+      
+      //copy from the global mmap pointer here
+    }
+
+If you did it correct, you can use the image file to boot xv6 and list the 
+files you included when creating the image.
+
+.. code-block:: sh
+
+    $ gcc -g mkfs.c -o mkfs
+    $ ./mkfs fs.img _init _ln _ls _mkdir  _sh  _stressfs _usertests  _zombie ...
+    $ make qemu
+    $ ls
+
+log
+---
+
+We are going to dump the log entries in `fs.img` by using `dumplog`,
+which simply dump stashing blocks recorded in the log region. Please
+download `dumplog.c <r/dumplog.c>`__  and compile it like below.
+
+.. code-block:: sh
+
+    $ cd xv6
+    ; please run at least once so that xv6 creates a console file
+    $ make qemu
+    ; kill xv6
+    
+    $ gcc -Werror -Wall -std=gnu11 -o dumplog dumplog.c
+    $ ./dumplog fs.img
+    > sizeof(superblock) = 8
+          size = 000003e8 (Size of file system image (blocks))
+       nblocks = 000003ad (Number of data blocks)
+       ninodes = 000000c8 (Number of inodes)
+          nlog = 0000001e (Number of log blocks)
+      logstart = 00000002 (Block number of first log block)
+    inodestart = 00000020 (Block number of first inode block)
+     bmapstart = 0000003a (Block number of first free map block)
+    > loghead (n=0)
+    >  block[00] = 034:  .........5...... ................ ................ ................
+    >  block[01] = 059:  ................ ................ ..README........ ..cat...........
+    >  block[02] = 000:  ................ ................ ................ ................
+    >  block[03] = 000:  ................ ................ ................ ................
+    >  block[04] = 000:  ................ ................ ................ ................
+    >  block[05] = 000:  ................ ................ ................ ................
+    >  block[06] = 000:  ................ ................ ................ ................
+    >  block[07] = 000:  ................ ................ ................ ................
+    >  block[08] = 000:  ................ ................ ................ ................
+    >  block[09] = 000:  ................ ................ ................ ................
+    >  block[10] = 000:  ................ ................ ................ ................
+    >  block[11] = 000:  ................ ................ ................ ................
+    >  block[12] = 000:  ................ ................ ................ ................
+    >  block[13] = 000:  ................ ................ ................ ................
+    >  block[14] = 000:  ................ ................ ................ ................
+    >  block[15] = 000:  ................ ................ ................ ................
+    >  block[16] = 000:  ................ ................ ................ ................
+    >  block[17] = 000:  ................ ................ ................ ................
+    >  block[18] = 000:  ................ ................ ................ ................
+    >  block[19] = 000:  ................ ................ ................ ................
+    >  block[20] = 000:  ................ ................ ................ ................
+    >  block[21] = 000:  ................ ................ ................ ................
+    >  block[22] = 000:  ................ ................ ................ ................
+    >  block[23] = 000:  ................ ................ ................ ................
+    >  block[24] = 000:  ................ ................ ................ ................
+    >  block[25] = 000:  ................ ................ ................ ................
+    >  block[26] = 000:  ................ ................ ................ ................
+    >  block[27] = 000:  ................ ................ ................ ................
+    >  block[28] = 000:  ................ ................ ................ ................
+    >  block[29] = 000:  ................ ................ ................ ................
+    
+To emulate unsuccessful commits, we are going to inject two errors
+to the `commit()` function (see, two panics in below).
+
+.. code-block:: c
+
+    // xv6/log.c
+    static void
+    commit()
+    {
+      if (log.lh.n > 0) {
+        write_log();     // Write modified blocks from cache to log
+        // Q1: panic("after writing to log!");
+        write_head();    // Write header to disk -- the real commit
+        // Q2: panic("after writing the loghead!");
+        install_trans(); // Now install writes to home locations
+        log.lh.n = 0; 
+        write_head();    // Erase the transaction from the log
+      }
+    }
+
+Your task is to uncomment each panic, trigger the injected bug, and
+interpret its result (e.g., `fs.img`) with `dumplog`.
+
+Specifically, after uncommenting each panic, please run:
+
+.. code-block:: sh
+
+    $ make qemu
+    ; on xv6, trigger commit()
+    $ cat README > x
+    ; kill qemu
+
+    $ ./dumplog fs.img
+    ...
+
+Please interpret two outputs from dumplog.

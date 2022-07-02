@@ -1,0 +1,172 @@
+===================
+General Information
+===================
+
+The purpose of this course is to discuss the design of operating
+systems, it's concepts with a hand-on approach.
+Topics we will cover include operating system organization,
+system programming, networked and distributed systems, and
+storage systems. Most of the time will be spent on multi-process
+systems (processes, interprocess communication, and
+synchronization), memory organization(paging), resource
+allocation and scheduling, file systems, and I/O.
+To benefit from the course, low-level programming skills (e.g.,
+C or ASM programming) and preliminary knowledge on computer
+system and architecture.
+You will be asked to design and implement core components of an
+operating system through labs, and assignments.
+
+------------
+Prerequisite
+------------
+
+- **CS-206 Parallelisme and concurrency**
+- **CS-207 Programmation orientée système**
+- **CS-212 Projet programmation système**
+
+
+--------
+Meetings
+--------
+
+- When: TBD
+- Where: TBD
+
+------
+Grades
+------
+
+Grades will be released on Moodle.
+
+- Preparation (10%)
+- Lab (10% per lab = 50% + 10% bonus)
+- Final exam (40%)
+
+--------
+Labs
+--------
+
+- Labs build on each other. Students are responsible for having
+  each lab working in order to do the next lab.
+- Each lab except Lab 1 has challenge questions. Each challenge
+  question is worth 5% of the lab points. Other questions are
+  worth 2% of lab points each.
+- Labs must be tagged and handed in through the github repo. No
+  emailed submissions.
+- Labs are graded using the official vagrant trusty32-based
+  configuration. Use other configurations at your own risk.
+- Labs 3 and 4 are multipart Labs
+   - All parts are graded based on what is turned in with the
+     last part (B or Lab 3 and C for Lab 4). Thus, corrections
+     can be made to earlier parts.
+   - Challenge questions from any part can be turned in with the
+     last part as well.
+   - Each challenge question is worth 5% of the TOTAL lab grade.
+- If a student turns in the code on time but turns in challenge
+  or regular questions late, the whole lab is considered late.
+
+--------
+Prep Questions
+--------
+
+- Due at beginning of class
+- No late submissions
+- Must be turned in to your prep GitLab repo
+  (EPFL gitlab repo **FIXME**)
+  No other submission methods accepted.
+
+--------
+Equipment Problems
+--------
+
+- Students are responsible for having a working laptop or
+  computer available to do the assignments
+- Deadlines will not be extended because of equipment problems
+  (broken, lost, or stolen laptops). Please see an instructor
+  immediately if this impacts your ability to meet a deadline.
+
+--------
+Other Policies
+--------
+
+Similar to UW's `CSE 451
+<http://courses.cs.washington.edu/courses/cse451/15au/>`__ and
+MIT's `6.828 <https://pdos.csail.mit.edu/6.828/2014/>`__,
+CS 323 provides **five** days of grace period (late days)
+and strictly follows the cheating policy
+(read `GT's Academic Misconduct Policy <http://www.policylibrary.gatech.edu/student-affairs/code-conduct>`__).
+
+.. note::
+
+    **Late days**: You have **a week** of late days.
+
+    Late days must be used in 24-hour (integer) chunks. You can
+    divide them up among the labs whenver you like. You don't
+    have to ask or tell us. They are intended for emergencies
+    when you fall behind due to illness, emergencies, job
+    interviews, events, deadlines in other classes, etc.
+
+    Once you use the seven extra days for labs, we will
+    impose a fine of 10% per day on a lab.
+
+    Institutional excuses (medical, etc.) are treated on a
+    case-by-case basis in accordance with university policy.
+
+
+.. important::
+
+    **Cheating vs. collaboration**
+
+    Collaboration is a very good thing. On the other hand,
+    cheating is considered a very serious offense and is
+    vigorously prosecuted.  Vigorous prosecution requires that
+    you be advised of the cheating policy of the course before
+    the offending act.
+
+    For this semester, the policy is simple: don’t cheat:
+        - *Never* share code or text on the project.
+        - *Never* use someone else’s code or text in your solutions.
+        - *Never* consult project code or text that might be on the Internet.
+
+    We are aware of the solutions that students of this and
+    other versions of this course have put on the internet.
+    Please do not put your solutions on Github either during or
+    after you take this course. This constitutes cheating even
+    if you are no longer in the course and can be prosecuted
+    through the university policy. We may use a comparison tool
+    to check if there are similarities with these solutions or
+    the solutions of other students.
+
+    On the other hand, for this class, you are strongly
+    encouraged to:
+        - Share ideas.
+        - Explain your code to someone to see if they know why
+          it doesn’t work.
+        - Help someone else debug if they’ve run into a wall.
+
+    If you obtain help of any kind, always **write the name(s) of your sources**.
+
+----
+Text
+----
+
+- Official Text: `xv6: a simple, Unix-like teaching operating system <r/xv6-rev9-book.pdf>`__
+- (optional) `Linux Kernel Development <http://proquest.safaribooksonline.com/book/programming/linux/9780768696974>`__
+- (optional) Operating Systems: Principles and Practice, Thomas Anderson and Michael Dahlin
+
+--------
+Staff/TA
+--------
+
+Feel free to send us an email to make an appointment,
+or if you have any questions/concerns.
+
+
+Acknowledgments
+---------------
+
+This course reuses much of the material from
+Georgia Tech's `CSE 3210 <https://tc.gts3.org/cs3210/2016/spring/>`__,
+UW's `CSE 451 <http://courses.cs.washington.edu/courses/cse451/15au/>`__,
+`OSPP <http://ospp.cs.washington.edu/>`__,
+and MIT's `6.828 <https://pdos.csail.mit.edu/6.828/2014/>`__.

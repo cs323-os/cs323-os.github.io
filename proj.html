@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Final Project &mdash; CS 323, Fall 2022 1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="CS 323, Fall 2022 1 documentation" href="index.html"/>
+        <link rel="prev" title="Lab 6: Network Driver" href="lab/lab6.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> CS 323, Fall 2022</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="info.html">General Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="info.html#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#meetings">Meetings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#grades">Grades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#labs">Labs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#prep-questions">Prep Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#equipment-problems">Equipment Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#other-policies">Other Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#text">Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#staff-ta">Staff/TA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cal.html">Schedule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="q.html">Preparation Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">Reference Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="refs.html#c-programming">C Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refs.html#unix">UNIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refs.html#x86-emulation">x86 Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refs.html#x86-assembly-language">x86 Assembly Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refs.html#pc-hardware-programming">PC Hardware Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refs.html#reference-quizzes">Reference Quizzes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lab.html">Lab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lab/tools.html">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab1.html">Lab 1: Booting a PC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab2.html">Lab 2: Memory Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab3.html">Lab 3: User Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab4.html">Lab 4: Preemptive Multitasking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab5.html">Lab 5: File system, Spawn and Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab6.html">Lab 6: Network Driver</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Final Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deliverables">Deliverables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-ideas-if-you-found-none">Project ideas (if you found none)</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">CS 323, Fall 2022</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Final Project</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/proj.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="final-project">
+<h1>Final Project<a class="headerlink" href="#final-project" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>The main goal is to have fun and explore more advanced O/S topics. You
+do not have to do novel research. But if you are interested in exploring
+more adventurous topic as a research, feel free to let us know (<a class="reference external" href="mailto:staff">mailto:staff</a>).</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Pre-proposals should be PDF, Word Document, or Markdown, have a cover sheet with title and team names, and have at least 1/2 page of text (not including title info) per group member (e.g., 4 member = 2 pages)</dt><dd><ul>
+<li><p>Have the following parts: Intro, Background, Problem, Approach, Potential Problems or Issues</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Demo and Presentation time slots will be assigned and timed. (Typical time limits have been 2 minutes for proposal and 8-10 minutes for demo.)</p></li>
+<li><dl class="simple">
+<dt>Write-up needs to be PDF, Word Document, or Markdown, have a cover sheet with title and team names and be at least 1 page of text (not including title info) per group member (e.g., 4 members = 4 pages)</dt><dd><ul>
+<li><p>Have the following parts: Intro, Background, Problem, Approach, Results, Conclusions</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Teams should work collaboratively using github using a group repo. In cases where lab work is used for the final project, team members must be careful not to share the lab code before turning it in.</p></li>
+<li><p>Grades will be based on originality, difficulty, completeness (particularly in the write-up), correctness, presentation skills, and effective teamwork.</p></li>
+</ul>
+<p>We do realize that time
+is limited, so we don’t expect you to re-write Linux by the end of the
+semester. Try to make sure your goals are reasonable; perhaps set a
+minimum goal that’s definitely achievable (e.g., something of the
+scale of lab 6) and a more ambitious goal if things go well. For teams please no more than four to a team.</p>
+</section>
+<section id="deliverables">
+<h2>Deliverables<a class="headerlink" href="#deliverables" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Oct 2, 2017: Pre-proposal.</p></li>
+<li><p>Oct 19, 2017: Proposal Presentation.</p></li>
+<li><p>Nov 28, 2017: First demo day (tentative).</p></li>
+<li><p>Nov 30, 2017: Second demo day (tentative).</p></li>
+<li><p>Dec 5, 2017: Third demo day (or bonus topics)</p></li>
+<li><p>Dec 8, 2017: Final submission.</p></li>
+</ol>
+</section>
+<section id="project-ideas-if-you-found-none">
+<h2>Project ideas (if you found none)<a class="headerlink" href="#project-ideas-if-you-found-none" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Build a virtual machine monitor that can run multiple guests (for
+example, multiple instances of JOS), using <a class="reference external" href="http://www.intel.com/technology/itj/2006/v10i3/1-hardware/3-software.htm">x86 VM
+support</a>.</p></li>
+<li><p>Do something useful with the x86 <a class="reference external" href="http://www.intel.com/content/dam/www/public/us/en/documents/guides/intel-txt-software-development-guide.pdf">Trusted Execution
+Technology</a>.
+For example, run applications without having to trust the kernel.
+<a class="reference external" href="https://www.usenix.org/system/files/conference/osdi12/osdi12-final-51.pdf">Here</a>
+is a recent paper on this topic.</p></li>
+<li><p>Do something useful with the hardware protection of Intel SGX. <a class="reference external" href="http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/17918-osdi14-paper-baumann.pdf">Here
+is a recent paper using Intel
+SGX</a>.</p></li>
+<li><p>Make the JOS file system support writing, file creation, logging for
+durability, etc., perhaps taking ideas from Linux EXT3.</p></li>
+<li><p>Use file system ideas from <a class="reference external" href="http://www.ece.cmu.edu/~ganger/papers/osdi94.pdf">Soft
+updates</a>,
+<a class="reference external" href="https://ng.gnunet.org/sites/default/files/10.1.1.40.3691.pdf">WAFL</a>,
+ZFS, or another advanced file system.</p></li>
+<li><p>Build a <a class="reference external" href="http://www.cdf.toronto.edu/~csc469h/winter/handouts/nitzberg91.pdf">distributed shared
+memory</a>
+(DSM) system, so that you can run multi-threaded shared memory
+parallel programs on a cluster of machines, using paging to give the
+appearance of real shared memory. When a thread tries to access a
+page that’s on another machine, the page fault will give the DSM
+system a chance to fetch the page over the network from whatever
+machine currently stores.</p></li>
+<li><p>Allow processes to migrate from one machine to another over the
+network. You’ll need to do something about the various pieces of a
+process’s state, but since much state in JOS is in user-space it may
+be easier than process migration on Linux.</p></li>
+<li><p>Implement the plan 9 protocol in JOS to be able to run OS functions over network.</p></li>
+<li><p>Use
+<a class="reference external" href="http://static.usenix.org/event/osdi06/tech/erlingsson.html">xfi</a>
+to sandbox code within a process.</p></li>
+<li><p>Support x86 <a class="reference external" href="http://en.wikipedia.org/wiki/Page_(computer_memory)">2MB or 4MB
+pages</a>.</p></li>
+<li><p>Modify JOS to have kernel-supported threads inside processes. See
+<a class="reference external" href="http://pdos.csail.mit.edu/cs3210/2012/homework/xv6-uthread.html">in-class uthread
+assignment</a>
+to get started. Implementing scheduler activations would be one way
+to do this project.</p></li>
+<li><p>Use fine-grained locking or lock-free concurrency in JOS in the
+kernel or in the file server (after making it multithreaded). The
+Linux kernel uses <a class="reference external" href="http://en.wikipedia.org/wiki/Read-copy-update">read copy
+update</a> to be able
+to perform read operations without holding locks. Explore RCU by
+implementing it in JOS use it to support a name cache with lock-free
+reads.</p></li>
+<li><p>Implement ideas from the <a class="reference external" href="http://pdos.csail.mit.edu/cs3210/2012/readings/engler95exokernel.pdf">Exokernel
+papers</a>,
+for example the packet filter.</p></li>
+<li><p>Make JOS to have a soft real-time behavior. You will have to identify some
+application for which this is useful.</p></li>
+<li><p>Make JOS executable on 64-bit CPUs. This includes redoing the virtual memory
+system to use 4-level pages tables. See <a class="reference external" href="http://pdos.csail.mit.edu/cs3210/2012/reference.html">reference
+page</a> for
+some documentation.</p></li>
+<li><p>Port JOS to a different microprocessor (e.g., ARM). The <a class="reference external" href="http://wiki.osdev.org/Main_Page">osdev
+wiki</a> may be helpful.</p></li>
+<li><p>A window system for JOS, including graphics driver and mouse. See
+<a class="reference external" href="http://pdos.csail.mit.edu/cs3210/2012/reference.html">reference
+page</a> for
+some documentation.
+<a class="reference external" href="http://web.mit.edu/amdragon/www/pubs/sqrtx-cs3210.html">sqrt(x)</a>
+is an example JOS window system (and writeup).</p></li>
+<li><p>Implement
+<a class="reference external" href="https://www.usenix.org/system/files/conference/osdi12/osdi12-final-117.pdf">dune</a>
+to export privileged hardware instructions to user-space applications
+in JOS.</p></li>
+<li><p>Implement debugging tracing / debugging functionality for JOS by writing
+a user-level debugger, strace like functionality as well as hardware
+register profiling (e.g., Oprofile, perf). You can further implement
+call traces.</p></li>
+<li><p>Perform binary emulation for (static) Linux executables on the top of JOS.</p></li>
+<li><p>Implement a <a class="reference external" href="http://www.gilesorr.com/wm/">Windows Manager</a> for JOS.</p></li>
+<li><p>Develop benchmark suite on JOS that should stress different subsystems
+of JOS like memory, io, processes etc. The suite can comprise of
+micro as well as macro bench-suites.</p></li>
+<li><p>Implement <a class="reference external" href="https://lwn.net/Articles/569635/">ASLR</a> for JOS.</p></li>
+<li><p>Make Qemu’s debug console for JOS extensible like
+<a class="reference external" href="https://sourceware.org/gdb/current/onlinedocs/gdb/Python.html#Python">gdb’s python extension</a>  .</p></li>
+<li><p>Implement a <a class="reference external" href="http://www.dosbox.com/">DOS emulator</a> for JOS
+and try to run at least one game.</p></li>
+<li><p>Implement a toy x86 emulator that is sufficient to emulate JOS. You
+can look at <a class="reference external" href="http://bochs.sourceforge.net/">bochs</a> for reference.</p></li>
+<li><p>Implement user-mode-JOS like <a class="reference external" href="http://user-mode-linux.sourceforge.net/">Usera Mode Linux</a>
+and try hosting virtual server or even sandboxing an application.</p></li>
+<li><p>jitting xv6/jos (or tcc w/ xv6/jos src)</p></li>
+<li><p>python in ring0</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="lab/lab6.html" class="btn btn-neutral" title="Lab 6: Network Driver"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Last updated on Jul 02, 2022.
+    </p>
+  </div>
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+<script src="_static/email.js"></script>
+<script src="_static/custom.js"></script>
+
+</body>
+</html>

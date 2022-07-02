@@ -1,0 +1,935 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lab 5: File system, Spawn and Shell &mdash; CS 323, Fall 2022 1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CS 323, Fall 2022 1 documentation" href="../index.html"/>
+        <link rel="up" title="Lab" href="../lab.html"/>
+        <link rel="next" title="Lab 6: Network Driver" href="lab6.html"/>
+        <link rel="prev" title="Lab 4: Preemptive Multitasking" href="lab4.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> CS 323, Fall 2022</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../info.html">General Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#meetings">Meetings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#grades">Grades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#labs">Labs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#prep-questions">Prep Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#equipment-problems">Equipment Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#other-policies">Other Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#text">Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#staff-ta">Staff/TA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cal.html">Schedule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../q.html">Preparation Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">Reference Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#c-programming">C Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#unix">UNIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#x86-emulation">x86 Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#x86-assembly-language">x86 Assembly Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#pc-hardware-programming">PC Hardware Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#reference-quizzes">Reference Quizzes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lab.html">Lab</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1.html">Lab 1: Booting a PC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2.html">Lab 2: Memory Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3.html">Lab 3: User Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4.html">Lab 4: Preemptive Multitasking</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lab 5: File system, Spawn and Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6.html">Lab 6: Network Driver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proj.html">Final Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#deliverables">Deliverables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#project-ideas-if-you-found-none">Project ideas (if you found none)</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CS 323, Fall 2022</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../lab.html">Lab</a> &raquo;</li>
+      
+    <li>Lab 5: File system, Spawn and Shell</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/lab/lab5.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="lab-5-file-system-spawn-and-shell">
+<h1>Lab 5: File system, Spawn and Shell<a class="headerlink" href="#lab-5-file-system-spawn-and-shell" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Handed out:</strong> Thursday, Oct 24, 2017</p></li>
+<li><p><strong>Due:</strong> Friday, Nov 17, 2017</p></li>
+</ul>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>In this lab, you will implement <code class="docutils literal notranslate"><span class="pre">spawn</span></code>, a library call that loads and
+runs on-disk executables. You will then flesh out your kernel and
+library operating system enough to run a shell on the console. These
+features need a file system, and this lab introduces a simple read/write
+file system.</p>
+<section id="getting-started">
+<h3>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h3>
+<p>Use Git to fetch the latest version of the course repository, and then
+create a local branch called <code class="docutils literal notranslate"><span class="pre">lab5</span></code> based on our lab5 branch,
+<code class="docutils literal notranslate"><span class="pre">origin/lab5</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/cs3210/lab
+$ add git
+$ git pull
+Already up-to-date.
+$ git checkout -b lab5 origin/lab5
+Branch lab5 <span class="nb">set</span> up to track remote branch refs/remotes/origin/lab5.
+Switched to a new branch <span class="s2">&quot;lab5&quot;</span>
+$ git merge lab4
+Merge made by recursive.
+.....
+$
+</pre></div>
+</div>
+<p>The main new component for this part of the lab is the file system
+environment, located in the new <code class="docutils literal notranslate"><span class="pre">fs</span></code> directory. Scan through all the
+files in this directory to get a feel for what all is new. Also, there
+are some new file system-related source files in the <code class="docutils literal notranslate"><span class="pre">user</span></code> and
+<code class="docutils literal notranslate"><span class="pre">lib</span></code> directories,</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fs/fs.c</span></code></p></td>
+<td><p>Code that mainipulates the file system’s on-disk structure.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fs/bc.c</span></code></p></td>
+<td><p>A simple block cache built on top of our user-level page fault handling facility.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fs/ide.c</span></code></p></td>
+<td><p>Minimal PIO-based (non-interrupt-driven) IDE driver code.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fs/serv.c</span></code></p></td>
+<td><p>The file system server that interacts with client environments using file system IPCs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lib/fd.c</span></code></p></td>
+<td><p>Code that implements the general UNIX-like file descriptor interface.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lib/file.c</span></code></p></td>
+<td><p>The driver for on-disk file type, implemented as a file system IPC client.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lib/console.c</span></code></p></td>
+<td><p>The driver for console input/output file type.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lib/spawn.c</span></code></p></td>
+<td><p>Code skeleton of the <code class="docutils literal notranslate"><span class="pre">spawn</span></code> library call.</p></td>
+</tr>
+</tbody>
+</table>
+<p>You should run the pingpong, primes, and forktree test cases from lab 4
+again after merging in the new lab 5 code. You will need to comment out
+the <code class="docutils literal notranslate"><span class="pre">ENV_CREATE(fs_fs)</span></code> line in <code class="docutils literal notranslate"><span class="pre">kern/init.c</span></code> because <code class="docutils literal notranslate"><span class="pre">fs/fs.c</span></code>
+tries to do some I/O, which JOS does not allow yet. Similarly,
+temporarily comment out the call to <code class="docutils literal notranslate"><span class="pre">close_all()</span></code> in <code class="docutils literal notranslate"><span class="pre">lib/exit.c</span></code>;
+this function calls subroutines that you will implement later in the
+lab, and therefore will panic if called. If your lab 4 code doesn’t
+contain any bugs, the test cases should run fine. Don’t proceed until
+they work. Don’t forget to un-comment these lines when you start
+Exercise 1.</p>
+<p>If they don’t work, use git diff lab4 to review all the changes, making
+sure there isn’t any code you wrote for lab4 (or before) missing from
+lab 5. Make sure that lab 4 still works.</p>
+</section>
+<section id="lab-requirements">
+<h3>Lab Requirements<a class="headerlink" href="#lab-requirements" title="Permalink to this heading">¶</a></h3>
+<p>As before, you will need to do all of the regular exercises described in
+the lab and <em>at least one</em> challenge problem. Additionally, you will
+need to write up brief answers to the questions posed in the lab and a
+short (e.g., one or two paragraph) description of what you did to solve
+your chosen challenge problem. If you implement more than one challenge
+problem, you only need to describe one of them in the write-up, though
+of course you are welcome to do more. Place the write-up in a file
+called <code class="docutils literal notranslate"><span class="pre">answers-lab5.txt</span></code> in the top level of your <code class="docutils literal notranslate"><span class="pre">lab5</span></code> directory
+before handing in your work.</p>
+</section>
+</section>
+<section id="file-system-preliminaries">
+<h2>File system preliminaries<a class="headerlink" href="#file-system-preliminaries" title="Permalink to this heading">¶</a></h2>
+<p>The file system you will work with is much simpler than most “real” file
+systems including that of xv6 UNIX, but it is powerful enough to provide
+the basic features: creating, reading, writing, and deleting files
+organized in a hierarchical directory structure.</p>
+<p>We are (for the moment anyway) developing only a single-user operating
+system, which provides protection sufficient to catch bugs but not to
+protect multiple mutually suspicious users from each other. Our file
+system therefore does not support the UNIX notions of file ownership or
+permissions. Our file system also currently does not support hard links,
+symbolic links, time stamps, or special device files like most UNIX file
+systems do.</p>
+</section>
+<section id="on-disk-file-system-structure">
+<h2>On-Disk File System Structure<a class="headerlink" href="#on-disk-file-system-structure" title="Permalink to this heading">¶</a></h2>
+<p>Most UNIX file systems divide available disk space into two main types
+of regions: <em>inode</em> regions and <em>data</em> regions. UNIX file systems assign
+one <em>inode</em> to each file in the file system; a file’s inode holds
+critical meta-data about the file such as its <code class="docutils literal notranslate"><span class="pre">stat</span></code> attributes and
+pointers to its data blocks. The data regions are divided into much
+larger (typically 8KB or more) <em>data blocks</em>, within which the file
+system stores file data and directory meta-data. Directory entries
+contain file names and pointers to inodes; a file is said to be
+<em>hard-linked</em> if multiple directory entries in the file system refer to
+that file’s inode. Since our file system will not support hard links, we
+do not need this level of indirection and therefore can make a
+convenient simplification: our file system will not use inodes at all
+and instead will simply store all of a file’s (or sub-directory’s)
+meta-data within the (one and only) directory entry describing that
+file.</p>
+<p>Both files and directories logically consist of a series of data blocks,
+which may be scattered throughout the disk much like the pages of an
+environment’s virtual address space can be scattered throughout physical
+memory. The file system environment hides the details of block layout,
+presenting interfaces for reading and writing sequences of bytes at
+arbitrary offsets within files. The file system environment handles all
+modifications to directories internally as a part of performing actions
+such as file creation and deletion. Our file system does allow user
+environments to <em>read</em> directory meta-data directly (e.g., with
+<code class="docutils literal notranslate"><span class="pre">read</span></code>), which means that user environments can perform directory
+scanning operations themselves (e.g., to implement the <code class="docutils literal notranslate"><span class="pre">ls</span></code> program)
+rather than having to rely on additional special calls to the file
+system. The disadvantage of this approach to directory scanning, and the
+reason most modern UNIX variants discourage it, is that it makes
+application programs dependent on the format of directory meta-data,
+making it difficult to change the file system’s internal layout without
+changing or at least recompiling application programs as well.</p>
+<section id="sectors-and-blocks">
+<h3>Sectors and Blocks<a class="headerlink" href="#sectors-and-blocks" title="Permalink to this heading">¶</a></h3>
+<p>Most disks cannot perform reads and writes at byte granularity and
+instead perform reads and writes in units of <em>sectors</em>, which today are
+almost universally 512 bytes each. File systems actually allocate and
+use disk storage in units of <em>blocks</em>. Be wary of the distinction between
+the two terms: <em>sector size</em> is a property of the disk hardware, whereas
+<em>block size</em> is an aspect of the operating system using the disk. A file
+system’s block size must be a multiple of the sector size of the
+underlying disk.</p>
+<p>The UNIX xv6 file system uses a block size of 512 bytes, the same as the
+sector size of the underlying disk. Most modern file systems use a
+larger block size, however, because storage space has gotten much
+cheaper and it is more efficient to manage storage at larger
+granularities. Our file system will use a block size of 4096 bytes,
+conveniently matching the processor’s page size.</p>
+</section>
+<section id="superblocks">
+<h3>Superblocks<a class="headerlink" href="#superblocks" title="Permalink to this heading">¶</a></h3>
+<figure class="align-center" id="id1">
+<img alt="Disk layout" src="../_images/disk.png" />
+<figcaption>
+<p><span class="caption-text">Disk layout</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>File systems typically reserve certain disk blocks at “easy-to-find”
+locations on the disk (such as the very start or the very end) to hold
+meta-data describing properties of the file system as a whole, such as
+the block size, disk size, any meta-data required to find the root
+directory, the time the file system was last mounted, the time the file
+system was last checked for errors, and so on. These special blocks are
+called <em>superblocks</em>.</p>
+<p>Our file system will have exactly one superblock, which will always be
+at block 1 on the disk. Its layout is defined by <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Super</span></code> in
+<code class="docutils literal notranslate"><span class="pre">inc/fs.h</span></code>. Block 0 is typically reserved to hold boot loaders and
+partition tables, so file systems generally do not use the very first
+disk block. Many “real” file systems maintain multiple superblocks,
+replicated throughout several widely-spaced regions of the disk, so that
+if one of them is corrupted or the disk develops a media error in that
+region, the other superblocks can still be found and used to access the
+file system.</p>
+</section>
+<section id="file-meta-data">
+<h3>File Meta-data<a class="headerlink" href="#file-meta-data" title="Permalink to this heading">¶</a></h3>
+<figure class="align-center" id="id2">
+<img alt="File structure" src="../_images/file.png" />
+<figcaption>
+<p><span class="caption-text">File structure</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The layout of the meta-data describing a file in our
+file system is described by <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">File</span></code> in <code class="docutils literal notranslate"><span class="pre">inc/fs.h</span></code>. This
+meta-data includes the file’s name, size, type (regular file or
+directory), and pointers to the blocks comprising the file. As mentioned
+above, we do not have inodes, so this meta-data is stored in a directory
+entry on disk. Unlike in most “real” file systems, for simplicity we
+will use this one <code class="docutils literal notranslate"><span class="pre">File</span></code> structure to represent file meta-data as it
+appears <em>both on disk and in memory</em>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">f_direct</span></code> array in <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">File</span></code> contains space to store the
+block numbers of the first 10 (<code class="docutils literal notranslate"><span class="pre">NDIRECT</span></code>) blocks of the file, which we
+call the file’s <em>direct</em> blocks. For small files up to 10*4096 = 40KB
+in size, this means that the block numbers of all of the file’s blocks
+will fit directly within the <code class="docutils literal notranslate"><span class="pre">File</span></code> structure itself. For larger
+files, however, we need a place to hold the rest of the file’s block
+numbers. For any file greater than 40KB in size, therefore, we allocate
+an additional disk block, called the file’s <em>indirect block</em>, to hold up
+to 4096/4 = 1024 additional block numbers. Our file system therefore
+allows files to be up to 1034 blocks, or just over four megabytes, in
+size. To support larger files, “real” file systems typically support
+<em>double-</em> and <em>triple-indirect blocks</em> as well.</p>
+</section>
+<section id="directories-versus-regular-files">
+<h3>Directories versus Regular Files<a class="headerlink" href="#directories-versus-regular-files" title="Permalink to this heading">¶</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">File</span></code> structure in our file system can represent either a <em>regular</em>
+file or a directory; these two types of “files” are distinguished by the
+<code class="docutils literal notranslate"><span class="pre">type</span></code> field in the <code class="docutils literal notranslate"><span class="pre">File</span></code> structure. The file system manages
+regular files and directory-files in exactly the same way, except that
+it does not interpret the contents of the data blocks associated with
+regular files at all, whereas the file system interprets the contents of
+a directory-file as a series of <code class="docutils literal notranslate"><span class="pre">File</span></code> structures describing the files
+and subdirectories within the directory.</p>
+<p>The superblock in our file system contains a <code class="docutils literal notranslate"><span class="pre">File</span></code> structure (the
+<code class="docutils literal notranslate"><span class="pre">root</span></code> field in <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Super</span></code>) that holds the meta-data for the
+file system’s root directory. The contents of this directory-file is a
+sequence of <code class="docutils literal notranslate"><span class="pre">File</span></code> structures describing the files and directories
+located within the root directory of the file system. Any subdirectories
+in the root directory may in turn contain more <code class="docutils literal notranslate"><span class="pre">File</span></code> structures
+representing sub-subdirectories, and so on.</p>
+</section>
+</section>
+<section id="the-file-system">
+<h2>The File System<a class="headerlink" href="#the-file-system" title="Permalink to this heading">¶</a></h2>
+<p>The goal for this lab is not to have you implement the entire file
+system, but for you to implement only certain key components. In
+particular, you will be responsible for reading blocks into the block
+cache and flushing them back to disk; allocating disk blocks; mapping
+file offsets to disk blocks; and implementing read, write, and open in
+the IPC interface. Because you will not be implementing all of the file
+system yourself, it is very important that you familiarize yourself with
+the provided code and the various file system interfaces.</p>
+</section>
+<section id="disk-access">
+<h2>Disk Access<a class="headerlink" href="#disk-access" title="Permalink to this heading">¶</a></h2>
+<p>The file system environment in our operating system needs to be able to
+access the disk, but we have not yet implemented any disk access
+functionality in our kernel. Instead of taking the conventional
+“monolithic” operating system strategy of adding an IDE disk driver to
+the kernel along with the necessary system calls to allow the file
+system to access it, we instead implement the IDE disk driver as part of
+the user-level file system environment. We will still need to modify the
+kernel slightly, in order to set things up so that the file system
+environment has the privileges it needs to implement disk access itself.</p>
+<p>It is easy to implement disk access in user space this way as long as we
+rely on polling, “programmed I/O” (PIO)-based disk access and do not use
+disk interrupts. It is possible to implement interrupt-driven device
+drivers in user mode as well (the L3 and L4 kernels do this, for
+example), but it is more difficult since the kernel must field device
+interrupts and dispatch them to the correct user-mode environment.</p>
+<p>The x86 processor uses the IOPL bits in the EFLAGS register to determine
+whether protected-mode code is allowed to perform special device I/O
+instructions such as the IN and OUT instructions. Since all of the IDE
+disk registers we need to access are located in the x86’s I/O space
+rather than being memory-mapped, giving “I/O privilege” to the file
+system environment is the only thing we need to do in order to allow the
+file system to access these registers. In effect, the IOPL bits in the
+EFLAGS register provides the kernel with a simple “all-or-nothing”
+method of controlling whether user-mode code can access I/O space. In
+our case, we want the file system environment to be able to access I/O
+space, but we do not want any other environments to be able to access
+I/O space at all.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 1.</strong>
+<code class="docutils literal notranslate"><span class="pre">i386_init</span></code> identifies the file system environment by
+passing the type <code class="docutils literal notranslate"><span class="pre">ENV_TYPE_FS</span></code> to your environment creation function,
+<code class="docutils literal notranslate"><span class="pre">env_create</span></code>. Modify <code class="docutils literal notranslate"><span class="pre">env_create</span></code> in <code class="docutils literal notranslate"><span class="pre">env.c</span></code>, so that it gives the
+file system environment I/O privilege, but never gives that privilege to
+any other environment.</p>
+<p>Make sure you can start the file environment without causing a General
+Protection fault. You should pass the “fs i/o” test in make grade.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p><strong>Question 1.</strong>
+Do you have to do anything else to ensure that this I/O privilege
+setting is saved and restored properly when you subsequently switch
+from one environment to another? Why?</p>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> file in this lab sets up QEMU to use the
+file <code class="docutils literal notranslate"><span class="pre">obj/kern/kernel.img</span></code> as the image for disk 0 (typically “Drive
+C” under DOS/Windows) as before, and to use the (new) file
+<code class="docutils literal notranslate"><span class="pre">obj/fs/fs.img</span></code> as the image for disk 1 (“Drive D”). In this lab our
+file system should only ever touch disk 1; disk 0 is used only to boot
+the kernel. If you manage to corrupt either disk image in some way, you
+can reset both of them to their original, “pristine” versions simply by
+typing:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ rm obj/kern/kernel.img obj/fs/fs.img
+$ make
+</pre></div>
+</div>
+<p>or by doing:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ make clean
+$ make
+</pre></div>
+</div>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+Implement interrupt-driven IDE disk access, with or without
+DMA. You can decide whether to move the device driver into the kernel,
+keep it in user space along with the file system, or even (if you really
+want to get into the micro-kernel spirit) move it into a separate
+environment of its own.</p>
+</div>
+</section>
+<section id="the-block-cache">
+<h2>The Block Cache<a class="headerlink" href="#the-block-cache" title="Permalink to this heading">¶</a></h2>
+<p>In our file system, we will implement a simple “buffer cache” (really
+just a block cache) with the help of the processor’s virtual memory
+system. The code for the block cache is in <code class="docutils literal notranslate"><span class="pre">fs/bc.c</span></code>.</p>
+<p>Our file system will be limited to handling disks of size 3GB or less.
+We reserve a large, fixed 3GB region of the file system environment’s
+address space, from 0x10000000 (<code class="docutils literal notranslate"><span class="pre">DISKMAP</span></code>) up to 0xD0000000
+(<code class="docutils literal notranslate"><span class="pre">DISKMAP+DISKMAX</span></code>), as a “memory mapped” version of the disk. For
+example, disk block 0 is mapped at virtual address 0x10000000, disk
+block 1 is mapped at virtual address 0x10001000, and so on. The
+<code class="docutils literal notranslate"><span class="pre">diskaddr</span></code> function in <code class="docutils literal notranslate"><span class="pre">fs/bc.c</span></code> implements this translation from
+disk block numbers to virtual addresses (along with some sanity
+checking).</p>
+<p>Since our file system environment has its own virtual address space
+independent of the virtual address spaces of all other environments in
+the system, and the only thing the file system environment needs to do
+is to implement file access, it is reasonable to reserve most of the
+file system environment’s address space in this way. It would be awkward
+for a real file system implementation on a 32-bit machine to do this
+since modern disks are larger than 3GB. Such a buffer cache management
+approach may still be reasonable on a machine with a 64-bit address
+space.</p>
+<p>Of course, it would be unreasonable to read the entire disk into memory,
+so instead we’ll implement a form of <em>demand paging</em>, wherein we only
+allocate pages in the disk map region and read the corresponding block
+from the disk in response to a page fault in this region. This way, we
+can pretend that the entire disk is in memory.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 2.</strong>
+Implement the <code class="docutils literal notranslate"><span class="pre">bc_pgfault</span></code> and <code class="docutils literal notranslate"><span class="pre">flush_block</span></code> functions
+in <code class="docutils literal notranslate"><span class="pre">fs/bc.c</span></code>. <code class="docutils literal notranslate"><span class="pre">bc_pgfault</span></code> is a page fault handler, just like the
+one your wrote in the previous lab for copy-on-write fork, except that
+its job is to load pages in from the disk in response to a page fault.
+When writing this, keep in mind that (1) <code class="docutils literal notranslate"><span class="pre">addr</span></code> may not be aligned to
+a block boundary and (2) <code class="docutils literal notranslate"><span class="pre">ide_read</span></code> operates in sectors, not blocks.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">flush_block</span></code> function should write a block out to disk <em>if
+necessary</em>. <code class="docutils literal notranslate"><span class="pre">flush_block</span></code> shouldn’t do anything if the block isn’t
+even in the block cache (that is, the page isn’t mapped) or if it’s not
+dirty. We will use the VM hardware to keep track of whether a disk block
+has been modified since it was last read from or written to disk. To see
+whether a block needs writing, we can just look to see if the <code class="docutils literal notranslate"><span class="pre">PTE_D</span></code>
+“dirty” bit is set in the <code class="docutils literal notranslate"><span class="pre">uvpt</span></code> entry. (The <code class="docutils literal notranslate"><span class="pre">PTE_D</span></code> bit is set by
+the processor in response to a write to that page; see 5.2.4.3 in
+<a class="reference external" href="http://pdos.csail.mit.edu/cs3210/2011/readings/i386/s05_02.htm">chapter
+5</a>
+of the 386 reference manual.) After writing the block to disk,
+<code class="docutils literal notranslate"><span class="pre">flush_block</span></code> should clear the <code class="docutils literal notranslate"><span class="pre">PTE_D</span></code> bit using <code class="docutils literal notranslate"><span class="pre">sys_page_map</span></code>.</p>
+<p>Use make grade to test your code. Your code should pass “check_bc”,
+“check_super”, and “check_bitmap”.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">fs_init</span></code> function in <code class="docutils literal notranslate"><span class="pre">fs/fs.c</span></code> is a prime example of how to use
+the block cache. After initializing the block cache, it simply stores
+pointers into the disk map region in the <code class="docutils literal notranslate"><span class="pre">super</span></code> global variable.
+After this point, we can simply read from the <code class="docutils literal notranslate"><span class="pre">super</span></code> structure as if
+they were in memory and our page fault handler will read them from disk
+as necessary.</p>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+The block cache has no eviction policy. Once a block gets
+faulted in to it, it never gets removed and will remain in memory
+forevermore. Add eviction to the buffer cache. Using the <code class="docutils literal notranslate"><span class="pre">PTE_A</span></code>
+“accessed” bits in the page tables, which the hardware sets on any
+access to a page, you can track approximate usage of disk blocks without
+the need to modify every place in the code that accesses the disk map
+region. Be careful with dirty blocks.</p>
+</div>
+</section>
+<section id="the-block-bitmap">
+<h2>The Block Bitmap<a class="headerlink" href="#the-block-bitmap" title="Permalink to this heading">¶</a></h2>
+<p>After <code class="docutils literal notranslate"><span class="pre">fs_init</span></code> sets the <code class="docutils literal notranslate"><span class="pre">bitmap</span></code> pointer, we can treat <code class="docutils literal notranslate"><span class="pre">bitmap</span></code>
+as a packed array of bits, one for each block on the disk. See, for
+example, <code class="docutils literal notranslate"><span class="pre">block_is_free</span></code>, which simply checks whether a given block is
+marked free in the bitmap.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 3.</strong>
+Use <code class="docutils literal notranslate"><span class="pre">free_block</span></code> as a model to implement <code class="docutils literal notranslate"><span class="pre">alloc_block</span></code>,
+which should find a free disk block in the bitmap, mark it used, and
+return the number of that block. When you allocate a block, you should
+immediately flush the changed bitmap block to disk with <code class="docutils literal notranslate"><span class="pre">flush_block</span></code>,
+to help file system consistency.</p>
+<p>Use make grade to test your code. Your code should now pass
+“alloc_block”.</p>
+</div>
+</section>
+<section id="file-operations">
+<h2>File Operations<a class="headerlink" href="#file-operations" title="Permalink to this heading">¶</a></h2>
+<p>We have provided a variety of functions in <code class="docutils literal notranslate"><span class="pre">fs/fs.c</span></code> to implement the
+basic facilities you will need to interpret and manage <code class="docutils literal notranslate"><span class="pre">File</span></code>
+structures, scan and manage the entries of directory-files, and walk the
+file system from the root to resolve an absolute pathname. Read through
+<em>all</em> of the code in <code class="docutils literal notranslate"><span class="pre">fs/fs.c</span></code> and make sure you understand what each
+function does before proceeding.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 4.</strong>
+Implement <code class="docutils literal notranslate"><span class="pre">file_block_walk</span></code> and <code class="docutils literal notranslate"><span class="pre">file_get_block</span></code>.
+<code class="docutils literal notranslate"><span class="pre">file_block_walk</span></code> maps from a block offset within a file to the
+pointer for that block in the <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">File</span></code> or the indirect block,
+very much like what <code class="docutils literal notranslate"><span class="pre">pgdir_walk</span></code> did for page tables.
+<code class="docutils literal notranslate"><span class="pre">file_get_block</span></code> goes one step further and maps to the actual disk
+block, allocating a new one if necessary.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">grade</span></code> to test your code. Your code should pass “file_open”,
+“file_get_block”, and “file_flush/file_truncated/file rewrite”, and
+“testfile”.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">file_block_walk</span></code> and <code class="docutils literal notranslate"><span class="pre">file_get_block</span></code> are the workhorses of the
+file system. For example, <code class="docutils literal notranslate"><span class="pre">file_read</span></code> and <code class="docutils literal notranslate"><span class="pre">file_write</span></code> are little
+more than the bookkeeping atop <code class="docutils literal notranslate"><span class="pre">file_get_block</span></code> necessary to copy
+bytes between scattered blocks and a sequential buffer.</p>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+The file system is likely to be corrupted if it gets
+interrupted in the middle of an operation (for example, by a crash or a
+reboot). Implement soft updates or journalling to make the file system
+crash-resilient and demonstrate some situation where the old file system
+would get corrupted, but yours doesn’t.</p>
+</div>
+</section>
+<section id="the-file-system-interface">
+<h2>The file system interface<a class="headerlink" href="#the-file-system-interface" title="Permalink to this heading">¶</a></h2>
+<p>Now that we have the necessary functionality within the file system
+environment itself, we must make it accessible to other environments
+that wish to use the file system. Since other environments can’t
+directly call functions in the file system environment, we’ll expose
+access to the file system environment via a <em>remote procedure call</em>, or
+RPC, abstraction, built atop JOS’s IPC mechanism. Graphically, here’s
+what a call to the file system server (say, read) looks like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="n">Regular</span> <span class="n">env</span>           <span class="n">FS</span> <span class="n">env</span>
+   <span class="o">+---------------+</span>   <span class="o">+---------------+</span>
+   <span class="o">|</span>      <span class="n">read</span>     <span class="o">|</span>   <span class="o">|</span>   <span class="n">file_read</span>   <span class="o">|</span>
+   <span class="o">|</span>   <span class="p">(</span><span class="n">lib</span><span class="o">/</span><span class="n">fd</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>  <span class="o">|</span>   <span class="o">|</span>   <span class="p">(</span><span class="n">fs</span><span class="o">/</span><span class="n">fs</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>   <span class="o">|</span>
+<span class="o">...|.......|.......|...|.......^.......|...............</span>
+   <span class="o">|</span>       <span class="n">v</span>       <span class="o">|</span>   <span class="o">|</span>       <span class="o">|</span>       <span class="o">|</span> <span class="n">RPC</span> <span class="n">mechanism</span>
+   <span class="o">|</span>  <span class="n">devfile_read</span> <span class="o">|</span>   <span class="o">|</span>  <span class="n">serve_read</span>   <span class="o">|</span>
+   <span class="o">|</span>  <span class="p">(</span><span class="n">lib</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">c</span><span class="p">)</span> <span class="o">|</span>   <span class="o">|</span>  <span class="p">(</span><span class="n">fs</span><span class="o">/</span><span class="n">serv</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>  <span class="o">|</span>
+   <span class="o">|</span>       <span class="o">|</span>       <span class="o">|</span>   <span class="o">|</span>       <span class="o">^</span>       <span class="o">|</span>
+   <span class="o">|</span>       <span class="n">v</span>       <span class="o">|</span>   <span class="o">|</span>       <span class="o">|</span>       <span class="o">|</span>
+   <span class="o">|</span>     <span class="n">fsipc</span>     <span class="o">|</span>   <span class="o">|</span>     <span class="n">serve</span>     <span class="o">|</span>
+   <span class="o">|</span>  <span class="p">(</span><span class="n">lib</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">c</span><span class="p">)</span> <span class="o">|</span>   <span class="o">|</span>  <span class="p">(</span><span class="n">fs</span><span class="o">/</span><span class="n">serv</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>  <span class="o">|</span>
+   <span class="o">|</span>       <span class="o">|</span>       <span class="o">|</span>   <span class="o">|</span>       <span class="o">^</span>       <span class="o">|</span>
+   <span class="o">|</span>       <span class="n">v</span>       <span class="o">|</span>   <span class="o">|</span>       <span class="o">|</span>       <span class="o">|</span>
+   <span class="o">|</span>   <span class="n">ipc_send</span>    <span class="o">|</span>   <span class="o">|</span>   <span class="n">ipc_recv</span>    <span class="o">|</span>
+   <span class="o">|</span>       <span class="o">|</span>       <span class="o">|</span>   <span class="o">|</span>       <span class="o">^</span>       <span class="o">|</span>
+   <span class="o">+-------|-------+</span>   <span class="o">+-------|-------+</span>
+           <span class="o">|</span>                   <span class="o">|</span>
+           <span class="o">+-------------------+</span>
+</pre></div>
+</div>
+<p>Everything below the dotted line is simply the mechanics of getting a
+read request from the regular environment to the file system
+environment. Starting at the beginning, <code class="docutils literal notranslate"><span class="pre">read</span></code> (which we provide)
+works on any file descriptor and simply dispatches to the appropriate
+device read function, in this case <code class="docutils literal notranslate"><span class="pre">devfile_read</span></code> (we can have more
+device types, like pipes). <code class="docutils literal notranslate"><span class="pre">devfile_read</span></code> implements <code class="docutils literal notranslate"><span class="pre">read</span></code>
+specifically for on-disk files. This and the other <code class="docutils literal notranslate"><span class="pre">devfile_*</span></code>
+functions in <code class="docutils literal notranslate"><span class="pre">lib/file.c</span></code> implement the client side of the FS
+operations and all work in roughly the same way, bundling up arguments
+in a request structure, calling <code class="docutils literal notranslate"><span class="pre">fsipc</span></code> to send the IPC request, and
+unpacking and returning the results. The <code class="docutils literal notranslate"><span class="pre">fsipc</span></code> function simply
+handles the common details of sending a request to the server and
+receiving the reply.</p>
+<p>The file system server code can be found in <code class="docutils literal notranslate"><span class="pre">fs/serv.c</span></code>. It loops in
+the <code class="docutils literal notranslate"><span class="pre">serve</span></code> function, endlessly receiving a request over IPC,
+dispatching that request to the appropriate handler function, and
+sending the result back via IPC. In the read example, <code class="docutils literal notranslate"><span class="pre">serve</span></code> will
+dispatch to <code class="docutils literal notranslate"><span class="pre">serve_read</span></code>, which will take care of the IPC details
+specific to read requests such as unpacking the request structure and
+finally call <code class="docutils literal notranslate"><span class="pre">file_read</span></code> to actually perform the file read.</p>
+<p>Recall that JOS’s IPC mechanism lets an environment send a single 32-bit
+number and, optionally, share a page. To send a request from the client
+to the server, we use the 32-bit number for the request type (the file
+system server RPCs are numbered, just like how syscalls were numbered)
+and store the arguments to the request in a <code class="docutils literal notranslate"><span class="pre">union</span> <span class="pre">Fsipc</span></code> on the page
+shared via the IPC. On the client side, we always share the page at
+<code class="docutils literal notranslate"><span class="pre">fsipcbuf</span></code>; on the server side, we map the incoming request page at
+<code class="docutils literal notranslate"><span class="pre">fsreq</span></code> (<code class="docutils literal notranslate"><span class="pre">0x0ffff000</span></code>).</p>
+<p>The server also sends the response back via IPC. We use the 32-bit
+number for the function’s return code. For most RPCs, this is all they
+return. <code class="docutils literal notranslate"><span class="pre">FSREQ_READ</span></code> and <code class="docutils literal notranslate"><span class="pre">FSREQ_STAT</span></code> also return data, which they
+simply write to the page that the client sent its request on. There’s no
+need to send this page in the response IPC, since the client shared it
+with the file system server in the first place. Also, in its response,
+<code class="docutils literal notranslate"><span class="pre">FSREQ_OPEN</span></code> shares with the client a new “Fd page”. We’ll return to
+the file descriptor page shortly.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 5.</strong>
+Implement <code class="docutils literal notranslate"><span class="pre">serve_read</span></code> in <code class="docutils literal notranslate"><span class="pre">fs/serv.c</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">serve_read</span></code>’s heavy lifting will be done by the already-implemented
+<code class="docutils literal notranslate"><span class="pre">file_read</span></code> in <code class="docutils literal notranslate"><span class="pre">fs/fs.c</span></code> (which, in turn, is just a bunch of calls
+to <code class="docutils literal notranslate"><span class="pre">file_get_block</span></code>). <code class="docutils literal notranslate"><span class="pre">serve_read</span></code> just has to provide the RPC
+interface for file reading. Look at the comments and code in
+<code class="docutils literal notranslate"><span class="pre">serve_set_size</span></code> to get a general idea of how the server functions
+should be structured.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">grade</span></code> to test your code. Your code should pass
+“serve_open/file_stat/file_close” and “file_read” for a score of
+65/145.</p>
+</div>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 6.</strong>
+Implement <code class="docutils literal notranslate"><span class="pre">serve_write</span></code> in <code class="docutils literal notranslate"><span class="pre">fs/serv.c</span></code> and
+<code class="docutils literal notranslate"><span class="pre">devfile_write</span></code> in <code class="docutils literal notranslate"><span class="pre">lib/file.c</span></code>.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">grade</span></code> to test your code. Your code should pass “file_write”,
+“file_read after file_write”, “open”, and “large file” for a score of
+85/145.</p>
+</div>
+</section>
+<section id="spawning-processes">
+<h2>Spawning Processes<a class="headerlink" href="#spawning-processes" title="Permalink to this heading">¶</a></h2>
+<p>We have given you the code for <code class="docutils literal notranslate"><span class="pre">spawn</span></code> (see <code class="docutils literal notranslate"><span class="pre">lib/spawn.c</span></code>) which
+creates a new environment, loads a program image from the file system
+into it, and then starts the child environment running this program. The
+parent process then continues running independently of the child. The
+<code class="docutils literal notranslate"><span class="pre">spawn</span></code> function effectively acts like a <code class="docutils literal notranslate"><span class="pre">fork</span></code> in UNIX followed by
+an immediate <code class="docutils literal notranslate"><span class="pre">exec</span></code> in the child process.</p>
+<p>We implemented <code class="docutils literal notranslate"><span class="pre">spawn</span></code> rather than a UNIX-style <code class="docutils literal notranslate"><span class="pre">exec</span></code> because
+<code class="docutils literal notranslate"><span class="pre">spawn</span></code> is easier to implement from user space in “exokernel fashion”,
+without special help from the kernel. Think about what you would have to
+do in order to implement <code class="docutils literal notranslate"><span class="pre">exec</span></code> in user space, and be sure you
+understand why it is harder.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 7.</strong>
+<code class="docutils literal notranslate"><span class="pre">spawn</span></code> relies on the new syscall
+<code class="docutils literal notranslate"><span class="pre">sys_env_set_trapframe</span></code> to initialize the state of the newly created
+environment. Implement <code class="docutils literal notranslate"><span class="pre">sys_env_set_trapframe</span></code> in <code class="docutils literal notranslate"><span class="pre">kernel/syscall.c</span></code>
+(don’t forget to dispatch the new system call in <code class="docutils literal notranslate"><span class="pre">syscall()</span></code>).</p>
+<p>Test your code by running the <code class="docutils literal notranslate"><span class="pre">user/spawnhello</span></code> program from
+<code class="docutils literal notranslate"><span class="pre">kern/init.c</span></code>, which will attempt to spawn <code class="docutils literal notranslate"><span class="pre">/hello</span></code> from the file
+system.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">grade</span></code> to test your code.</p>
+</div>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+Implement Unix-style <code class="docutils literal notranslate"><span class="pre">exec</span></code>.</p>
+</div>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+Implement <code class="docutils literal notranslate"><span class="pre">mmap</span></code>-style memory-mapped files and modify
+<code class="docutils literal notranslate"><span class="pre">spawn</span></code> to map pages directly from the ELF image when possible.</p>
+</div>
+</section>
+<section id="sharing-library-state-across-fork-and-spawn">
+<h2>Sharing library state across fork and spawn<a class="headerlink" href="#sharing-library-state-across-fork-and-spawn" title="Permalink to this heading">¶</a></h2>
+<p>The UNIX file descriptors are a general notion that also encompasses
+pipes, console I/O, etc. In JOS, each of these device types has a
+corresponding <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Dev</span></code>, with pointers to the functions that
+implement read/write/etc. for that device type. <code class="docutils literal notranslate"><span class="pre">lib/fd.c</span></code> implements
+the general UNIX-like file descriptor interface on top of this. Each
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Fd</span></code> indicates its device type, and most of the functions in
+<code class="docutils literal notranslate"><span class="pre">lib/fd.c</span></code> simply dispatch operations to functions in the appropriate
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Dev</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lib/fd.c</span></code> also maintains the <em>file descriptor table</em> region in each
+application environment’s address space, starting at <code class="docutils literal notranslate"><span class="pre">FSTABLE</span></code>. This
+area reserves a page’s worth (4KB) of address space for each of the up
+to <code class="docutils literal notranslate"><span class="pre">MAXFD</span></code> (currently 32) file descriptors the application can have
+open at once. At any given time, a particular file descriptor table page
+is mapped if and only if the corresponding file descriptor is in use.
+Each file descriptor also has an optional “data page” in the region
+starting at <code class="docutils literal notranslate"><span class="pre">FILEDATA</span></code>, which devices can use if they choose.</p>
+<p>We would like to share file descriptor state across <code class="docutils literal notranslate"><span class="pre">fork</span></code> and
+<code class="docutils literal notranslate"><span class="pre">spawn</span></code>, but file descriptor state is kept in user-space memory. Right
+now, on <code class="docutils literal notranslate"><span class="pre">fork</span></code>, the memory will be marked copy-on-write, so the state
+will be duplicated rather than shared. (This means environments won’t be
+able to seek in files they didn’t open themselves and that pipes won’t
+work across a fork.) On <code class="docutils literal notranslate"><span class="pre">spawn</span></code>, the memory will be left behind, not
+copied at all. (Effectively, the spawned environment starts with no open
+file descriptors.)</p>
+<p>We will change <code class="docutils literal notranslate"><span class="pre">fork</span></code> to know that certain regions of memory are used
+by the “library operating system” and should always be shared. Rather
+than hard-code a list of regions somewhere, we will set an
+otherwise-unused bit in the page table entries (just like we did with
+the <code class="docutils literal notranslate"><span class="pre">PTE_COW</span></code> bit in <code class="docutils literal notranslate"><span class="pre">fork</span></code>).</p>
+<p>We have defined a new <code class="docutils literal notranslate"><span class="pre">PTE_SHARE</span></code> bit in <code class="docutils literal notranslate"><span class="pre">inc/lib.h</span></code>. This bit is
+one of the three PTE bits that are marked “available for software use”
+in the Intel and AMD manuals. We will establish the convention that if a
+page table entry has this bit set, the PTE should be copied directly
+from parent to child in both <code class="docutils literal notranslate"><span class="pre">fork</span></code> and <code class="docutils literal notranslate"><span class="pre">spawn</span></code>. Note that this is
+different from marking it copy-on-write: as described in the first
+paragraph, we want to make sure to <em>share</em> updates to the page.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 8.</strong>
+Change <code class="docutils literal notranslate"><span class="pre">duppage</span></code> in <code class="docutils literal notranslate"><span class="pre">lib/fork.c</span></code> to follow the new
+convention. If the page table entry has the <code class="docutils literal notranslate"><span class="pre">PTE_SHARE</span></code> bit set, just
+copy the mapping directly. (You should use <code class="docutils literal notranslate"><span class="pre">PTE_SYSCALL</span></code>, not
+<code class="docutils literal notranslate"><span class="pre">0xfff</span></code>, to mask out the relevant bits from the page table entry.
+<code class="docutils literal notranslate"><span class="pre">0xfff</span></code> picks up the accessed and dirty bits as well.)</p>
+<p>Likewise, implement <code class="docutils literal notranslate"><span class="pre">copy_shared_pages</span></code> in <code class="docutils literal notranslate"><span class="pre">lib/spawn.c</span></code>. It should
+loop through all page table entries in the current process (just like
+<code class="docutils literal notranslate"><span class="pre">fork</span></code> did), copying any page mappings that have the <code class="docutils literal notranslate"><span class="pre">PTE_SHARE</span></code> bit
+set into the child process.</p>
+</div>
+<p>Use make run-testpteshare to check that your code is behaving properly.
+You should see lines that say “fork handles PTE_SHARE right” and
+“spawn handles PTE_SHARE right”.</p>
+<p>Use make run-testfdsharing to check that file descriptors are shared
+properly. You should see lines that say “read in child succeeded”
+and “read in parent succeeded”.</p>
+</section>
+<section id="the-keyboard-interface">
+<h2>The keyboard interface<a class="headerlink" href="#the-keyboard-interface" title="Permalink to this heading">¶</a></h2>
+<p>For the shell to work, we need a way to type at it. QEMU has been
+displaying output we write to the CGA display and the serial port, but
+so far we’ve only taken input while in the kernel monitor. In QEMU,
+input typed in the graphical window appear as input from the keyboard to
+JOS, while input typed to the console appear as characters on the serial
+port. <code class="docutils literal notranslate"><span class="pre">kern/console.c</span></code> already contains the keyboard and serial
+drivers that have been used by the kernel monitor since lab 1, but now
+you need to attach these to the rest of the system.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 9.</strong>
+In your <code class="docutils literal notranslate"><span class="pre">kern/trap.c</span></code>, call <code class="docutils literal notranslate"><span class="pre">kbd_intr</span></code> to handle trap
+<code class="docutils literal notranslate"><span class="pre">IRQ_OFFSET+IRQ_KBD</span></code> and <code class="docutils literal notranslate"><span class="pre">serial_intr</span></code> to handle trap
+<code class="docutils literal notranslate"><span class="pre">IRQ_OFFSET+IRQ_SERIAL</span></code>.</p>
+</div>
+<p>We implemented the console input/output file type for you, in
+<code class="docutils literal notranslate"><span class="pre">lib/console.c</span></code>. <code class="docutils literal notranslate"><span class="pre">kbd_intr</span></code> and <code class="docutils literal notranslate"><span class="pre">serial_intr</span></code> fill a buffer with
+the recently read input while the console file type drains the buffer
+(the console file type is used for stdin/stdout by default unless the
+user redirects them).</p>
+<p>Test your code by running make run-testkbd and type a few lines. The
+system should echo your lines back to you as you finish them. Try typing
+in both the console and the graphical window, if you have both
+available.</p>
+</section>
+<section id="the-shell">
+<h2>The Shell<a class="headerlink" href="#the-shell" title="Permalink to this heading">¶</a></h2>
+<p>Run make run-icode or make run-icode-nox. This will run your kernel and
+start <code class="docutils literal notranslate"><span class="pre">user/icode</span></code>. <code class="docutils literal notranslate"><span class="pre">icode</span></code> execs <code class="docutils literal notranslate"><span class="pre">init</span></code>, which will set up the
+console as file descriptors 0 and 1 (standard input and standard
+output). It will then spawn <code class="docutils literal notranslate"><span class="pre">sh</span></code>, the shell. You should be able to run
+the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">echo</span> hello world <span class="p">|</span> cat
+$ cat lorem <span class="p">|</span>cat
+$ cat lorem <span class="p">|</span>num
+$ cat lorem <span class="p">|</span>num <span class="p">|</span>num <span class="p">|</span>num <span class="p">|</span>num <span class="p">|</span>num
+$ lsfd
+</pre></div>
+</div>
+<p>Note that the user library routine <code class="docutils literal notranslate"><span class="pre">cprintf</span></code> prints straight to the
+console, without using the file descriptor code. This is great for
+debugging but not great for piping into other programs. To print output
+to a particular file descriptor (for example, 1, standard output), use
+<code class="docutils literal notranslate"><span class="pre">fprintf(1,</span> <span class="pre">&quot;...&quot;,</span> <span class="pre">...)</span></code>. <code class="docutils literal notranslate"><span class="pre">printf(&quot;...&quot;,</span> <span class="pre">...)</span></code> is a short-cut for
+printing to FD 1. See <code class="docutils literal notranslate"><span class="pre">user/lsfd.c</span></code> for examples.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 10.</strong>
+The shell doesn’t support I/O redirection. It would be nice to run
+<code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">&lt;script</span></code>
+instead of having to type in all the commands in the script by
+hand, as you did above. Add I/O redirection for &lt; to <code class="docutils literal notranslate"><span class="pre">user/sh.c</span></code>.</p>
+<p>Test your implementation by typing <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">&lt;script</span></code> into your shell</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">run-testshell</span></code> to test your shell. <code class="docutils literal notranslate"><span class="pre">testshell</span></code> simply feeds
+the above commands (also found in <code class="docutils literal notranslate"><span class="pre">fs/testshell.sh</span></code>) into the shell
+and then checks that the output matches <code class="docutils literal notranslate"><span class="pre">fs/testshell.key</span></code>.</p>
+</div>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+Add more features to the shell. Possibilities include (a few
+require changes to the file system too):</p>
+<ul class="simple">
+<li><p>backgrounding commands (<code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">&amp;</span></code>)</p></li>
+<li><p>multiple commands per line (<code class="docutils literal notranslate"><span class="pre">ls;</span> <span class="pre">echo</span> <span class="pre">hi</span></code>)</p></li>
+<li><p>command grouping (<code class="docutils literal notranslate"><span class="pre">(ls;</span> <span class="pre">echo</span> <span class="pre">hi)</span> <span class="pre">|</span> <span class="pre">cat</span> <span class="pre">&gt;</span> <span class="pre">out</span></code>)</p></li>
+<li><p>environment variable expansion (<code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$hello</span></code>)</p></li>
+<li><p>quoting (<code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;a</span> <span class="pre">|</span> <span class="pre">b&quot;</span></code>)</p></li>
+<li><p>command-line history and/or editing</p></li>
+<li><p>tab completion</p></li>
+<li><p>directories, cd, and a PATH for command-lookup.</p></li>
+<li><p>file creation</p></li>
+<li><p>ctl-c to kill the running environment</p></li>
+</ul>
+<p>but feel free to do something not on this list.</p>
+</div>
+<p>Your code should pass all tests at this point. As usual, you can grade
+your submission with make grade and hand it in with make handin.</p>
+<p><strong>This completes the lab.</strong> As usual, don’t forget to run make grade and
+to write up your answers and a description of your challenge exercise
+solution. Before handing in, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> to examine your
+changes and don’t forget to <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">answers-lab5.txt</span></code>. When you’re ready,
+commit your changes with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">'my</span> <span class="pre">solutions</span> <span class="pre">to</span> <span class="pre">lab</span> <span class="pre">5'</span></code>, then
+tag and push to GitHub.</p>
+<script src="../_static/disqus/disqus.js"></script>
+<link rel="stylesheet" type="text/css" href="../_static/disqus/disqus.css" />
+
+<script>
+  disqus_shortname = 'gatechcs3210staff';
+  $(document).ready(function() {
+    $("p").inlineDisqussions();
+  });
+</script></section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lab6.html" class="btn btn-neutral float-right" title="Lab 6: Network Driver">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lab4.html" class="btn btn-neutral" title="Lab 4: Preemptive Multitasking"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Last updated on Jul 02, 2022.
+    </p>
+  </div>
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+<script src="../_static/email.js"></script>
+<script src="../_static/custom.js"></script>
+
+</body>
+</html>

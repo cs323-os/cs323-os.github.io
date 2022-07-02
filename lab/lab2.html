@@ -1,0 +1,775 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lab 2: Memory Management &mdash; CS 323, Fall 2022 1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CS 323, Fall 2022 1 documentation" href="../index.html"/>
+        <link rel="up" title="Lab" href="../lab.html"/>
+        <link rel="next" title="Lab 3: User Environments" href="lab3.html"/>
+        <link rel="prev" title="Lab 1: Booting a PC" href="lab1.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> CS 323, Fall 2022</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../info.html">General Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#meetings">Meetings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#grades">Grades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#labs">Labs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#prep-questions">Prep Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#equipment-problems">Equipment Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#other-policies">Other Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#text">Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#staff-ta">Staff/TA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cal.html">Schedule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../q.html">Preparation Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">Reference Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#c-programming">C Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#unix">UNIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#x86-emulation">x86 Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#x86-assembly-language">x86 Assembly Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#pc-hardware-programming">PC Hardware Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#reference-quizzes">Reference Quizzes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lab.html">Lab</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1.html">Lab 1: Booting a PC</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lab 2: Memory Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3.html">Lab 3: User Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4.html">Lab 4: Preemptive Multitasking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5.html">Lab 5: File system, Spawn and Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6.html">Lab 6: Network Driver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proj.html">Final Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#deliverables">Deliverables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#project-ideas-if-you-found-none">Project ideas (if you found none)</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CS 323, Fall 2022</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../lab.html">Lab</a> &raquo;</li>
+      
+    <li>Lab 2: Memory Management</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/lab/lab2.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="lab-2-memory-management">
+<h1>Lab 2: Memory Management<a class="headerlink" href="#lab-2-memory-management" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Handed out:</strong> Thursday, Aug 31, 2017</p></li>
+<li><p><strong>Due:</strong>  Friday, Sep 22, 2017</p></li>
+</ul>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>In this lab, you will write the memory management code for your
+operating system. Memory management has two components.</p>
+<p>The first component is a physical memory allocator for the kernel, so
+that the kernel can allocate memory and later free it. Your allocator
+will operate in units of 4096 bytes, called <em>pages</em>. Your task will be
+to maintain data structures that record which physical pages are free
+and which are allocated, and how many processes are sharing each
+allocated page. You will also write the routines to allocate and free
+pages of memory.</p>
+<p>The second component of memory management is <em>virtual memory</em>, which
+maps the virtual addresses used by kernel and user software to addresses
+in physical memory. The x86 hardware’s memory management unit (MMU)
+performs the mapping when instructions use memory, consulting a set of
+page tables. You will modify JOS to set up the MMU’s page tables
+according to a specification we provide.</p>
+<section id="getting-started">
+<h3>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h3>
+<p>In this and future labs you will progressively build up your kernel. We
+will also provide you with some additional source. To fetch that source,
+use Git to commit changes you’ve made since handing in lab 1 (if any),
+fetch the latest version of the course repository, and then create a
+local branch called <code class="docutils literal notranslate"><span class="pre">lab2</span></code> based on our lab2 branch, <code class="docutils literal notranslate"><span class="pre">origin/lab2</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/cs3210/lab
+$ add git
+$ git pull
+Already up-to-date.
+$ git checkout -b lab2 origin/lab2
+Branch lab2 <span class="nb">set</span> up to track remote branch refs/remotes/origin/lab2.
+Switched to a new branch <span class="s2">&quot;lab2&quot;</span>
+$
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span></code> command shown above actually does two things: it
+first creates a local branch <code class="docutils literal notranslate"><span class="pre">lab2</span></code> that is based on the
+<code class="docutils literal notranslate"><span class="pre">origin/lab2</span></code> branch provided by the course staff, and second, it
+changes the contents of your <code class="docutils literal notranslate"><span class="pre">lab</span></code> directory to reflect the files
+stored on the <code class="docutils literal notranslate"><span class="pre">lab2</span></code> branch. Git allows switching between existing
+branches using git checkout <em>branch-name</em>, though you should commit any
+outstanding changes on one branch before switching to a different one.</p>
+<p>You will now need to merge the changes you made in your <code class="docutils literal notranslate"><span class="pre">lab1</span></code> branch
+into the <code class="docutils literal notranslate"><span class="pre">lab2</span></code> branch, as follows:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ git merge lab1
+Merge made by recursive.
+ kern/kdebug.c  <span class="p">|</span>   <span class="m">11</span> +++++++++--
+ kern/monitor.c <span class="p">|</span>   <span class="m">19</span> +++++++++++++++++++
+ lib/printfmt.c <span class="p">|</span>    <span class="m">7</span> +++----
+ <span class="m">3</span> files changed, <span class="m">31</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">6</span> deletions<span class="o">(</span>-<span class="o">)</span>
+$
+</pre></div>
+</div>
+<p>In some cases, Git may not be able to figure out how to merge your
+changes with the new lab assignment (e.g. if you modified some of the
+code that is changed in the second lab assignment). In that case, the
+git merge command will tell you which files are <em>conflicted</em>, and you
+should first resolve the conflict (by editing the relevant files) and
+then commit the resulting files with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code>.</p>
+<p>Lab 2 contains the following new source files, which you should browse
+through:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inc/memlayout.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kern/pmap.c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kern/pmap.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kern/kclock.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kern/kclock.c</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">memlayout.h</span></code> describes the layout of the virtual address space that
+you must implement by modifying <code class="docutils literal notranslate"><span class="pre">pmap.c</span></code>. <code class="docutils literal notranslate"><span class="pre">memlayout.h</span></code> and
+<code class="docutils literal notranslate"><span class="pre">pmap.h</span></code> define the <code class="docutils literal notranslate"><span class="pre">PageInfo</span></code> structure that you’ll use to keep
+track of which pages of physical memory are free. <code class="docutils literal notranslate"><span class="pre">kclock.c</span></code> and
+<code class="docutils literal notranslate"><span class="pre">kclock.h</span></code> manipulate the PC’s battery-backed clock and CMOS RAM
+hardware, in which the BIOS records the amount of physical memory the PC
+contains, among other things. The code in <code class="docutils literal notranslate"><span class="pre">pmap.c</span></code> needs to read this
+device hardware in order to figure out how much physical memory there
+is, but that part of the code is done for you: you do not need to know
+the details of how the CMOS hardware works.</p>
+<p>Pay particular attention to <code class="docutils literal notranslate"><span class="pre">memlayout.h</span></code> and <code class="docutils literal notranslate"><span class="pre">pmap.h</span></code>, since this
+lab requires you to use and understand many of the definitions they
+contain. You may want to review <code class="docutils literal notranslate"><span class="pre">inc/mmu.h</span></code>, too, as it also contains
+a number of definitions that will be useful for this lab.</p>
+</section>
+<section id="lab-requirements">
+<h3>Lab Requirements<a class="headerlink" href="#lab-requirements" title="Permalink to this heading">¶</a></h3>
+<p>In this lab and subsequent labs, do all of the regular exercises
+described in the lab and <em>at least one</em> challenge problem. (Some
+challenge problems are more challenging than others, of course!)
+Additionally, write up brief answers to the questions posed in the lab
+and a short (e.g., one or two paragraph) description of what you did to
+solve your chosen challenge problem. If you implement more than one
+challenge problem, you only need to describe one of them in the
+write-up, though of course you are welcome to do more. Place the
+write-up in a file called <code class="docutils literal notranslate"><span class="pre">answers-lab2.txt</span></code> in the top level of your
+<code class="docutils literal notranslate"><span class="pre">lab</span></code> directory before handing in your work.</p>
+</section>
+<section id="hand-in-procedure">
+<h3>Hand-In Procedure<a class="headerlink" href="#hand-in-procedure" title="Permalink to this heading">¶</a></h3>
+<p>When you are ready to hand in your lab code and write-up, add your
+<code class="docutils literal notranslate"><span class="pre">answers-lab2.txt</span></code> to the Git repository, commit your changes, tag with “Final Lab 2”,
+and push to GitHub..</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ git add answers-lab2.txt
+$ git commit -am <span class="s2">&quot;my answer to lab2&quot;</span>
+<span class="o">[</span>lab2 a823de9<span class="o">]</span> my answer to lab2
+ <span class="m">4</span> files changed, <span class="m">87</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">10</span> deletions<span class="o">(</span>-<span class="o">)</span>
+$ git tag <span class="s2">&quot;Final Lab 2&quot;</span>
+$ git push origin --tags
+</pre></div>
+</div>
+<p>As before, we will be grading your solutions with a grading program. You
+can run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">grade</span></code> in the <code class="docutils literal notranslate"><span class="pre">lab</span></code> directory to test your kernel with the
+grading program. You may change any of the kernel source and header
+files you need to in order to complete the lab, but needless to say you
+must not change or otherwise subvert the grading code.</p>
+</section>
+</section>
+<section id="part-1-physical-page-management">
+<h2>Part 1: Physical Page Management<a class="headerlink" href="#part-1-physical-page-management" title="Permalink to this heading">¶</a></h2>
+<p>The operating system must keep track of which parts of physical RAM are
+free and which are currently in use. JOS manages the PC’s physical
+memory with <em>page granularity</em> so that it can use the MMU to map and
+protect each piece of allocated memory.</p>
+<p>You’ll now write the physical page allocator. It keeps track of which
+pages are free with a linked list of <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">PageInfo</span></code> objects (which,
+unlike xv6, are <em>not</em> embedded in the free pages themselves), each
+corresponding to a physical page. You need to write the physical page
+allocator before you can write the rest of the virtual memory
+implementation, because your page table management code will need to
+allocate physical memory in which to store page tables.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 1.</strong>
+In the file <code class="docutils literal notranslate"><span class="pre">kern/pmap.c</span></code>, you must implement code for the
+following functions (probably in the order given).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boot_alloc</span><span class="p">()</span>
+<span class="n">mem_init</span><span class="p">()</span> <span class="p">(</span><span class="n">only</span> <span class="n">up</span> <span class="n">to</span> <span class="n">the</span> <span class="n">call</span> <span class="n">to</span> <span class="n">check_page_free_list</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">page_init</span><span class="p">()</span>
+<span class="n">page_alloc</span><span class="p">()</span>
+<span class="n">page_free</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">check_page_free_list()</span></code> and <code class="docutils literal notranslate"><span class="pre">check_page_alloc()</span></code> test your physical
+page allocator. You should boot JOS and see whether
+<code class="docutils literal notranslate"><span class="pre">check_page_alloc()</span></code> reports success. Fix your code so that it passes.
+You may find it helpful to add your own <code class="docutils literal notranslate"><span class="pre">assert()</span></code> to verify that
+your assumptions are correct.</p>
+</div>
+<p>This lab, and all the cs3210 labs, will require you to do a bit of
+detective work to figure out exactly what you need to do. This
+assignment does not describe all the details of the code you’ll have to
+add to JOS. Look for comments in the parts of the JOS source that you
+have to modify; those comments often contain specifications and hints.
+You will also need to look at related parts of JOS, at the Intel
+manuals.</p>
+</section>
+<section id="part-2-virtual-memory">
+<h2>Part 2: Virtual Memory<a class="headerlink" href="#part-2-virtual-memory" title="Permalink to this heading">¶</a></h2>
+<p>Before doing anything else, familiarize yourself with the x86’s
+protected-mode memory management architecture: namely <em>segmentation</em> and
+<em>page translation</em>.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 2.</strong>
+Look at chapters 5 and 6 of the
+<a class="reference external" href="http://www.logix.cz/michal/doc/i386/">Intel 80386 Reference Manual</a>,
+if you haven’t done so already.
+Read the sections about page translation and page-based protection
+closely (5.2 and 6.4). We recommend that you also skim the sections
+about segmentation; while JOS uses paging for virtual memory and
+protection, segment translation and segment-based protection cannot be
+disabled on the x86, so you will need a basic understanding of it.</p>
+</div>
+<section id="virtual-linear-and-physical-addresses">
+<h3>Virtual, Linear, and Physical Addresses<a class="headerlink" href="#virtual-linear-and-physical-addresses" title="Permalink to this heading">¶</a></h3>
+<p>In x86 terminology, a <em>virtual address</em> consists of a segment selector
+and an offset within the segment. A <em>linear address</em> is what you get
+after segment translation but before page translation. A <em>physical
+address</em> is what you finally get after both segment and page translation
+and what ultimately goes out on the hardware bus to your RAM.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="n">Selector</span>  <span class="o">+--------------+</span>         <span class="o">+-----------+</span>
+          <span class="o">----------&gt;|</span>              <span class="o">|</span>         <span class="o">|</span>           <span class="o">|</span>
+                     <span class="o">|</span> <span class="n">Segmentation</span> <span class="o">|</span>         <span class="o">|</span>  <span class="n">Paging</span>   <span class="o">|</span>
+<span class="n">Software</span>             <span class="o">|</span>              <span class="o">|--------&gt;|</span>           <span class="o">|----------&gt;</span>  <span class="n">RAM</span>
+            <span class="n">Offset</span>   <span class="o">|</span>  <span class="n">Mechanism</span>   <span class="o">|</span>         <span class="o">|</span> <span class="n">Mechanism</span> <span class="o">|</span>
+          <span class="o">----------&gt;|</span>              <span class="o">|</span>         <span class="o">|</span>           <span class="o">|</span>
+                     <span class="o">+--------------+</span>         <span class="o">+-----------+</span>
+            <span class="n">Virtual</span>                   <span class="n">Linear</span>                <span class="n">Physical</span>
+</pre></div>
+</div>
+<p>A C pointer is the “offset” component of the virtual address. In
+<code class="docutils literal notranslate"><span class="pre">boot/boot.S</span></code>, we installed a Global Descriptor Table (GDT) that
+effectively disabled segment translation by setting all segment base
+addresses to 0 and limits to <code class="docutils literal notranslate"><span class="pre">0xffffffff</span></code>. Hence the “selector” has no
+effect and the linear address always equals the offset of the virtual
+address. In lab 3, we’ll have to interact a little more with
+segmentation to set up privilege levels, but as for memory translation,
+we can ignore segmentation throughout the JOS labs and focus solely on
+page translation.</p>
+<p>Recall that in part 3 of lab 1, we installed a simple page table so that
+the kernel could run at its link address of 0xf0100000, even though it
+is actually loaded in physical memory just above the ROM BIOS at
+0x00100000. This page table mapped only 4MB of memory. In the virtual
+memory layout you are going to set up for JOS in this lab, we’ll expand
+this to map the first 256MB of physical memory starting at virtual
+address 0xf0000000 and to map a number of other regions of virtual
+memory.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 3.</strong>
+While GDB can only access QEMU’s memory by virtual address,
+it’s often useful to be able to inspect physical memory while setting up
+virtual memory. Review the QEMU
+<a class="reference external" href="../../labguide.html#qemu">monitor commands</a>
+from the lab tools guide,
+especially the <code class="docutils literal notranslate"><span class="pre">xp</span></code> command, which lets you inspect physical memory.
+To access the QEMU monitor, press <code class="docutils literal notranslate"><span class="pre">Ctrl-a</span> <span class="pre">c</span></code> in the terminal (the same
+binding returns to the serial console).</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">xp</span></code> command in the QEMU monitor and the <code class="docutils literal notranslate"><span class="pre">x</span></code> command in GDB to
+inspect memory at corresponding physical and virtual addresses and make
+sure you see the same data.</p>
+</div>
+<p>From code executing on the CPU, once we’re in protected mode (which we
+entered first thing in <code class="docutils literal notranslate"><span class="pre">boot/boot.S</span></code>, there’s no way to directly use
+a linear or physical address. <em>All</em> memory references are interpreted as
+virtual addresses and translated by the MMU, which means all pointers in
+C are virtual addresses.</p>
+<p>The JOS kernel often needs to manipulate addresses as opaque values or
+as integers, without dereferencing them, for example in the physical
+memory allocator. Sometimes these are virtual addresses, and sometimes
+they are physical addresses. To help document the code, the JOS source
+distinguishes the two cases: the type <code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code> represents opaque
+virtual addresses, and <code class="docutils literal notranslate"><span class="pre">physaddr_t</span></code> represents physical addresses.
+Both these types are really just synonyms for 32-bit integers
+(<code class="docutils literal notranslate"><span class="pre">uint32_t</span></code>), so the compiler won’t stop you from assigning one type
+to another! Since they are integer types (not pointers), the compiler
+<em>will</em> complain if you try to dereference them.</p>
+<p>The JOS kernel can dereference a <code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code> by first casting it to a
+pointer type. In contrast, the kernel can’t sensibly dereference a
+physical address, since the MMU translates all memory references. If you
+cast a <code class="docutils literal notranslate"><span class="pre">physaddr_t</span></code> to a pointer and dereference it, you may be able
+to load and store to the resulting address (the hardware will interpret
+it as a virtual address), but you probably won’t get the memory location
+you intended.</p>
+<p>To summarize:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>C type</p></th>
+<th class="head"><p>Address type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T*</span></code></p></td>
+<td><p>Virtual</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code></p></td>
+<td><p>Virtual</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">physaddr_t</span></code></p></td>
+<td><p>Physical</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>1. Assuming that the following JOS kernel code is correct, what type
+should variable <code class="docutils literal notranslate"><span class="pre">x</span></code> have, <code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code> or <code class="docutils literal notranslate"><span class="pre">physaddr_t</span></code>?</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">mystery_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">return_a_pointer</span><span class="p">();</span><span class="w"></span>
+<span class="o">*</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">mystery_t</span><span class="p">)</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>The JOS kernel sometimes needs to read or modify memory for which it
+knows only the physical address. For example, adding a mapping to a page
+table may require allocating physical memory to store a page directory
+and then initializing that memory. However, the kernel, like any other
+software, cannot bypass virtual memory translation and thus cannot
+directly load and store to physical addresses. One reason JOS remaps of
+all of physical memory starting from physical address 0 at virtual
+address 0xf0000000 is to help the kernel read and write memory for which
+it knows just the physical address. In order to translate a physical
+address into a virtual address that the kernel can actually read and
+write, the kernel must add 0xf0000000 to the physical address to find
+its corresponding virtual address in the remapped region. You should use
+<code class="docutils literal notranslate"><span class="pre">KADDR(pa)</span></code> to do that addition.</p>
+<p>The JOS kernel also sometimes needs to be able to find a physical
+address given the virtual address of the memory in which a kernel data
+structure is stored. Kernel global variables and memory allocated by
+<code class="docutils literal notranslate"><span class="pre">boot_alloc()</span></code> are in the region where the kernel was loaded, starting
+at <code class="docutils literal notranslate"><span class="pre">0xf0000000</span></code>, the very region where we mapped all of physical memory.
+Thus, to turn a virtual address in this region into a physical address,
+the kernel can simply subtract <code class="docutils literal notranslate"><span class="pre">0xf0000000</span></code>. You should use <code class="docutils literal notranslate"><span class="pre">PADDR(va)</span></code>
+to do that subtraction.</p>
+</section>
+<section id="reference-counting">
+<h3>Reference counting<a class="headerlink" href="#reference-counting" title="Permalink to this heading">¶</a></h3>
+<p>In future labs you will often have the same physical page mapped at
+multiple virtual addresses simultaneously (or in the address spaces of
+multiple environments). You will keep a count of the number of
+references to each physical page in the <code class="docutils literal notranslate"><span class="pre">pp_ref</span></code> field of the
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">PageInfo</span></code> corresponding to the physical page. When this count
+goes to zero for a physical page, that page can be freed because it is
+no longer used. In general, this count should equal to the number of
+times the physical page appears <em>below ``UTOP``</em> in all page tables (the
+mappings above <code class="docutils literal notranslate"><span class="pre">UTOP</span></code> are mostly set up at boot time by the kernel and
+should never be freed, so there’s no need to reference count them).
+We’ll also use it to keep track of the number of pointers we keep to the
+page directory pages and, in turn, of the number of references the page
+directories have to page table pages.</p>
+<p>Be careful when using <code class="docutils literal notranslate"><span class="pre">page_alloc</span></code>. The page it returns will always
+have a reference count of 0, so <code class="docutils literal notranslate"><span class="pre">pp_ref</span></code> should be incremented as soon
+as you’ve done something with the returned page (like inserting it into
+a page table). Sometimes this is handled by other functions (for
+example, <code class="docutils literal notranslate"><span class="pre">page_insert</span></code>) and sometimes the function calling
+<code class="docutils literal notranslate"><span class="pre">page_alloc</span></code> must do it directly.</p>
+</section>
+<section id="page-table-management">
+<h3>Page Table Management<a class="headerlink" href="#page-table-management" title="Permalink to this heading">¶</a></h3>
+<p>Now you’ll write a set of routines to manage page tables: to insert and
+remove linear-to-physical mappings, and to create page table pages when
+needed.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 4.</strong>
+In the file <code class="docutils literal notranslate"><span class="pre">kern/pmap.c</span></code>, you must implement code for the
+following functions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgdir_walk</span><span class="p">()</span>
+<span class="n">boot_map_region</span><span class="p">()</span>
+<span class="n">page_lookup</span><span class="p">()</span>
+<span class="n">page_remove</span><span class="p">()</span>
+<span class="n">page_insert</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">check_page()</span></code>, called from <code class="docutils literal notranslate"><span class="pre">mem_init()</span></code>, tests your page table
+management routines. You should make sure it reports success before
+proceeding.</p>
+</div>
+</section>
+</section>
+<section id="part-3-kernel-address-space">
+<h2>Part 3: Kernel Address Space<a class="headerlink" href="#part-3-kernel-address-space" title="Permalink to this heading">¶</a></h2>
+<p>JOS divides the processor’s 32-bit linear address space into two parts.
+User environments (processes), which we will begin loading and running
+in lab 3, will have control over the layout and contents of the lower
+part, while the kernel always maintains complete control over the upper
+part. The dividing line is defined somewhat arbitrarily by the symbol
+<code class="docutils literal notranslate"><span class="pre">ULIM</span></code> in <code class="docutils literal notranslate"><span class="pre">inc/memlayout.h</span></code>, reserving approximately 256MB of
+virtual address space for the kernel. This explains why we needed to
+give the kernel such a high link address in lab 1: otherwise there would
+not be enough room in the kernel’s virtual address space to map in a
+user environment below it at the same time.</p>
+<p>You’ll find it helpful to refer to the JOS memory layout diagram in
+<code class="docutils literal notranslate"><span class="pre">inc/memlayout.h</span></code> both for this part and for later labs.</p>
+<section id="permissions-and-fault-isolation">
+<h3>Permissions and Fault Isolation<a class="headerlink" href="#permissions-and-fault-isolation" title="Permalink to this heading">¶</a></h3>
+<p>Since kernel and user memory are both present in each environment’s
+address space, we will have to use permission bits in our x86 page
+tables to allow user code access only to the user part of the address
+space. Otherwise bugs in user code might overwrite kernel data, causing
+a crash or more subtle malfunction; user code might also be able to
+steal other environments’ private data.</p>
+<p>The user environment will have no permission to any of the memory above
+<code class="docutils literal notranslate"><span class="pre">ULIM</span></code>, while the kernel will be able to read and write this memory.
+For the address range <code class="docutils literal notranslate"><span class="pre">[UTOP,ULIM)</span></code>, both the kernel and the user
+environment have the same permission: they can read but not write this
+address range. This range of address is used to expose certain kernel
+data structures read-only to the user environment. Lastly, the address
+space below <code class="docutils literal notranslate"><span class="pre">UTOP</span></code> is for the user environment to use; the user
+environment will set permissions for accessing this memory.</p>
+</section>
+<section id="initializing-the-kernel-address-space">
+<h3>Initializing the Kernel Address Space<a class="headerlink" href="#initializing-the-kernel-address-space" title="Permalink to this heading">¶</a></h3>
+<p>Now you’ll set up the address space above <code class="docutils literal notranslate"><span class="pre">UTOP</span></code>: the kernel part of
+the address space. <code class="docutils literal notranslate"><span class="pre">inc/memlayout.h</span></code> shows the layout you should use.
+You’ll use the functions you just wrote to set up the appropriate linear
+to physical mappings.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 5.</strong>
+Fill in the missing code in <code class="docutils literal notranslate"><span class="pre">mem_init()</span></code> after the call to
+<code class="docutils literal notranslate"><span class="pre">check_page()</span></code>.</p>
+<p>Your code should now pass the <code class="docutils literal notranslate"><span class="pre">check_kern_pgdir()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">check_page_installed_pgdir()</span></code> checks.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<ol class="arabic" start="2">
+<li><p>What entries (rows) in the page directory have been filled in at this
+point? What addresses do they map and where do they point? In other
+words, fill out this table as much as possible:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Entry</p></th>
+<th class="head"><p>Base Virtual Address</p></th>
+<th class="head"><p>Points to (logically)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1023</p></td>
+<td><p>?</p></td>
+<td><p>Page table for top 4MB of phys memory</p></td>
+</tr>
+<tr class="row-odd"><td><p>1022</p></td>
+<td><p>?</p></td>
+<td><p>?</p></td>
+</tr>
+<tr class="row-even"><td><p>.</p></td>
+<td><p>?</p></td>
+<td><p>?</p></td>
+</tr>
+<tr class="row-odd"><td><p>.</p></td>
+<td><p>?</p></td>
+<td><p>?</p></td>
+</tr>
+<tr class="row-even"><td><p>.</p></td>
+<td><p>?</p></td>
+<td><p>?</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0x00800000</p></td>
+<td><p>?</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0x00400000</p></td>
+<td><p>?</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>0x00000000</p></td>
+<td><p>[see next question]</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p>We have placed the kernel and user environment in the same address
+space. Why will user programs not be able to read or write the
+kernel’s memory? What specific mechanisms protect the kernel memory?</p></li>
+<li><p>What is the maximum amount of physical memory that this operating
+system can support? Why?</p></li>
+<li><p>How much space overhead is there for managing memory, if we actually
+had the maximum amount of physical memory? How is this overhead
+broken down?</p></li>
+<li><p>Revisit the page table setup in <code class="docutils literal notranslate"><span class="pre">kern/entry.S</span></code> and
+<code class="docutils literal notranslate"><span class="pre">kern/entrypgdir.c</span></code>. Immediately after we turn on paging, EIP is
+still a low number (a little over 1MB). At what point do we
+transition to running at an EIP above KERNBASE? What makes it
+possible for us to continue executing at a low EIP between when we
+enable paging and when we begin running at an EIP above KERNBASE? Why
+is this transition necessary?</p></li>
+</ol>
+</div>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+We consumed many physical pages to hold the page tables for
+the KERNBASE mapping. Do a more space-efficient job using the PTE_PS
+(“Page Size”) bit in the page directory entries. This bit was <em>not</em>
+supported in the original 80386, but is supported on more recent x86
+processors. You will therefore have to refer to <a class="reference external" href="../r/ia32/IA32-3A.pdf">Volume 3 of the current
+Intel manuals</a>. Make sure you design
+the kernel to use this optimization only on processors that support it!</p>
+</div>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+Extend the JOS kernel monitor with commands to:</p>
+<ul class="simple">
+<li><p>Display in a useful and easy-to-read format all of the physical page
+mappings (or lack thereof) that apply to a particular range of
+virtual/linear addresses in the currently active address space. For
+example, you might enter <code class="docutils literal notranslate"><span class="pre">'showmappings</span> <span class="pre">0x3000</span> <span class="pre">0x5000'</span></code> to display
+the physical page mappings and corresponding permission bits that
+apply to the pages at virtual addresses <code class="docutils literal notranslate"><span class="pre">0x3000</span></code>, <code class="docutils literal notranslate"><span class="pre">0x4000</span></code>, and <code class="docutils literal notranslate"><span class="pre">0x5000</span></code>.</p></li>
+<li><p>Explicitly set, clear, or change the permissions of any mapping in
+the current address space.</p></li>
+<li><p>Dump the contents of a range of memory given either a virtual or
+physical address range. Be sure the dump code behaves correctly when
+the range extends across page boundaries!</p></li>
+<li><p>Do anything else that you think might be useful later for debugging
+the kernel. (There’s a good chance it will be!)</p></li>
+</ul>
+</div>
+</section>
+<section id="address-space-layout-alternatives">
+<h3>Address Space Layout Alternatives<a class="headerlink" href="#address-space-layout-alternatives" title="Permalink to this heading">¶</a></h3>
+<p>The address space layout we use in JOS is not the only one possible. An
+operating system might map the kernel at low linear addresses while
+leaving the <em>upper</em> part of the linear address space for user processes.
+x86 kernels generally do not take this approach, however, because one of
+the x86’s backward-compatibility modes, known as <em>virtual 8086 mode</em>, is
+“hard-wired” in the processor to use the bottom part of the linear
+address space, and thus cannot be used at all if the kernel is mapped
+there.</p>
+<p>It is even possible, though much more difficult, to design the kernel so
+as not to have to reserve <em>any</em> fixed portion of the processor’s linear
+or virtual address space for itself, but instead effectively to allow
+allow user-level processes unrestricted use of the <em>entire</em> 4GB of
+virtual address space - while still fully protecting the kernel from
+these processes and protecting different processes from each other!</p>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+Write up an outline of how a kernel could be designed to
+allow user environments unrestricted use of the full 4GB virtual and
+linear address space. Hint: the technique is sometimes known as “<em>follow
+the bouncing kernel</em>.” In your design, be sure to address exactly what
+has to happen when the processor transitions between kernel and user
+modes, and how the kernel would accomplish such transitions. Also
+describe how the kernel would access physical memory and I/O devices in
+this scheme, and how the kernel would access a user environment’s
+virtual address space during system calls and the like. Finally, think
+about and describe the advantages and disadvantages of such a scheme in
+terms of flexibility, performance, kernel complexity, and other factors
+you can think of.</p>
+</div>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+Since our JOS kernel’s memory management system only
+allocates and frees memory on page granularity, we do not have anything
+comparable to a general-purpose <code class="docutils literal notranslate"><span class="pre">malloc</span></code>/<code class="docutils literal notranslate"><span class="pre">free</span></code> facility that we can
+use within the kernel. This could be a problem if we want to support
+certain types of I/O devices that require <em>physically contiguous</em>
+buffers larger than 4KB in size, or if we want user-level environments,
+and not just the kernel, to be able to allocate and map 4MB <em>superpages</em>
+for maximum processor efficiency. (See the earlier challenge problem
+about PTE_PS.)</p>
+<p>Generalize the kernel’s memory allocation system to support pages of
+a variety of power-of-two allocation unit sizes from 4KB up to some
+reasonable maximum of your choice. Be sure you have some way to divide
+larger allocation units into smaller ones on demand, and to coalesce
+multiple small allocation units back into larger units when possible.
+Think about the issues that might arise in such a system.</p>
+</div>
+<p><strong>This completes the lab.</strong> Make sure you pass all of the make grade
+tests and don’t forget to write up your answers to the questions and a
+description of your challenge exercise solution in <code class="docutils literal notranslate"><span class="pre">answers-lab2.txt</span></code>.
+Commit your changes (including adding <code class="docutils literal notranslate"><span class="pre">answers-lab2.txt</span></code>), tag, and push to GitHub.</p>
+<script src="../_static/disqus/disqus.js"></script>
+<link rel="stylesheet" type="text/css" href="../_static/disqus/disqus.css" />
+
+<script>
+  disqus_shortname = 'gatechcs3210staff';
+  $(document).ready(function() {
+    $("p").inlineDisqussions();
+  });
+</script></section>
+</section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lab3.html" class="btn btn-neutral float-right" title="Lab 3: User Environments">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lab1.html" class="btn btn-neutral" title="Lab 1: Booting a PC"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Last updated on Jul 02, 2022.
+    </p>
+  </div>
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+<script src="../_static/email.js"></script>
+<script src="../_static/custom.js"></script>
+
+</body>
+</html>

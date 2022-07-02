@@ -1,0 +1,1352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lab 1: Booting a PC &mdash; CS 323, Fall 2022 1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CS 323, Fall 2022 1 documentation" href="../index.html"/>
+        <link rel="up" title="Lab" href="../lab.html"/>
+        <link rel="next" title="Lab 2: Memory Management" href="lab2.html"/>
+        <link rel="prev" title="Tools" href="tools.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> CS 323, Fall 2022</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../info.html">General Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#meetings">Meetings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#grades">Grades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#labs">Labs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#prep-questions">Prep Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#equipment-problems">Equipment Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#other-policies">Other Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#text">Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#staff-ta">Staff/TA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cal.html">Schedule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../q.html">Preparation Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">Reference Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#c-programming">C Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#unix">UNIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#x86-emulation">x86 Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#x86-assembly-language">x86 Assembly Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#pc-hardware-programming">PC Hardware Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#reference-quizzes">Reference Quizzes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lab.html">Lab</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lab 1: Booting a PC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2.html">Lab 2: Memory Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3.html">Lab 3: User Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4.html">Lab 4: Preemptive Multitasking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5.html">Lab 5: File system, Spawn and Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6.html">Lab 6: Network Driver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proj.html">Final Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#deliverables">Deliverables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#project-ideas-if-you-found-none">Project ideas (if you found none)</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CS 323, Fall 2022</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../lab.html">Lab</a> &raquo;</li>
+      
+    <li>Lab 1: Booting a PC</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/lab/lab1.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="lab-1-booting-a-pc">
+<h1>Lab 1: Booting a PC<a class="headerlink" href="#lab-1-booting-a-pc" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Handed out:</strong> Tuesday, Aug 22, 2017</p></li>
+<li><p><strong>Due:</strong> Friday, Sep 8, 2017</p></li>
+</ul>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>This lab is split into three parts. The first part concentrates on
+getting familiarized with x86 assembly language, the QEMU x86 emulator,
+and the PC’s power-on bootstrap procedure. The second part examines the
+boot loader for our cs3210 kernel, which resides in the <code class="docutils literal notranslate"><span class="pre">boot/</span></code>
+directory of the <code class="docutils literal notranslate"><span class="pre">lab/</span></code> tree. Finally, the third part delves into the
+initial template for our cs3210 kernel itself, named JOS, which resides
+in the <code class="docutils literal notranslate"><span class="pre">kernel/</span></code> directory.</p>
+<section id="software-setup">
+<h3>Software Setup<a class="headerlink" href="#software-setup" title="Permalink to this heading">¶</a></h3>
+<p>The files you will need for this and subsequent lab assignments in this
+course are distributed using the <a class="reference external" href="http://www.git-scm.com/">Git</a>
+version control system. To learn more about Git, take a look at the <a class="reference external" href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">Git
+user’s
+manual</a>,
+or, if you are already familiar with other version control systems, you
+may find this <a class="reference external" href="http://eagain.net/articles/git-for-computer-scientists/">CS-oriented overview of
+Git</a> useful.</p>
+<p>The submission process for this semester will use so-called “fake forks” on GitHub. These are forks of the main lab
+repository that we have created for you (based on your enrollment in the class) with the appropriate permissions.
+The URL for your lab Git repository is <a class="reference external" href="https://github.gatech.edu/cs3210-fall2017/cs3210-lab-YOUR-USERNAME.git">https://github.gatech.edu/cs3210-fall2017/cs3210-lab-YOUR-USERNAME.git</a> with YOUR-USERNAME being your gatech username. See <a class="reference external" href="tools.html">Tools</a> for setup instructions. Open a terminal session in your VM and type the following to clone:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/cs3210
+$ <span class="nb">cd</span> ~/cs3210
+$ git clone git@github.gatech.edu:cs3210-fall2017/cs3210-lab-YOUR-USERNAME.git lab
+Cloning into lab...
+$ <span class="nb">cd</span> lab
+$ git checkout lab1
+</pre></div>
+</div>
+<p>Git allows you to keep track of the changes you make to the code. For
+example, if you are finished with one of the exercises, and want to
+checkpoint your progress, you can <em>commit</em> your changes by running:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ git commit -am <span class="s1">&#39;my solution for lab1 exercise 9&#39;</span>
+Created commit 60d2135: my solution <span class="k">for</span> lab1 exercise <span class="m">9</span>
+ <span class="m">1</span> files changed, <span class="m">1</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+$
+</pre></div>
+</div>
+<p>You can keep track of your changes by using the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> command.
+Running git diff will display the changes to your code since your last
+commit, and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">origin/lab1</span></code> will display the changes relative to
+the initial code supplied for this lab. Here, <code class="docutils literal notranslate"><span class="pre">origin/lab1</span></code> is the
+name of the git branch with the initial code you downloaded from our
+server for this assignment.</p>
+<p>Please install <code class="docutils literal notranslate"><span class="pre">qemu</span></code> and possibly <code class="docutils literal notranslate"><span class="pre">gcc</span></code> following the
+directions on the <a class="reference external" href="./tools.html">tools page</a>. Please
+follow the directions on the tools page as it includes several
+useful debugging changes to <code class="docutils literal notranslate"><span class="pre">qemu</span></code> and some of the
+later labs depend on these patches, so you must build your own.
+If your machine uses a native ELF toolchain (such as Linux and most BSD’s,
+but notably <em>not</em> OS X), you can simply install <code class="docutils literal notranslate"><span class="pre">gcc</span></code> from your
+package manager.</p>
+</section>
+<section id="hand-in-procedure">
+<h3>Hand-In Procedure<a class="headerlink" href="#hand-in-procedure" title="Permalink to this heading">¶</a></h3>
+<p>We will use the Georgia Tech GitHub for handin this term.</p>
+<p>After adding and commiting your final changes to the lab, please tag it and push your changes to GitHub (including the tag).</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ git commit -am <span class="s2">&quot;ready to submit my lab&quot;</span>
+<span class="o">[</span>lab1 c2e3c8b<span class="o">]</span> ready to submit my lab
+ <span class="m">2</span> files changed, <span class="m">18</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">2</span> deletions<span class="o">(</span>-<span class="o">)</span>
+
+$ git tag Final-Lab1
+$ git push origin --tags
+</pre></div>
+</div>
+<p>(Don’t forget the –tags flag.)
+Once your changes are pushed to GitHub they will be timetagged. That time tag will be considered your
+submission time. If you wish to make changes after your submissions, please delete the tag and retag.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ git tag -d Final-Lab1
+Deleted tag <span class="s1">&#39;Final-Lab1&#39;</span> <span class="o">(</span>was 75411c7<span class="o">)</span>
+$ git tag Final-Lab1
+$ git push origin --tags
+</pre></div>
+</div>
+<p>The tag will mark your official handin and handin time.
+We will be grading your solutions with a grading program. You can run
+<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">grade</span></code> to test your solutions with the grading program.</p>
+</section>
+</section>
+<section id="part-1-pc-bootstrap">
+<h2>Part 1: PC Bootstrap<a class="headerlink" href="#part-1-pc-bootstrap" title="Permalink to this heading">¶</a></h2>
+<p>The purpose of the first exercise is to introduce you to x86 assembly
+language and the PC bootstrap process, and to get you started with QEMU
+and QEMU/GDB debugging. You will not have to write any code for this
+part of the lab, but you should go through it anyway for your own
+understanding and be prepared to answer the questions posed below.</p>
+<section id="getting-started-with-x86-assembly">
+<h3>Getting Started with x86 assembly<a class="headerlink" href="#getting-started-with-x86-assembly" title="Permalink to this heading">¶</a></h3>
+<p>If you are not already familiar with x86 assembly language, you will
+quickly become familiar with it during this course! The <a class="reference external" href="../r/pcasm-book.pdf">PC Assembly
+Language Book</a> is an excellent place
+to start. Hopefully, the book contains mixture of new and old material
+for you.</p>
+<p><em>Warning:</em> Unfortunately the examples in the book are written for the
+NASM assembler, whereas we will be using the GNU assembler. NASM uses
+the so-called <em>Intel</em> syntax while GNU uses the <em>AT&amp;T</em> syntax. While
+semantically equivalent, an assembly file will differ quite a lot, at
+least superficially, depending on which syntax is used. Luckily the
+conversion between the two is pretty simple, and is covered in
+<a class="reference external" href="http://www.delorie.com/djgpp/doc/brennan/brennan_att_inline_djgpp.html">Brennan’s Guide to Inline Assembly</a>.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 1.</strong>
+Familiarize yourself with the assembly language materials
+available on <a class="reference external" href="../refs.html">the cs3210 reference page</a>. You
+don’t have to read them now, but you’ll almost certainly want to refer
+to some of this material when reading and writing x86 assembly.</p>
+<p>We do recommend reading the section “The Syntax” in
+<a class="reference external" href="http://www.delorie.com/djgpp/doc/brennan/brennan_att_inline_djgpp.html">Brennan’s Guide to Inline Assembly</a>.
+It gives a good (and quite brief) description of the AT&amp;T assembly
+syntax we’ll be using with the GNU assembler in JOS.</p>
+</div>
+<p>Certainly the definitive reference for x86 assembly language programming
+is Intel’s instruction set architecture reference, which you can find on
+<a class="reference external" href="../refs.html">the cs3210 reference page</a> in two flavors: an
+HTML edition of the old <a class="reference external" href="http://www.logix.cz/michal/doc/i386/">80386 Programmer’s Reference
+Manual</a>, which is much shorter and
+easier to navigate than more recent manuals but describes all of the x86
+processor features that we will make use of in cs3210; and the full,
+latest and greatest <a class="reference external" href="http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html">IA-32 Intel Architecture Software Developer’s
+Manuals</a>
+from Intel, covering all the features of the most recent processors that
+we won’t need in class but you may be interested in learning about. An
+equivalent (and often friendlier) set of manuals is <a class="reference external" href="http://developer.amd.com/documentation/guides/Pages/default.aspx#manuals">available from
+AMD</a>.
+Save the Intel/AMD architecture manuals for later or use them for
+reference when you want to look up the definitive explanation of a
+particular processor feature or instruction.</p>
+</section>
+<section id="simulating-the-x86">
+<h3>Simulating the x86<a class="headerlink" href="#simulating-the-x86" title="Permalink to this heading">¶</a></h3>
+<p>Instead of developing the operating system on a real, physical personal
+computer (PC), we use a program that faithfully emulates a complete PC:
+the code you write for the emulator will boot on a real PC and you
+will be asked to test in the recitation.
+Using an emulator simplifies debugging; you can, for example, set break points
+inside of the emulated x86, which is difficult to do with the silicon
+version of an x86.</p>
+<p>In cs3210, we will use the
+<a class="reference external" href="http://www.qemu.org/">QEMU Emulator</a>,
+a modern and relatively fast emulator.
+While QEMU’s built-in monitor provides only limited debugging support,
+QEMU can act as a remote debugging target for the
+<a class="reference external" href="http://www.gnu.org/software/gdb/">GNU debugger</a> (GDB),
+which we’ll use in this lab to step through the early boot process.</p>
+<p>To get started, clone the Lab 1 repo into your own directory
+as described above in “Software Setup”, then type make
+(or gmake on BSD systems) in the <code class="docutils literal notranslate"><span class="pre">lab/</span></code> directory to build the minimal cs3210 boot
+loader and kernel you will start with.
+(It’s a little generous to call
+the code we’re running here a “kernel,” but we’ll flesh it out
+throughout the semester.)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> lab
+$ make
++ as kern/entry.S
++ cc kern/init.c
++ cc kern/console.c
++ cc kern/monitor.c
++ cc kern/printf.c
++ cc lib/printfmt.c
++ cc lib/readline.c
++ cc lib/string.c
++ ld obj/kern/kernel
++ as boot/boot.S
++ cc -Os boot/main.c
++ ld boot/boot
+boot block is <span class="m">414</span> bytes <span class="o">(</span>max <span class="m">510</span><span class="o">)</span>
++ mk obj/kern/kernel.img
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you get errors like “undefined reference to __udivdi3”, you
+probably don’t have the 32-bit gcc multilib. If you’re running Debian or
+Ubuntu, try installing the gcc-multilib package.</p>
+<blockquote>
+<div><p>$ sudo apt-get install gcc-multilib</p>
+</div></blockquote>
+</div>
+<p>Now you’re ready to run QEMU, supplying the file
+<code class="docutils literal notranslate"><span class="pre">obj/kern/kernel.img</span></code>, created above, as the contents of the emulated
+PC’s “virtual hard disk.” This hard disk image contains both our boot
+loader (<code class="docutils literal notranslate"><span class="pre">obj/boot/boot</span></code>) and our kernel (<code class="docutils literal notranslate"><span class="pre">obj/kernel</span></code>).</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ make qemu
+</pre></div>
+</div>
+<p>This executes QEMU with the options required to set the hard disk and
+direct serial port output to the terminal. Some text should appear in
+the QEMU window:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Booting from Hard Disk...
+6828 decimal is XXX octal!
+entering test_backtrace 5
+entering test_backtrace 4
+entering test_backtrace 3
+entering test_backtrace 2
+entering test_backtrace 1
+entering test_backtrace 0
+leaving test_backtrace 0
+leaving test_backtrace 1
+leaving test_backtrace 2
+leaving test_backtrace 3
+leaving test_backtrace 4
+leaving test_backtrace 5
+Welcome to the JOS kernel monitor!
+Type &#39;help&#39; for a list of commands.
+K&gt;
+</pre></div>
+</div>
+<p>Everything after “Booting from Hard Disk…” was printed by our
+skeletal JOS kernel; the <code class="docutils literal notranslate"><span class="pre">K&gt;</span></code> is the prompt printed by the small
+<em>monitor</em>, or interactive control program, that we’ve included in the
+kernel. These lines printed by the kernel will also appear in the
+regular shell window from which you ran QEMU. This is because for
+testing and lab grading purposes we have set up the JOS kernel to write
+its console output not only to the virtual VGA display (as seen in the
+QEMU window), but also to the simulated PC’s virtual serial port, which
+QEMU in turn outputs to its own standard output. Likewise, the JOS
+kernel will take input from both the keyboard and the serial port, so
+you can give it commands in either the VGA display window or the
+terminal running QEMU. Alternatively, you can use the serial console
+without the virtual VGA by running make qemu-nox. This may be convenient
+if you are SSH’d into a remote server.</p>
+<p>There are only two commands you can give to the kernel monitor, <code class="docutils literal notranslate"><span class="pre">help</span></code>
+and <code class="docutils literal notranslate"><span class="pre">kerninfo</span></code> (<code class="docutils literal notranslate"><span class="pre">info-kern</span></code> in some versions of QEMU).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">K</span><span class="o">&gt;</span> <span class="n">help</span>
+<span class="n">help</span> <span class="o">-</span> <span class="n">display</span> <span class="n">this</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">commands</span>
+<span class="n">kerninfo</span> <span class="o">-</span> <span class="n">display</span> <span class="n">information</span> <span class="n">about</span> <span class="n">the</span> <span class="n">kernel</span>
+<span class="n">K</span><span class="o">&gt;</span> <span class="n">kerninfo</span>
+<span class="n">Special</span> <span class="n">kernel</span> <span class="n">symbols</span><span class="p">:</span>
+  <span class="n">entry</span>  <span class="n">f010000c</span> <span class="p">(</span><span class="n">virt</span><span class="p">)</span>  <span class="mi">0010000</span><span class="n">c</span> <span class="p">(</span><span class="n">phys</span><span class="p">)</span>
+  <span class="n">etext</span>  <span class="n">f0101a75</span> <span class="p">(</span><span class="n">virt</span><span class="p">)</span>  <span class="mi">00101</span><span class="n">a75</span> <span class="p">(</span><span class="n">phys</span><span class="p">)</span>
+  <span class="n">edata</span>  <span class="n">f0112300</span> <span class="p">(</span><span class="n">virt</span><span class="p">)</span>  <span class="mi">00112300</span> <span class="p">(</span><span class="n">phys</span><span class="p">)</span>
+  <span class="n">end</span>    <span class="n">f0112960</span> <span class="p">(</span><span class="n">virt</span><span class="p">)</span>  <span class="mi">00112960</span> <span class="p">(</span><span class="n">phys</span><span class="p">)</span>
+<span class="n">Kernel</span> <span class="n">executable</span> <span class="n">memory</span> <span class="n">footprint</span><span class="p">:</span> <span class="mi">75</span><span class="n">KB</span>
+<span class="n">K</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">help</span></code> command is obvious, and we will shortly discuss the meaning
+of what the <code class="docutils literal notranslate"><span class="pre">kerninfo</span></code> command prints. Although simple, it’s important
+to note that this kernel monitor is running “directly” on the “raw
+(virtual) hardware” of the simulated PC. This means that you should be
+able to copy the contents of <code class="docutils literal notranslate"><span class="pre">obj/kern/kernel.img</span></code> onto the first few
+sectors of a <em>real</em> hard disk, insert that hard disk into a real PC,
+turn it on, and see exactly the same thing on the PC’s real screen as
+you did above in the QEMU window. (We don’t recommend you do this on a
+real machine with useful information on its hard disk, though, because
+copying <code class="docutils literal notranslate"><span class="pre">kernel.img</span></code> onto the beginning of its hard disk will trash
+the master boot record and the beginning of the first partition,
+effectively causing everything previously on the hard disk to be lost!)</p>
+</section>
+<section id="the-pc-s-physical-address-space">
+<h3>The PC’s Physical Address Space<a class="headerlink" href="#the-pc-s-physical-address-space" title="Permalink to this heading">¶</a></h3>
+<p>We will now dive into a bit more detail about how a PC starts up. A PC’s
+physical address space is hard-wired to have the following general
+layout:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+------------------+</span>  <span class="o">&lt;-</span> <span class="mh">0xFFFFFFFF</span> <span class="p">(</span><span class="mi">4</span><span class="n">GB</span><span class="p">)</span>
+<span class="o">|</span>      <span class="mi">32</span><span class="o">-</span><span class="n">bit</span>      <span class="o">|</span>
+<span class="o">|</span>  <span class="n">memory</span> <span class="n">mapped</span>   <span class="o">|</span>
+<span class="o">|</span>     <span class="n">devices</span>      <span class="o">|</span>
+<span class="o">|</span>                  <span class="o">|</span>
+<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\
+
+<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\<span class="o">/</span>\
+<span class="o">|</span>                  <span class="o">|</span>
+<span class="o">|</span>      <span class="n">Unused</span>      <span class="o">|</span>
+<span class="o">|</span>                  <span class="o">|</span>
+<span class="o">+------------------+</span>  <span class="o">&lt;-</span> <span class="n">depends</span> <span class="n">on</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">RAM</span>
+<span class="o">|</span>                  <span class="o">|</span>
+<span class="o">|</span>                  <span class="o">|</span>
+<span class="o">|</span> <span class="n">Extended</span> <span class="n">Memory</span>  <span class="o">|</span>
+<span class="o">|</span>                  <span class="o">|</span>
+<span class="o">|</span>                  <span class="o">|</span>
+<span class="o">+------------------+</span>  <span class="o">&lt;-</span> <span class="mh">0x00100000</span> <span class="p">(</span><span class="mi">1</span><span class="n">MB</span><span class="p">)</span>
+<span class="o">|</span>     <span class="n">BIOS</span> <span class="n">ROM</span>     <span class="o">|</span>
+<span class="o">+------------------+</span>  <span class="o">&lt;-</span> <span class="mh">0x000F0000</span> <span class="p">(</span><span class="mi">960</span><span class="n">KB</span><span class="p">)</span>
+<span class="o">|</span>  <span class="mi">16</span><span class="o">-</span><span class="n">bit</span> <span class="n">devices</span><span class="p">,</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="n">expansion</span> <span class="n">ROMs</span>  <span class="o">|</span>
+<span class="o">+------------------+</span>  <span class="o">&lt;-</span> <span class="mh">0x000C0000</span> <span class="p">(</span><span class="mi">768</span><span class="n">KB</span><span class="p">)</span>
+<span class="o">|</span>   <span class="n">VGA</span> <span class="n">Display</span>    <span class="o">|</span>
+<span class="o">+------------------+</span>  <span class="o">&lt;-</span> <span class="mh">0x000A0000</span> <span class="p">(</span><span class="mi">640</span><span class="n">KB</span><span class="p">)</span>
+<span class="o">|</span>                  <span class="o">|</span>
+<span class="o">|</span>    <span class="n">Low</span> <span class="n">Memory</span>    <span class="o">|</span>
+<span class="o">|</span>                  <span class="o">|</span>
+<span class="o">+------------------+</span>  <span class="o">&lt;-</span> <span class="mh">0x00000000</span>
+</pre></div>
+</div>
+<p>The first PCs, which were based on the 16-bit Intel 8088 processor, were
+only capable of addressing 1MB of physical memory. The physical address
+space of an early PC would therefore start at <code class="docutils literal notranslate"><span class="pre">0x00000000</span></code> but end at
+<code class="docutils literal notranslate"><span class="pre">0x000FFFFF</span></code> instead of <code class="docutils literal notranslate"><span class="pre">0xFFFFFFFF</span></code>. The 640KB area marked “Low
+Memory” was the <em>only</em> random-access memory (RAM) that an early PC could
+use; in fact the very earliest PCs only could be configured with 16KB,
+32KB, or 64KB of RAM!</p>
+<p>The 384KB area from <code class="docutils literal notranslate"><span class="pre">0x000A0000</span></code> through <code class="docutils literal notranslate"><span class="pre">0x000FFFFF</span></code> was reserved
+by the hardware for special uses such as video display buffers and firmware
+held in non-volatile memory. The most important part of this reserved
+area is the Basic Input/Output System (BIOS), which occupies the 64KB
+region from <code class="docutils literal notranslate"><span class="pre">0x000F0000</span></code> through <code class="docutils literal notranslate"><span class="pre">0x000FFFFF</span></code>. In early PCs the
+BIOS was held in true read-only memory (ROM), but current PCs store the
+BIOS in updateable flash memory. The BIOS is responsible for performing
+basic system initialization such as activating the video card and checking
+the amount of memory installed. After performing this initialization, the
+BIOS loads the operating system from some appropriate location such as
+floppy disk, hard disk, CD-ROM, or the network, and passes control of
+the machine to the operating system.</p>
+<p>When Intel finally “broke the one megabyte barrier” with the 80286 and
+80386 processors, which supported 16MB and 4GB physical address spaces
+respectively, the PC architects nevertheless preserved the original
+layout for the low 1MB of physical address space in order to ensure
+backward compatibility with existing software. Modern PCs therefore have
+a “hole” in physical memory from <code class="docutils literal notranslate"><span class="pre">0x000A0000</span></code> to <code class="docutils literal notranslate"><span class="pre">0x00100000</span></code>,
+dividing RAM into “low” or “conventional memory” (the first 640KB)
+and “extended memory” (everything else). In addition, some space at
+the very top of the PC’s 32-bit physical address space, above all
+physical RAM, is now commonly reserved by the BIOS for use by 32-bit
+PCI devices.</p>
+<p>Recent x86 processors can support <em>more</em> than 4GB of physical RAM, so
+RAM can extend further above <code class="docutils literal notranslate"><span class="pre">0xFFFFFFFF</span></code>. In this case the BIOS must
+arrange to leave a <em>second</em> hole in the system’s RAM at the top of the
+32-bit addressable region, to leave room for these 32-bit devices to be
+mapped. Because of design limitations JOS will use only the first 256MB
+of a PC’s physical memory anyway, so for now we will pretend that all
+PCs have “only” a 32-bit physical address space. But dealing with
+complicated physical address spaces and other aspects of hardware
+organization that evolved over many years is one of the important
+practical challenges of OS development.</p>
+</section>
+<section id="the-rom-bios">
+<h3>The ROM BIOS<a class="headerlink" href="#the-rom-bios" title="Permalink to this heading">¶</a></h3>
+<p>In this portion of the lab, you’ll use QEMU’s debugging facilities to
+investigate how an IA-32 compatible computer boots.</p>
+<p>Open two terminal windows. In one, enter <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">qemu-gdb</span></code> (or <code class="docutils literal notranslate"><span class="pre">make</span>
+<span class="pre">qemu-nox-gdb</span></code>). This starts up QEMU, but QEMU stops just before the
+processor executes the first instruction and waits for a debugging
+connection from GDB. In the second terminal, from the same directory you
+ran <code class="docutils literal notranslate"><span class="pre">make</span></code>, run <code class="docutils literal notranslate"><span class="pre">gdb</span></code>. You should see something like this,</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ gdb
+GNU gdb <span class="o">(</span>GDB<span class="o">)</span> <span class="m">7</span>.10
+Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">2015</span> Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version <span class="m">3</span> or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type <span class="s2">&quot;show copying&quot;</span>
+and <span class="s2">&quot;show warranty&quot;</span> <span class="k">for</span> details.
+This GDB was configured as <span class="s2">&quot;x86_64-unknown-linux-gnu&quot;</span>.
+Type <span class="s2">&quot;show configuration&quot;</span> <span class="k">for</span> configuration details.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;.
+Find the GDB manual and other documentation resources online at:
+&lt;http://www.gnu.org/software/gdb/documentation/&gt;.
+For help, <span class="nb">type</span> <span class="s2">&quot;help&quot;</span>.
+Type <span class="s2">&quot;apropos word&quot;</span> to search <span class="k">for</span> commands related to <span class="s2">&quot;word&quot;</span>.
++ target remote localhost:26000
+The target architecture is assumed to be <span class="nv">i386</span>
+<span class="o">=</span>&gt; 0xf0100196:  push   %ebp
+0xf0100196 <span class="k">in</span> ?? <span class="o">()</span>
++ symbol-file obj/kern/kernel
+<span class="o">(</span>gdb<span class="o">)</span>
+</pre></div>
+</div>
+<p>We provided a <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> file that set up GDB to debug the 16-bit code
+used during early boot and directed it to attach to the listening QEMU.</p>
+<p>(If it doesn’t work, you may have to add an <code class="docutils literal notranslate"><span class="pre">add-auto-load-safe-path=$JOS_PATH/.gdbinit</span></code>
+in your <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> file in the home directory. This is to convince <code class="docutils literal notranslate"><span class="pre">gdb</span></code> to
+process the <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> we have provided. Substitute <code class="docutils literal notranslate"><span class="pre">$JOS_PATH</span></code> with the JOS source code path
+from where you are running the <code class="docutils literal notranslate"><span class="pre">gdb</span></code>. <code class="docutils literal notranslate"><span class="pre">gdb</span></code> will tell you if you have to add <code class="docutils literal notranslate"><span class="pre">add-auto-load-safe-path</span></code>.)</p>
+<p>The following line:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>f000:fff0<span class="o">]</span> 0xffff0:    ljmp   <span class="nv">$0</span>xf000,<span class="nv">$0</span>xe05b
+</pre></div>
+</div>
+<p>is GDB’s disassembly of the first instruction to be executed. From this
+output you can conclude a few things:</p>
+<ul class="simple">
+<li><p>The IBM PC starts executing at physical address 0x000ffff0, which is
+at the very top of the 64KB area reserved for the ROM BIOS.</p></li>
+<li><p>The PC starts executing with <code class="docutils literal notranslate"><span class="pre">CS</span> <span class="pre">=</span> <span class="pre">0xf000</span></code> and <code class="docutils literal notranslate"><span class="pre">IP</span> <span class="pre">=</span> <span class="pre">0xfff0</span></code>.</p></li>
+<li><p>The first instruction to be executed is a <code class="docutils literal notranslate"><span class="pre">jmp</span></code> instruction, which
+jumps to the segmented address <code class="docutils literal notranslate"><span class="pre">CS</span> <span class="pre">=</span> <span class="pre">0xf000</span></code> and <code class="docutils literal notranslate"><span class="pre">IP</span> <span class="pre">=</span> <span class="pre">0xe05b</span></code>.</p></li>
+</ul>
+<p>Why does QEMU start like this? This is how Intel designed the 8088
+processor, which IBM used in their original PC. Because the BIOS in a PC
+is “hard-wired” to the physical address range <code class="docutils literal notranslate"><span class="pre">0x000f0000-0x000fffff</span></code>,
+this design ensures that the BIOS always gets control of the machine
+first after power-up or any system restart - which is crucial because on
+power-up there <em>is</em> no other software anywhere in the machine’s RAM that
+the processor could execute. The QEMU emulator comes with its own BIOS,
+which it places at this location in the processor’s simulated physical
+address space. On processor reset, the (simulated) processor enters real
+mode and sets CS to <code class="docutils literal notranslate"><span class="pre">0xf000</span></code> and the IP to <code class="docutils literal notranslate"><span class="pre">0xfff0</span></code>, so that
+execution begins at that (CS:IP) segment address. How does the segmented
+address <code class="docutils literal notranslate"><span class="pre">0xf000:0xfff0</span></code> turn into a physical address?</p>
+<p>To answer that we need to know a bit about real mode addressing. In real
+mode (the mode that PC starts off in), address translation works
+according to the formula:</p>
+<p><span class="math notranslate nohighlight">\(physical\ address = 16 \times segment + offset\)</span></p>
+<p>So, when the PC sets CS to <code class="docutils literal notranslate"><span class="pre">0xf000</span></code> and IP to <code class="docutils literal notranslate"><span class="pre">0xfff0</span></code>, the
+physical address referenced is:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="m">16</span> * 0xf000 + 0xfff0   <span class="c1"># in hex multiplication by 16 is</span>
+<span class="o">=</span> 0xf0000 + 0xfff0     <span class="c1"># easy--just append a 0.</span>
+<span class="o">=</span> 0xffff0
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">0xffff0</span></code> is 16 bytes before the end of the BIOS (0x100000).
+Therefore we shouldn’t be surprised that the first thing that the BIOS
+does is <code class="docutils literal notranslate"><span class="pre">jmp</span></code> backwards to an earlier location in the BIOS; after all
+how much could it accomplish in just 16 bytes?</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 2.</strong>
+Use GDB’s <code class="docutils literal notranslate"><span class="pre">si</span></code> (Step Instruction) command to trace into the
+ROM BIOS for a few more instructions, and try to guess what it might be
+doing. You might want to look at
+<a class="reference external" href="http://philipstorr.id.au/pcbook/">Phil Storrs</a> and his
+<a class="reference external" href="http://philipstorr.id.au/pcbook/book2/book2.htm">I/O Ports Description</a>,
+as well as other materials on the
+<a class="reference external" href="../refs.html">cs3210 reference materials page</a>.
+No need to figure out all the details - just the general idea of what the BIOS is doing first.</p>
+</div>
+<p>When the BIOS runs, it sets up an interrupt descriptor table and
+initializes various devices such as the VGA display. This is where the
+“Starting <a class="reference external" href="http://www.seabios.org/">SeaBIOS</a>”
+message you see in the QEMU window comes from.</p>
+<p>After initializing the PCI bus and all the important devices the BIOS
+knows about, it searches for a bootable device such as a floppy, hard
+drive, or CD-ROM. Eventually, when it finds a bootable disk, the BIOS
+reads the <em>boot loader</em> from the disk and transfers control to it.</p>
+</section>
+</section>
+<section id="part-2-the-boot-loader">
+<h2>Part 2: The Boot Loader<a class="headerlink" href="#part-2-the-boot-loader" title="Permalink to this heading">¶</a></h2>
+<p>Floppy and hard disks for PCs are divided into 512 byte regions called
+<em>sectors</em>. A sector is the disk’s minimum transfer granularity: each
+read or write operation must be one or more sectors in size and aligned
+on a sector boundary. If the disk is bootable, the first sector is
+called the <em>boot sector</em>, since this is where the boot loader code
+resides. When the BIOS finds a bootable floppy or hard disk, it loads
+the 512-byte boot sector into memory at physical addresses <code class="docutils literal notranslate"><span class="pre">0x7c00</span></code>
+through <code class="docutils literal notranslate"><span class="pre">0x7dff</span></code>, and then uses a <code class="docutils literal notranslate"><span class="pre">jmp</span></code> instruction to set the CS:IP to
+<code class="docutils literal notranslate"><span class="pre">0000:7c00</span></code>, passing control to the boot loader. Like the BIOS load
+address, these addresses are fairly arbitrary - but they are fixed and
+standardized for PCs.
+If you are curious, see how SeaBIOS actually
+handles this booting procedure
+(<a class="reference external" href="http://code.coreboot.org/p/seabios/source/tree/0.5.1-stable/src/boot.c#L361">seabios-git/src/boot.c</a>).</p>
+<p>The ability to boot from a CD-ROM came much later during the evolution
+of the PC, and as a result the PC architects took the opportunity to
+rethink the boot process slightly. As a result, the way a modern BIOS
+boots from a CD-ROM is a bit more complicated (and more powerful).
+CD-ROMs use a sector size of 2048 bytes instead of 512, and the BIOS can
+load a much larger boot image from the disk into memory (not just one
+sector) before transferring control to it. For more information, see the
+<a class="reference external" href="../r/boot-cdrom.pdf">“El Torito” Bootable CD-ROM Format Specification</a>.</p>
+<p>For cs3210, however, we will use the conventional hard drive boot
+mechanism, which means that our boot loader must fit into a measly 512
+bytes. The boot loader consists of one assembly language source file,
+<code class="docutils literal notranslate"><span class="pre">boot/boot.S</span></code>, and one C source file, <code class="docutils literal notranslate"><span class="pre">boot/main.c</span></code>. Look through
+these source files carefully and make sure you understand what’s going
+on. The boot loader must perform two main functions:</p>
+<ol class="arabic simple">
+<li><p>First, the boot loader switches the processor from real mode to
+<em>32-bit protected mode</em>, because it is only in this mode that
+software can access all the memory above 1MB in the processor’s
+physical address space. Protected mode is described briefly in
+sections 1.2.7 and 1.2.8 of
+<a class="reference external" href="../r/pcasm-book.pdf">PC Assembly Language</a>, and in great detail in
+the Intel architecture manuals. At this point you only have to
+understand that translation of segmented addresses (segment:offset
+pairs) into physical addresses happens differently in protected mode,
+and that after the transition offsets are 32 bits instead of 16 bits.</p></li>
+<li><p>Second, the boot loader reads the kernel from the hard disk by
+directly accessing the IDE disk device registers via the x86’s
+special I/O instructions. If you would like to understand better what
+the particular I/O instructions here mean, check out the
+“IDE hard drive controller” section on <a class="reference external" href="../refs.html">the reference page</a>.
+You will not need to learn much about
+programming specific devices in this class: writing device drivers is
+in practice a very important part of OS development, but from a
+conceptual or architectural viewpoint it is also one of the least
+interesting.</p></li>
+</ol>
+<p>After you understand the boot loader source code, look at the file
+<code class="docutils literal notranslate"><span class="pre">obj/boot/boot.asm</span></code>. This file is a disassembly of the boot loader
+that our <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> creates <em>after</em> compiling the boot loader. This
+disassembly file makes it easy to see exactly where in physical memory
+all of the boot loader’s code resides, and makes it easier to track
+what’s happening while stepping through the boot loader in GDB.
+Likewise, <code class="docutils literal notranslate"><span class="pre">obj/kern/kernel.asm</span></code> contains a disassembly of the JOS
+kernel, which can often be useful for debugging.</p>
+<p>You can set address breakpoints in GDB with the <cite>b</cite> command. For
+example, <cite>b *0x7c00</cite> sets a breakpoint at address 0x7C00. Once at a
+breakpoint, you can continue execution using the <cite>c</cite> and <cite>si</cite>
+commands:
+<cite>c</cite> causes QEMU to continue execution until the next breakpoint (or until
+you press Ctrl-C in GDB), and <cite>si N</cite> steps through the instructions
+<em>N</em> at a time.</p>
+<p>To examine instructions in memory (besides the immediate next one to be
+executed, which GDB prints automatically), you use the <cite>x/i</cite> command. This
+command has the syntax <cite>x/Ni ADDR</cite>, where <em>N</em> is the number of
+consecutive instructions to disassemble and <em>ADDR</em> is the memory address
+at which to start disassembling.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 3.</strong>
+Take a look at the <a class="reference external" href="./tools.html">lab tools guide</a>,
+especially the section on GDB commands.
+Even if you’re familiar with GDB, this includes some esoteric GDB
+commands that are useful for OS work.</p>
+<p>Set a breakpoint at address 0x7c00, which is where the boot sector will
+be loaded. Continue execution until that breakpoint. Trace through the
+code in <code class="docutils literal notranslate"><span class="pre">boot/boot.S</span></code>, using the source code and the disassembly file
+<code class="docutils literal notranslate"><span class="pre">obj/boot/boot.asm</span></code> to keep track of where you are. Also use the
+<cite>x/i</cite> command in GDB to disassemble sequences of instructions in the
+boot loader, and compare the original boot loader source code with both
+the disassembly in <code class="docutils literal notranslate"><span class="pre">obj/boot/boot.asm</span></code> and GDB.</p>
+<p>Trace into <code class="docutils literal notranslate"><span class="pre">bootmain()</span></code> in <code class="docutils literal notranslate"><span class="pre">boot/main.c</span></code>, and then into
+<code class="docutils literal notranslate"><span class="pre">readsect()</span></code>. Identify the exact assembly instructions that correspond
+to each of the statements in <code class="docutils literal notranslate"><span class="pre">readsect()</span></code>. Trace through the rest of
+<code class="docutils literal notranslate"><span class="pre">readsect()</span></code> and back out into <code class="docutils literal notranslate"><span class="pre">bootmain()</span></code>, and identify the begin
+and end of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that reads the remaining sectors of the
+kernel from the disk. Find out what code will run when the loop is
+finished, set a breakpoint there, and continue to that breakpoint. Then
+step through the remainder of the boot loader.</p>
+</div>
+<p>Be able to answer the following questions:</p>
+<ul class="simple">
+<li><p>At what point does the processor start executing 32-bit code? What
+exactly causes the switch from 16- to 32-bit mode?</p></li>
+<li><p>What is the <em>last</em> instruction of the boot loader executed, and what
+is the <em>first</em> instruction of the kernel it just loaded?</p></li>
+<li><p><em>Where</em> is the first instruction of the kernel?</p></li>
+<li><p>How does the boot loader decide how many sectors it must read in
+order to fetch the entire kernel from disk? Where does it find this
+information?</p></li>
+</ul>
+<section id="loading-the-kernel">
+<h3>Loading the Kernel<a class="headerlink" href="#loading-the-kernel" title="Permalink to this heading">¶</a></h3>
+<p>We will now look in further detail at the C language portion of the boot
+loader, in <code class="docutils literal notranslate"><span class="pre">boot/main.c</span></code>. But before doing so, this is a good time to
+stop and review some of the basics of C programming.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 4.</strong>
+Read about programming with pointers in C. The best
+reference for the C language is <em>The C Programming Language</em> by Brian
+Kernighan and Dennis Ritchie (known as ‘K&amp;R’). We recommend that
+students purchase this book (or free/online resources in <a class="reference external" href="../refs.html">the reference page</a>).</p>
+<p>Read 5.1 (Pointers and Addresses) through 5.5 (Character Pointers and
+Functions) in K&amp;R. Then download the code for
+<a class="reference external" href="../r/pointers.c">pointers.c</a>, run it, and make sure you understand where
+all of the printed values come from. In particular, make sure you
+understand where the pointer addresses in lines 1 and 6 come from, how
+all the values in lines 2 through 4 get there, and why the values
+printed in line 5 are seemingly corrupted.</p>
+<p>There are other references on pointers in C (e.g.,
+<a class="reference external" href="../r/pointers.pdf">A tutorial by Ted Jensen</a> that cites K&amp;R heavily), though
+not as strongly recommended.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unless you are already thoroughly versed in C, do not skip or
+even skim this reading exercise. If you do not really understand
+pointers in C, you will suffer untold pain and misery in subsequent
+labs, and then eventually come to understand them the hard way. Trust
+us; you don’t want to find out what “the hard way” is.</p>
+</div>
+<p>To make sense out of <code class="docutils literal notranslate"><span class="pre">boot/main.c</span></code> you’ll need to know what an ELF
+binary is. When you compile and link a C program such as the JOS kernel,
+the compiler transforms each C source (.c) file into an <em>object</em>
+(.o) file containing assembly language instructions encoded in
+the binary format expected by the hardware. The linker then combines all
+of the compiled object files into a single <em>binary image</em> such as
+<code class="docutils literal notranslate"><span class="pre">obj/kern/kernel</span></code>, which in this case is a binary in the ELF format,
+which stands for “Executable and Linkable Format”.</p>
+<p>Full information about this format is available in
+<a class="reference external" href="../r/elf.pdf">the ELF specification</a> on <a class="reference external" href="../refs.html">the reference page</a>,
+but you will not need to delve very
+deeply into the details of this format in this class. Although as a
+whole the format is quite powerful and complex, most of the complex
+parts are for supporting dynamic loading of shared libraries, which we
+will not do in this class. The
+<a class="reference external" href="http://en.wikipedia.org/wiki/Executable_and_Linkable_Format">Wikipedia page</a>
+has a short description.</p>
+<p>For purposes of cs3210, you can consider an ELF executable to be a header
+with loading information, followed by several <em>program sections</em>, each
+of which is a contiguous chunk of code or data intended to be loaded
+into memory at a specified address. The boot loader does not modify the
+code or data; it loads it into memory and starts executing it.</p>
+<p>An ELF binary starts with a fixed-length <em>ELF header</em>, followed by a
+variable-length <em>program header</em> listing each of the program sections to
+be loaded. The C definitions for these ELF headers are in <code class="docutils literal notranslate"><span class="pre">inc/elf.h</span></code>.
+The program sections we’re interested in are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.text</span></code>: The program’s executable instructions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.rodata</span></code>: Read-only data, such as ASCII string constants produced
+by the C compiler. (We will not bother setting up the hardware to
+prohibit writing, however.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.data</span></code>: The data section holds the program’s initialized data,
+such as global variables declared with initializers like
+<code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">5;</span></code>.</p></li>
+</ul>
+<p>When the linker computes the memory layout of a program, it reserves
+space for <em>uninitialized</em> global variables, such as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">x;</span></code>, in a
+section called <code class="docutils literal notranslate"><span class="pre">.bss</span></code> that immediately follows <code class="docutils literal notranslate"><span class="pre">.data</span></code> in memory. C
+requires that “uninitialized” global variables start with a value of
+zero. Thus there is no need to store contents for <code class="docutils literal notranslate"><span class="pre">.bss</span></code> in the ELF
+binary; instead, the linker records just the address and size of the
+<code class="docutils literal notranslate"><span class="pre">.bss</span></code> section. The loader or the program itself must arrange to zero
+the <code class="docutils literal notranslate"><span class="pre">.bss</span></code> section.</p>
+<p>Examine the full list of the names, sizes, and link addresses of all the
+sections in the kernel executable by typing:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ objdump -h obj/kern/kernel
+
+obj/kern/kernel:     file format elf32-i386
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  <span class="m">0</span> .text         <span class="m">00001861</span>  f0100000  <span class="m">00100000</span>  <span class="m">00001000</span>  <span class="m">2</span>**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  <span class="m">1</span> .rodata       <span class="m">00000714</span>  f0101880  <span class="m">00101880</span>  <span class="m">00002880</span>  <span class="m">2</span>**5
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  ...
+  <span class="m">4</span> .data         0000a300  f0108000  <span class="m">00108000</span>  <span class="m">00009000</span>  <span class="m">2</span>**12
+                  CONTENTS, ALLOC, LOAD, DATA
+  <span class="m">5</span> .bss          <span class="m">00000644</span>  f0112300  <span class="m">00112300</span>  <span class="m">00013300</span>  <span class="m">2</span>**5
+                  ALLOC
+  ...
+</pre></div>
+</div>
+<p>You will see many more sections than the ones we listed above, but the
+others are not important for our purposes. Most of the others are to
+hold debugging information, which is typically included in the program’s
+executable file but not loaded into memory by the program loader.</p>
+<p>Take particular note of the “VMA” (or <em>link address</em>) and the “LMA” (or
+<em>load address</em>) of the <code class="docutils literal notranslate"><span class="pre">.text</span></code> section. The load address of a section
+is the memory address at which that section should be loaded into
+memory.</p>
+<p>The link address of a section is the memory address from which the
+section expects to execute. The linker encodes the link address in the
+binary in various ways, such as when the code needs the address of a
+global variable, with the result that a binary usually won’t work if it
+is executing from an address that it is not linked for. (It is possible
+to generate <em>position-independent</em> code that does not contain any such
+absolute addresses. This is used extensively by modern shared libraries,
+but it has performance and complexity costs, so we won’t be using it in
+cs3210.)</p>
+<p>Typically, the link and load addresses are the same. For example, look
+at the <code class="docutils literal notranslate"><span class="pre">.text</span></code> section of the boot loader:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ objdump -h obj/boot/boot.out
+
+obj/boot/boot.out:     file format elf32-i386
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  <span class="m">0</span> .text         <span class="m">00000186</span>  00007c00  00007c00  <span class="m">00000074</span>  <span class="m">2</span>**2
+                  CONTENTS, ALLOC, LOAD, CODE
+  ...
+</pre></div>
+</div>
+<p>The boot loader uses the ELF <em>program headers</em> to decide how to load the
+sections. The program headers specify which parts of the ELF object to
+load into memory and the destination address each should occupy. You can
+inspect the program headers by typing:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ objdump -x obj/kern/kernel
+
+obj/kern/kernel:     file format elf32-i386
+obj/kern/kernel
+architecture: i386, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x0010000c
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0xf0100000 paddr 0x00100000 align <span class="m">2</span>**12
+         filesz 0x00007108 memsz 0x00007108 flags r-x
+    LOAD off    0x00009000 vaddr 0xf0108000 paddr 0x00108000 align <span class="m">2</span>**12
+         filesz 0x0000a300 memsz 0x0000a944 flags rw-
+   STACK off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align <span class="m">2</span>**4
+         filesz 0x00000000 memsz 0x00000000 flags rwx
+...
+</pre></div>
+</div>
+<p>The program headers are then listed under “Program Headers” in the
+output of objdump. The areas of the ELF object that need to be loaded
+into memory are those that are marked as “LOAD”. Other information for
+each program header is given, such as the virtual address (“vaddr”), the
+physical address (“paddr”), and the size of the loaded area (“memsz” and
+“filesz”).</p>
+<p>Back in <code class="docutils literal notranslate"><span class="pre">boot/main.c</span></code>, the <code class="docutils literal notranslate"><span class="pre">ph-&gt;p_pa</span></code> field of each program header
+contains the segment’s destination physical address (in this case, it
+really is a physical address, though the ELF specification is vague on
+the actual meaning of this field).</p>
+<p>The BIOS loads the boot sector into memory starting at address 0x7c00,
+so this is the boot sector’s load address. This is also where the boot
+sector executes from, so this is also its link address. We set the link
+address by passing <code class="docutils literal notranslate"><span class="pre">-Ttext</span> <span class="pre">0x7C00</span></code> to the linker in <code class="docutils literal notranslate"><span class="pre">boot/Makefrag</span></code>,
+so the linker will produce the correct memory addresses in the generated
+code.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 5.</strong>
+Trace through the first few instructions of the boot loader
+again and identify the first instruction that would “break” or otherwise
+do the wrong thing if you were to get the boot loader’s link address
+wrong. Then change the link address in <code class="docutils literal notranslate"><span class="pre">boot/Makefrag</span></code> to something
+wrong, run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code>, recompile the lab with <code class="docutils literal notranslate"><span class="pre">make</span></code>, and trace into the
+boot loader again to see what happens. Don’t forget to change the link
+address back and <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> again afterward!</p>
+</div>
+<p>Look back at the load and link addresses for the kernel. Unlike the boot
+loader, these two addresses aren’t the same: the kernel is telling the
+boot loader to load it into memory at a low address (1 megabyte), but it
+expects to execute from a high address. We’ll dig in to how we make this
+work in the next section.</p>
+<p>Besides the section information, there is one more field in the ELF
+header that is important to us, named <code class="docutils literal notranslate"><span class="pre">e_entry</span></code>. This field holds the
+link address of the <em>entry point</em> in the program: the memory address in
+the program’s text section at which the program should begin executing.
+You can see the entry point:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ readelf -h obj/kern/kernel
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00
+  Class:                             ELF32
+  Data:                              2&#39;s complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           Intel 80386
+  Version:                           0x1
+  Entry point address:               0x10000c
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          81124 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         3
+  Size of section headers:           40 (bytes)
+  Number of section headers:         11
+  Section header string table index: 8
+</pre></div>
+</div>
+<p>You should now be able to understand the minimal ELF loader in
+<code class="docutils literal notranslate"><span class="pre">boot/main.c</span></code>. It reads each section of the kernel from disk into
+memory at the section’s load address and then jumps to the kernel’s
+entry point.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 6.</strong>
+We can examine memory using GDB’s x command. The
+<a class="reference external" href="https://sourceware.org/gdb/onlinedocs/gdb/Memory.html">GDB manual</a>
+has full details, but for now, it is enough to know that the command
+<cite>x/Nx ADDR</cite> prints N words of memory at ADDR (e.g.,
+<cite>x/10x 0x10000c</cite> to print 10 words from 0x10000c).
+<strong>Warning</strong>: The size of a word is not a universal standard.
+In GNU assembly, a word is two
+bytes (the ‘w’ in xorw, which stands for word, means 2 bytes) and
+in GDB, a word means 4 bytes (and a giant for 8 bytes).</p>
+<p>Reset the machine (exit QEMU/GDB and start them again). Examine the 8
+words of memory at 0x00100000 at the point the BIOS enters the boot
+loader, and then again at the point the boot loader enters the kernel.
+Why are they different? What is there at the second breakpoint? (You do
+not really need to use QEMU to answer this question. Just think.)</p>
+</div>
+</section>
+</section>
+<section id="part-3-the-kernel">
+<h2>Part 3: The Kernel<a class="headerlink" href="#part-3-the-kernel" title="Permalink to this heading">¶</a></h2>
+<p>We will now start to examine the minimal JOS kernel in a bit more
+detail. (And you will finally get to write some code!). Like the boot
+loader, the kernel begins with some assembly language code that sets
+things up so that C language code can execute properly.</p>
+<section id="using-virtual-memory-to-work-around-position-dependence">
+<h3>Using virtual memory to work around position dependence<a class="headerlink" href="#using-virtual-memory-to-work-around-position-dependence" title="Permalink to this heading">¶</a></h3>
+<p>When you inspected the boot loader’s link and load addresses above, they
+matched perfectly, but there was a (rather large) disparity between the
+<em>kernel’s</em> link address (as printed by <code class="docutils literal notranslate"><span class="pre">objdump</span></code>) and its load address. Go
+back and check both and make sure you can see what we’re talking about.
+(Linking the kernel is more complicated than the boot loader, so the
+link and load addresses are at the top of <code class="docutils literal notranslate"><span class="pre">kern/kernel.ld</span></code>.)</p>
+<p>Operating system kernels often like to be linked and run at very high
+<em>virtual address</em>, such as <code class="docutils literal notranslate"><span class="pre">0xf0100000</span></code>, in order to leave the lower part
+of the processor’s virtual address space for user programs to use. The
+reason for this arrangement will become clearer in the next lab.</p>
+<p>Many machines don’t have any physical memory at address <code class="docutils literal notranslate"><span class="pre">0xf0100000</span></code>, so
+we can’t count on being able to store the kernel there. Instead, we will
+use the processor’s memory management hardware to map virtual address
+<code class="docutils literal notranslate"><span class="pre">0xf0100000</span></code> (the link address at which the kernel code <em>expects</em> to run)
+to physical address <code class="docutils literal notranslate"><span class="pre">0x00100000</span></code> (where the boot loader loaded the kernel
+into physical memory). This way, although the kernel’s virtual address
+is high enough to leave plenty of address space for user processes, it
+will be loaded in physical memory at the 1MB point in the PC’s RAM, just
+above the BIOS ROM. This approach requires that the PC have at least a
+few megabytes of physical memory (so that physical address <code class="docutils literal notranslate"><span class="pre">0x00100000</span></code>
+works), but this is likely to be true of any PC built after about 1990.</p>
+<p>In fact, in the next lab, we will map the <em>entire</em> bottom 256MB of the
+PC’s physical address space, from physical addresses <code class="docutils literal notranslate"><span class="pre">0x00000000</span></code> through
+<code class="docutils literal notranslate"><span class="pre">0x0fffffff</span></code>, to virtual addresses <code class="docutils literal notranslate"><span class="pre">0xf0000000</span></code> through <code class="docutils literal notranslate"><span class="pre">0xffffffff</span></code>
+respectively. You should now see why JOS can only use the first 256MB of
+physical memory.</p>
+<p>For now, we’ll just map the first 4MB of physical memory, which will be
+enough to get us up and running. We do this using the hand-written,
+statically-initialized page directory and page table in
+<code class="docutils literal notranslate"><span class="pre">kern/entrypgdir.c</span></code>. For now, you don’t have to understand the details
+of how this works, just the effect that it accomplishes. Up until
+<code class="docutils literal notranslate"><span class="pre">kern/entry.S</span></code> sets the <code class="docutils literal notranslate"><span class="pre">CR0_PG</span></code> flag, memory references are treated
+as physical addresses (strictly speaking, they’re linear addresses, but
+<code class="docutils literal notranslate"><span class="pre">boot/boot.S</span></code> set up an identity mapping from linear addresses to physical
+addresses and we’re never going to change that). Once <code class="docutils literal notranslate"><span class="pre">CR0_PG</span></code> is set,
+memory references are virtual addresses that get translated by the
+virtual memory hardware to physical addresses. <code class="docutils literal notranslate"><span class="pre">entry_pgdir</span></code>
+translates virtual addresses in the range <code class="docutils literal notranslate"><span class="pre">0xf0000000</span></code> through <code class="docutils literal notranslate"><span class="pre">0xf0400000</span></code>
+to physical addresses <code class="docutils literal notranslate"><span class="pre">0x00000000</span></code> through <code class="docutils literal notranslate"><span class="pre">0x00400000</span></code>, as well as virtual
+addresses <code class="docutils literal notranslate"><span class="pre">0x00000000</span></code> through <code class="docutils literal notranslate"><span class="pre">0x00400000</span></code> to physical addresses <code class="docutils literal notranslate"><span class="pre">0x00000000</span></code>
+through <code class="docutils literal notranslate"><span class="pre">0x00400000</span></code>. Any virtual address that is not in one of these two
+ranges will cause a hardware exception which, since we haven’t set up
+interrupt handling yet, will cause QEMU to dump the machine state and
+exit.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 7.</strong>
+Use QEMU and GDB to trace into the JOS kernel and stop at
+the <cite>movl %eax, %cr0</cite>. Examine memory at 0x00100000 and at 0xf0100000.
+Now, single step over that instruction using the stepi GDB command.
+Again, examine memory at 0x00100000 and at 0xf0100000. Make sure you
+understand what just happened.</p>
+<p>What is the first instruction <em>after</em> the new mapping is established
+that would fail to work properly if the mapping weren’t in place?
+Comment out the <cite>movl %eax, %cr0</cite> in <code class="docutils literal notranslate"><span class="pre">kern/entry.S</span></code>, trace into it,
+and see if you were right.</p>
+</div>
+</section>
+<section id="formatted-printing-to-the-console">
+<h3>Formatted Printing to the Console<a class="headerlink" href="#formatted-printing-to-the-console" title="Permalink to this heading">¶</a></h3>
+<p>Most people take functions like <code class="docutils literal notranslate"><span class="pre">printf()</span></code> for granted, sometimes even
+thinking of them as “primitives” of the C language. But in an OS kernel,
+we have to implement all I/O ourselves.</p>
+<p>Read through <code class="docutils literal notranslate"><span class="pre">kern/printf.c</span></code>, <code class="docutils literal notranslate"><span class="pre">lib/printfmt.c</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">kern/console.c</span></code>, and make sure you understand their relationship. It
+will become clear in later labs why <code class="docutils literal notranslate"><span class="pre">printfmt.c</span></code> is located in the
+separate <code class="docutils literal notranslate"><span class="pre">lib/</span></code> directory.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 8.</strong>
+We have omitted a small fragment of code - the code
+necessary to print octal numbers using patterns of the form “%o”. Find
+and fill in this code fragment.</p>
+</div>
+<p>Be able to answer the following questions:</p>
+<ol class="arabic simple">
+<li><p>Explain the interface between <code class="docutils literal notranslate"><span class="pre">kern/printf.c</span></code> and <code class="docutils literal notranslate"><span class="pre">kern/console.c</span></code>.
+Specifically, what function does <code class="docutils literal notranslate"><span class="pre">kern/console.c</span></code> export? How is this
+function used by <code class="docutils literal notranslate"><span class="pre">kern/printf.c</span></code>?</p></li>
+<li><p>Explain the following from <code class="docutils literal notranslate"><span class="pre">kern/console.c</span></code>:</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">crt_pos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">CRT_SIZE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">3</span><span class="w">   </span><span class="n">memcpy</span><span class="p">(</span><span class="n">crt_buf</span><span class="p">,</span><span class="w"> </span><span class="n">crt_buf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">CRT_COLS</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">CRT_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">CRT_COLS</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">uint16_t</span><span class="p">));</span><span class="w"></span>
+<span class="linenos">4</span><span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRT_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">CRT_COLS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CRT_SIZE</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">5</span><span class="w">     </span><span class="n">crt_buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0700</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">6</span><span class="w">   </span><span class="n">crt_pos</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">CRT_COLS</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">7</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>For the following questions you might wish to consult the notes for
+Lecture 2. These notes cover GCC’s calling convention on the x86.</p>
+<p>Trace the execution of the following code step-by-step:</p>
+</li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="n">cprintf</span><span class="p">(</span><span class="s">&quot;x %d, y %x, z %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>In the call to <code class="docutils literal notranslate"><span class="pre">cprintf()</span></code>, to what does <code class="docutils literal notranslate"><span class="pre">fmt</span></code> point? To what
+does <code class="docutils literal notranslate"><span class="pre">ap</span></code> point?</p></li>
+<li><p>List (in order of execution) each call to <code class="docutils literal notranslate"><span class="pre">cons_putc</span></code>,
+<code class="docutils literal notranslate"><span class="pre">va_arg</span></code>, and <code class="docutils literal notranslate"><span class="pre">vcprintf</span></code>. For <code class="docutils literal notranslate"><span class="pre">cons_putc</span></code>, list its argument
+as well. For <code class="docutils literal notranslate"><span class="pre">va_arg</span></code>, list what <code class="docutils literal notranslate"><span class="pre">ap</span></code> points to before and
+after the call. For <code class="docutils literal notranslate"><span class="pre">vcprintf</span></code> list the values of its two
+arguments.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Run the following code.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00646c72</span><span class="p">;</span><span class="w"></span>
+<span class="n">cprintf</span><span class="p">(</span><span class="s">&quot;H%x Wo%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">57616</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>What is the output? Explain how this output is arrived at in the
+step-by-step manner of the previous exercise.
+<a class="reference external" href="http://man7.org/linux/man-pages/man7/ascii.7.html">Here’s an ASCII table</a>
+(or type <cite>man ascii</cite>)
+that maps bytes to characters.</p>
+<p>The output depends on that fact that the x86 is little-endian. If the
+x86 were instead big-endian what would you set <code class="docutils literal notranslate"><span class="pre">i</span></code> to in order to
+yield the same output? Would you need to change <code class="docutils literal notranslate"><span class="pre">57616</span></code> to a
+different value?</p>
+<p><a class="reference external" href="http://www.webopedia.com/TERM/b/big_endian.html">Here’s a description of little- and big-endian</a>
+and <a class="reference external" href="http://www.networksorcery.com/enp/ien/ien137.txt">a more whimsical description</a>.</p>
+<ol class="arabic simple" start="5">
+<li><p>In the following code, what is going to be printed after <code class="docutils literal notranslate"><span class="pre">'y='</span></code>?
+(note: the answer is not a specific value.) Why does this happen?</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">cprintf</span><span class="p">(</span><span class="s">&quot;x=%d y=%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Let’s say that GCC changed its calling convention so that it pushed
+arguments on the stack in declaration order, so that the last
+argument is pushed last. How would you have to change <code class="docutils literal notranslate"><span class="pre">cprintf</span></code> or
+its interface so that it would still be possible to pass it a
+variable number of arguments?</p></li>
+</ol>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge.</strong>
+Enhance the console to allow text to be printed in different
+colors. The traditional way to do this is to make it interpret <a class="reference external" href="http://rrbrandt.dee.ufcg.edu.br/en/docs/ansi/">ANSI
+escape sequences</a>
+embedded in the text strings printed to the console, but you may use any
+mechanism you like. There is plenty of information on <a class="reference external" href="../refs.html">the cs3210
+reference page</a> and elsewhere on the web on
+programming the VGA display hardware. If you’re feeling really
+adventurous, you could try switching the VGA hardware into a graphics
+mode and making the console draw text onto the graphical frame buffer.</p>
+</div>
+</section>
+<section id="the-stack">
+<h3>The Stack<a class="headerlink" href="#the-stack" title="Permalink to this heading">¶</a></h3>
+<p>In the final exercise of this lab, we will explore in more detail the
+way the C language uses the stack on the x86, and in the process write a
+useful new kernel monitor function that prints a <em>backtrace</em> of the
+stack: a list of the saved Instruction Pointer (IP) values from the
+nested <code class="docutils literal notranslate"><span class="pre">call</span></code> instructions that led to the current point of execution.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 9.</strong> Determine where the kernel initializes its stack, and
+exactly where in memory its stack is located. How does the kernel
+reserve space for its stack? And at which “end” of this reserved area is
+the stack pointer initialized to point to?</p>
+</div>
+<p>The x86 stack pointer (<code class="docutils literal notranslate"><span class="pre">esp</span></code> register) points to the lowest location
+on the stack that is currently in use. Everything <em>below</em> that location
+in the region reserved for the stack is free. Pushing a value onto the
+stack involves decreasing the stack pointer and then writing the value
+to the place the stack pointer points to. Popping a value from the stack
+involves reading the value the stack pointer points to and then
+increasing the stack pointer. In 32-bit mode, the stack can only hold
+32-bit values, and esp is always divisible by four. Various x86
+instructions, such as <code class="docutils literal notranslate"><span class="pre">call</span></code>, are “hard-wired” to use the stack
+pointer register.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ebp</span></code> (base pointer) register, in contrast, is associated with the
+stack primarily by software convention. On entry to a C function, the
+function’s <em>prologue</em> code normally saves the previous function’s base
+pointer by pushing it onto the stack, and then copies the current
+<code class="docutils literal notranslate"><span class="pre">esp</span></code> value into <code class="docutils literal notranslate"><span class="pre">ebp</span></code> for the duration of the function. If all the
+functions in a program obey this convention, then at any given point
+during the program’s execution, it is possible to trace back through the
+stack by following the chain of saved <code class="docutils literal notranslate"><span class="pre">ebp</span></code> pointers and determining
+exactly what nested sequence of function calls caused this particular
+point in the program to be reached. This capability can be particularly
+useful, for example, when a particular function causes an <code class="docutils literal notranslate"><span class="pre">assert</span></code>
+failure or <code class="docutils literal notranslate"><span class="pre">panic</span></code> because bad arguments were passed to it, but you
+aren’t sure <em>who</em> passed the bad arguments. A stack backtrace lets you
+find the offending function.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 10.</strong>
+To become familiar with the C calling conventions on the
+x86, find the address of the <cite>test_backtrace`</cite> function in
+<code class="docutils literal notranslate"><span class="pre">obj/kern/kernel.asm</span></code>, set a breakpoint there, and examine what
+happens each time it gets called after the kernel starts. How many
+32-bit words does each recursive nesting level of <code class="docutils literal notranslate"><span class="pre">test_backtrace</span></code>
+push on the stack, and what are those words?
+NOTE. you’ll have to manually translate all
+breakpoint and memory addresses to linear addresses.</p>
+</div>
+<p>The above exercise should give you the information you need to implement
+a stack backtrace function, which you should call <code class="docutils literal notranslate"><span class="pre">mon_backtrace()</span></code>. A
+prototype for this function is already waiting for you in
+<code class="docutils literal notranslate"><span class="pre">kern/monitor.c</span></code>. You can do it entirely in C, but you may find the
+<code class="docutils literal notranslate"><span class="pre">read_ebp()</span></code> function in <code class="docutils literal notranslate"><span class="pre">inc/x86.h</span></code> useful. You’ll also have to
+hook this new function into the kernel monitor’s command list so that it
+can be invoked interactively by the user.</p>
+<p>The backtrace function should display a listing of function call frames
+in the following format:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Stack backtrace:
+  ebp f0109e58  eip f0100a62  args <span class="m">00000001</span> f0109e80 f0109e98 f0100ed2 <span class="m">00000031</span>
+  ebp f0109ed8  eip f01000d6  args <span class="m">00000000</span> <span class="m">00000000</span> f0100058 f0109f28 <span class="m">00000061</span>
+  ...
+</pre></div>
+</div>
+<p>The first line printed reflects the <em>currently executing</em> function,
+namely <code class="docutils literal notranslate"><span class="pre">mon_backtrace</span></code> itself, the second line reflects the function
+that called <code class="docutils literal notranslate"><span class="pre">mon_backtrace</span></code>, the third line reflects the function that
+called that one, and so on. You should print <em>all</em> the outstanding stack
+frames. By studying <code class="docutils literal notranslate"><span class="pre">kern/entry.S</span></code> you’ll find that there is an easy
+way to tell when to stop.</p>
+<p>Within each line, the <code class="docutils literal notranslate"><span class="pre">ebp</span></code> value indicates the base pointer into the
+stack used by that function: i.e., the position of the stack pointer
+just after the function was entered and the function prologue code set
+up the base pointer. The listed <code class="docutils literal notranslate"><span class="pre">eip</span></code> value is the function’s <em>return
+instruction pointer</em>: the instruction address to which control will
+return when the function returns. The return instruction pointer
+typically points to the instruction after the <code class="docutils literal notranslate"><span class="pre">call</span></code> instruction
+(why?). Finally, the five hex values listed after <code class="docutils literal notranslate"><span class="pre">args</span></code> are the first
+five arguments to the function in question, which would have been pushed
+on the stack just before the function was called. If the function was
+called with fewer than five arguments, of course, then not all five of
+these values will be useful. (Why can’t the backtrace code detect how
+many arguments there actually are? How could this limitation be fixed?)</p>
+<p>Here are a few specific points you read about in K&amp;R Chapter 5 that are
+worth remembering for the following exercise and for future labs.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*p</span> <span class="pre">=</span> <span class="pre">(int*)100</span></code>, then <code class="docutils literal notranslate"><span class="pre">(int)p</span> <span class="pre">+</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">(int)(p</span> <span class="pre">+</span> <span class="pre">1)</span></code>
+are different numbers: the first is <code class="docutils literal notranslate"><span class="pre">101</span></code> but the second is
+<code class="docutils literal notranslate"><span class="pre">104</span></code>. When adding an integer to a pointer, as in the second case,
+the integer is implicitly multiplied by the size of the object the
+pointer points to.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p[i]</span></code> is defined to be the same as <code class="docutils literal notranslate"><span class="pre">*(p+i)</span></code>, referring to the
+i’th object in the memory pointed to by p. The above rule for
+addition helps this definition work when the objects are larger than
+one byte.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;p[i]</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">(p+i)</span></code>, yielding the address of the i’th
+object in the memory pointed to by p.</p></li>
+</ul>
+<p>Although most C programs never need to cast between pointers and
+integers, operating systems frequently do. Whenever you see an addition
+involving a memory address, ask yourself whether it is an integer
+addition or pointer addition and make sure the value being added is
+appropriately multiplied or not.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 11.</strong>
+Implement the backtrace function as specified above. Use
+the same format as in the example, since otherwise the grading script
+will be confused. When you think you have it working right, run make
+grade to see if its output conforms to what our grading script expects,
+and fix it if it doesn’t. <em>After</em> you have handed in your Lab 1 code,
+you are welcome to change the output format of the backtrace function
+any way you like.</p>
+</div>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">read_ebp()</span></code>, note that GCC may generate “optimized” code
+that calls <code class="docutils literal notranslate"><span class="pre">read_ebp()</span></code> <em>before</em> <code class="docutils literal notranslate"><span class="pre">mon_backtrace()</span></code>’s function
+prologue, which results in an incomplete stack trace (the stack frame of
+the most recent function call is missing). While we have tried to
+disable optimizations that cause this reordering, you may want to
+examine the assembly of <code class="docutils literal notranslate"><span class="pre">mon_backtrace()</span></code> and make sure the call to
+<code class="docutils literal notranslate"><span class="pre">read_ebp()</span></code> is happening after the function prologue.</p>
+<p>At this point, your backtrace function should give you the addresses of
+the function callers on the stack that lead to <code class="docutils literal notranslate"><span class="pre">mon_backtrace()</span></code> being
+executed. However, in practice you often want to know the function names
+corresponding to those addresses. For instance, you may want to know
+which functions could contain a bug that’s causing your kernel to crash.</p>
+<p>To help you implement this functionality, we have provided the function
+<code class="docutils literal notranslate"><span class="pre">debuginfo_eip()</span></code>, which looks up <code class="docutils literal notranslate"><span class="pre">eip</span></code> in the symbol table and
+returns the debugging information for that address. This function is
+defined in <code class="docutils literal notranslate"><span class="pre">kern/kdebug.c</span></code>.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 12.</strong>
+Modify your stack backtrace function to display, for each
+<code class="docutils literal notranslate"><span class="pre">eip</span></code>, the function name, source file name, and line number
+corresponding to that <code class="docutils literal notranslate"><span class="pre">eip</span></code>.</p>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">debuginfo_eip</span></code>, where do <code class="docutils literal notranslate"><span class="pre">__STAB_*</span></code> come from? This question has
+a long answer; to help you to discover the answer, here are some things
+you might want to do:</p>
+<ul class="simple">
+<li><p>look in the file <code class="docutils literal notranslate"><span class="pre">kern/kernel.ld</span></code> for <code class="docutils literal notranslate"><span class="pre">__STAB_*</span></code></p></li>
+<li><p>run <code class="docutils literal notranslate"><span class="pre">objdump</span> <span class="pre">-h</span> <span class="pre">obj/kern/kernel</span></code></p></li>
+<li><p>run <code class="docutils literal notranslate"><span class="pre">objdump</span> <span class="pre">-G</span> <span class="pre">obj/kern/kernel</span></code></p></li>
+<li><p>run <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-pipe</span> <span class="pre">-nostdinc</span> <span class="pre">-O2</span> <span class="pre">-fno-builtin</span> <span class="pre">-I.</span> <span class="pre">-MD</span> <span class="pre">-Wall</span>
+<span class="pre">-Wno-format</span> <span class="pre">-DJOS\_KERNEL</span> <span class="pre">-gstabs</span> <span class="pre">-c</span> <span class="pre">-S</span> <span class="pre">kern/init.c</span></code>, and look at
+<code class="docutils literal notranslate"><span class="pre">kern/init.s</span></code>.</p></li>
+<li><p>see if the bootloader loads the symbol table in memory as part of
+loading the kernel binary</p></li>
+</ul>
+<p>Complete the implementation of <code class="docutils literal notranslate"><span class="pre">debuginfo_eip</span></code> by inserting the call
+to <code class="docutils literal notranslate"><span class="pre">stab_binsearch</span></code> to find the line number for an address.</p>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">backtrace</span></code> command to the kernel monitor, and extend your
+implementation of <code class="docutils literal notranslate"><span class="pre">mon_backtrace</span></code> to call <code class="docutils literal notranslate"><span class="pre">debuginfo_eip</span></code> and print
+a line for each stack frame of the form:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>K&gt; backtrace
+Stack backtrace:
+  ebp f010ff78  eip f01008ae  args <span class="m">00000001</span> f010ff8c <span class="m">00000000</span> f0110580 <span class="m">00000000</span>
+         kern/monitor.c:143: monitor+106
+  ebp f010ffd8  eip f0100193  args <span class="m">00000000</span> 00001aac <span class="m">00000660</span> <span class="m">00000000</span> <span class="m">00000000</span>
+         kern/init.c:49: i386_init+59
+  ebp f010fff8  eip f010003d  args <span class="m">00000000</span> <span class="m">00000000</span> 0000ffff 10cf9a00 0000ffff
+         kern/entry.S:70: &lt;unknown&gt;+0
+K&gt;
+</pre></div>
+</div>
+<p>Each line gives the file name and line within that file of the stack
+frame’s <code class="docutils literal notranslate"><span class="pre">eip</span></code>, followed by the name of the function and the offset of
+the <code class="docutils literal notranslate"><span class="pre">eip</span></code> from the first instruction of the function (e.g.,
+<code class="docutils literal notranslate"><span class="pre">monitor+106</span></code> means the return <code class="docutils literal notranslate"><span class="pre">eip</span></code> is 106 bytes past the beginning
+of <code class="docutils literal notranslate"><span class="pre">monitor</span></code>).</p>
+<p>Be sure to print the file and function names on a separate line, to
+avoid confusing the grading script.</p>
+<div class="admonition-tip admonition">
+<p class="admonition-title">Tip</p>
+<p><strong>Tip</strong>
+<code class="docutils literal notranslate"><span class="pre">printf</span></code> format strings provide an easy, albeit obscure, way to print
+non-null-terminated strings like those in STABS tables.
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%.*s&quot;,</span> <span class="pre">length,</span> <span class="pre">string)</span></code> prints at most <code class="docutils literal notranslate"><span class="pre">length</span></code> characters
+of <code class="docutils literal notranslate"><span class="pre">string</span></code>. Take a look at the printf man page to find out why this
+works.</p>
+</div>
+<p>You may find that some functions are missing from the backtrace. For
+example, you will probably see a call to <code class="docutils literal notranslate"><span class="pre">monitor()</span></code> but not to
+<code class="docutils literal notranslate"><span class="pre">runcmd()</span></code>. This is because the compiler in-lines some function calls.
+Other optimizations may cause you to see unexpected line numbers. If you
+get rid of the <code class="docutils literal notranslate"><span class="pre">-O2</span></code> from <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, the backtraces may make
+more sense (but your kernel will run more slowly).</p>
+<p><strong>This completes the lab.</strong> Please commit, tag, and push your completed lab to the github git repo. (Uncommitted changes will NOT be graded and will be considered late if pushed after the deadline!) If you wish to test that your handin is correct, clone it to a new directory and run the grading script and make sure your answers to any written questions are there in the new clone. You are responsible for adding, committing, tagging, and pushing all your work including answers to any questions.</p>
+<script src="../_static/disqus/disqus.js"></script>
+<link rel="stylesheet" type="text/css" href="../_static/disqus/disqus.css" />
+
+<script>
+  disqus_shortname = 'gatechcs3210staff';
+  $(document).ready(function() {
+    $("p").inlineDisqussions();
+  });
+</script></section>
+</section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lab2.html" class="btn btn-neutral float-right" title="Lab 2: Memory Management">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tools.html" class="btn btn-neutral" title="Tools"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Last updated on Jul 02, 2022.
+    </p>
+  </div>
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+<script src="../_static/email.js"></script>
+<script src="../_static/custom.js"></script>
+
+</body>
+</html>

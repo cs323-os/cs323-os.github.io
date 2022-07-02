@@ -1,0 +1,19 @@
+===========================================
+CS-323: Introduction to Operating Systems
+===========================================
+
+.. toctree::
+   :hidden:
+   :glob:
+
+   info
+   cal
+   refs
+   lab
+   proj
+   
+----
+News
+----
+
+- Schedule and content subject to change.

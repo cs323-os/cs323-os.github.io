@@ -1,0 +1,131 @@
+=============
+Final Project
+=============
+
+Introduction
+------------
+
+The main goal is to have fun and explore more advanced O/S topics. You
+do not have to do novel research. But if you are interested in exploring
+more adventurous topic as a research, feel free to let us know (mailto:staff).
+
+* Pre-proposals should be PDF, Word Document, or Markdown, have a cover sheet with title and team names, and have at least 1/2 page of text (not including title info) per group member (e.g., 4 member = 2 pages)
+    - Have the following parts: Intro, Background, Problem, Approach, Potential Problems or Issues
+* Demo and Presentation time slots will be assigned and timed. (Typical time limits have been 2 minutes for proposal and 8-10 minutes for demo.)
+* Write-up needs to be PDF, Word Document, or Markdown, have a cover sheet with title and team names and be at least 1 page of text (not including title info) per group member (e.g., 4 members = 4 pages)
+    - Have the following parts: Intro, Background, Problem, Approach, Results, Conclusions
+* Teams should work collaboratively using github using a group repo. In cases where lab work is used for the final project, team members must be careful not to share the lab code before turning it in.
+* Grades will be based on originality, difficulty, completeness (particularly in the write-up), correctness, presentation skills, and effective teamwork.
+
+We do realize that time
+is limited, so we don't expect you to re-write Linux by the end of the
+semester. Try to make sure your goals are reasonable; perhaps set a
+minimum goal that's definitely achievable (e.g., something of the
+scale of lab 6) and a more ambitious goal if things go well. For teams please no more than four to a team. 
+
+Deliverables
+------------
+
+1. Oct 2, 2017: Pre-proposal.
+2. Oct 19, 2017: Proposal Presentation.
+3. Nov 28, 2017: First demo day (tentative).
+4. Nov 30, 2017: Second demo day (tentative).
+5. Dec 5, 2017: Third demo day (or bonus topics)
+6. Dec 8, 2017: Final submission.
+
+Project ideas (if you found none)
+---------------------------------
+
+-  Build a virtual machine monitor that can run multiple guests (for
+   example, multiple instances of JOS), using `x86 VM
+   support <http://www.intel.com/technology/itj/2006/v10i3/1-hardware/3-software.htm>`__.
+-  Do something useful with the x86 `Trusted Execution
+   Technology <http://www.intel.com/content/dam/www/public/us/en/documents/guides/intel-txt-software-development-guide.pdf>`__.
+   For example, run applications without having to trust the kernel.
+   `Here <https://www.usenix.org/system/files/conference/osdi12/osdi12-final-51.pdf>`__
+   is a recent paper on this topic.
+-  Do something useful with the hardware protection of Intel SGX. `Here
+   is a recent paper using Intel
+   SGX <http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/17918-osdi14-paper-baumann.pdf>`__.
+-  Make the JOS file system support writing, file creation, logging for
+   durability, etc., perhaps taking ideas from Linux EXT3.
+-  Use file system ideas from `Soft
+   updates <http://www.ece.cmu.edu/~ganger/papers/osdi94.pdf>`__,
+   `WAFL <https://ng.gnunet.org/sites/default/files/10.1.1.40.3691.pdf>`__,
+   ZFS, or another advanced file system.
+-  Build a `distributed shared
+   memory <http://www.cdf.toronto.edu/~csc469h/winter/handouts/nitzberg91.pdf>`__
+   (DSM) system, so that you can run multi-threaded shared memory
+   parallel programs on a cluster of machines, using paging to give the
+   appearance of real shared memory. When a thread tries to access a
+   page that's on another machine, the page fault will give the DSM
+   system a chance to fetch the page over the network from whatever
+   machine currently stores.
+-  Allow processes to migrate from one machine to another over the
+   network. You'll need to do something about the various pieces of a
+   process's state, but since much state in JOS is in user-space it may
+   be easier than process migration on Linux.
+-  Implement the plan 9 protocol in JOS to be able to run OS functions over network.
+-  Use
+   `xfi <http://static.usenix.org/event/osdi06/tech/erlingsson.html>`__
+   to sandbox code within a process.
+-  Support x86 `2MB or 4MB
+   pages <http://en.wikipedia.org/wiki/Page_(computer_memory)>`__.
+-  Modify JOS to have kernel-supported threads inside processes. See
+   `in-class uthread
+   assignment <http://pdos.csail.mit.edu/cs3210/2012/homework/xv6-uthread.html>`__
+   to get started. Implementing scheduler activations would be one way
+   to do this project.
+-  Use fine-grained locking or lock-free concurrency in JOS in the
+   kernel or in the file server (after making it multithreaded). The
+   Linux kernel uses `read copy
+   update <http://en.wikipedia.org/wiki/Read-copy-update>`__ to be able
+   to perform read operations without holding locks. Explore RCU by
+   implementing it in JOS use it to support a name cache with lock-free
+   reads.
+-  Implement ideas from the `Exokernel
+   papers <http://pdos.csail.mit.edu/cs3210/2012/readings/engler95exokernel.pdf>`__,
+   for example the packet filter.
+-  Make JOS to have a soft real-time behavior. You will have to identify some
+   application for which this is useful.
+-  Make JOS executable on 64-bit CPUs. This includes redoing the virtual memory
+   system to use 4-level pages tables. See `reference
+   page <http://pdos.csail.mit.edu/cs3210/2012/reference.html>`__ for
+   some documentation.
+-  Port JOS to a different microprocessor (e.g., ARM). The `osdev
+   wiki <http://wiki.osdev.org/Main_Page>`__ may be helpful.
+-  A window system for JOS, including graphics driver and mouse. See
+   `reference
+   page <http://pdos.csail.mit.edu/cs3210/2012/reference.html>`__ for
+   some documentation.
+   `sqrt(x) <http://web.mit.edu/amdragon/www/pubs/sqrtx-cs3210.html>`__
+   is an example JOS window system (and writeup).
+-  Implement
+   `dune <https://www.usenix.org/system/files/conference/osdi12/osdi12-final-117.pdf>`__
+   to export privileged hardware instructions to user-space applications
+   in JOS.
+-  Implement debugging tracing / debugging functionality for JOS by writing
+   a user-level debugger, strace like functionality as well as hardware
+   register profiling (e.g., Oprofile, perf). You can further implement
+   call traces.
+-  Perform binary emulation for (static) Linux executables on the top of JOS.
+-  Implement a `Windows Manager  <http://www.gilesorr.com/wm/>`__ for JOS.
+-  Develop benchmark suite on JOS that should stress different subsystems
+   of JOS like memory, io, processes etc. The suite can comprise of
+   micro as well as macro bench-suites.
+-  Implement `ASLR <https://lwn.net/Articles/569635/>`__ for JOS.
+-  Make Qemu's debug console for JOS extensible like
+   `gdb's python extension <https://sourceware.org/gdb/current/onlinedocs/gdb/Python.html#Python>`__  .
+-  Implement a `DOS emulator <http://www.dosbox.com/>`__ for JOS
+   and try to run at least one game.
+-  Implement a toy x86 emulator that is sufficient to emulate JOS. You
+   can look at `bochs <http://bochs.sourceforge.net/>`__ for reference.
+-  Implement user-mode-JOS like `Usera Mode Linux <http://user-mode-linux.sourceforge.net/>`__
+   and try hosting virtual server or even sandboxing an application.
+- jitting xv6/jos (or tcc w/ xv6/jos src)
+- python in ring0
+
+..
+    xv6 w/ address sanitizer (w/ clang port)
+    xv6 lock profiler
+    

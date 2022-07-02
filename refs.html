@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reference Materials &mdash; CS 323, Fall 2022 1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="CS 323, Fall 2022 1 documentation" href="index.html"/>
+        <link rel="next" title="Lab" href="lab.html"/>
+        <link rel="prev" title="Preparation Questions" href="q.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> CS 323, Fall 2022</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="info.html">General Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="info.html#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#meetings">Meetings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#grades">Grades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#labs">Labs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#prep-questions">Prep Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#equipment-problems">Equipment Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#other-policies">Other Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#text">Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#staff-ta">Staff/TA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cal.html">Schedule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="q.html">Preparation Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reference Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c-programming">C Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unix">UNIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x86-emulation">x86 Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x86-assembly-language">x86 Assembly Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pc-hardware-programming">PC Hardware Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference-quizzes">Reference Quizzes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lab.html">Lab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lab/tools.html">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab1.html">Lab 1: Booting a PC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab2.html">Lab 2: Memory Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab3.html">Lab 3: User Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab4.html">Lab 4: Preemptive Multitasking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab5.html">Lab 5: File system, Spawn and Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab/lab6.html">Lab 6: Network Driver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proj.html">Final Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="proj.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj.html#deliverables">Deliverables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj.html#project-ideas-if-you-found-none">Project ideas (if you found none)</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">CS 323, Fall 2022</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Reference Materials</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/refs.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="reference-materials">
+<h1>Reference Materials<a class="headerlink" href="#reference-materials" title="Permalink to this heading">¶</a></h1>
+<section id="c-programming">
+<h2>C Programming<a class="headerlink" href="#c-programming" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.amazon.com/The-Programming-Language-Brian-Kernighan/dp/0131103628">The C programming language</a></p></li>
+<li><p><a class="reference external" href="http://icube-icps.unistra.fr/index.php/Jens_Gustedt">Modern C</a></p></li>
+<li><p><a class="reference external" href="http://c.learncodethehardway.org/book/">Learn C The Hard Way</a></p></li>
+</ul>
+</section>
+<section id="unix">
+<h2>UNIX<a class="headerlink" href="#unix" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=tc4ROCJYbm0">The UNIX Operating System</a>, AT&amp;T Archives at YouTube</p></li>
+<li><p><a class="reference external" href="https://www.cs.berkeley.edu/~brewer/cs262/UNIX-annotated.pdf">The UNIX Time-Sharing System</a>, Dennis M. Ritchie and Ken L.Thompson, Bell System Technical Journal</p></li>
+<li><p><a class="reference external" href="http://www.read.seas.harvard.edu/~kohler/class/aosref/ritchie84evolution.pdf">The Evolution of the Unix Time-sharing System</a>, Dennis M. Ritchie</p></li>
+<li><p><a class="reference external" href="r/unix6.pdf">A Commentary on the Sixth Edition UNIX Operating System</a>, John Lions</p></li>
+</ul>
+</section>
+<section id="x86-emulation">
+<h2>x86 Emulation<a class="headerlink" href="#x86-emulation" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.qemu.org/">QEMU</a>
+(<a class="reference external" href="http://wiki.qemu.org/Qemu-doc.html">manual</a>)</p></li>
+<li><p><a class="reference external" href="http://bochs.sourceforge.net">Bochs</a>
+(<a class="reference external" href="http://bochs.sourceforge.net/doc/docbook/user/index.html">manual</a>,
+<a class="reference external" href="http://bochs.sourceforge.net/doc/docbook/user/internal-debugger.html">debugging</a>)</p></li>
+</ul>
+</section>
+<section id="x86-assembly-language">
+<h2>x86 Assembly Language<a class="headerlink" href="#x86-assembly-language" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p><a class="reference external" href="http://pacman128.github.io/pcasm/">PC Assembly Language</a>, Paul A. Carter, July 2006.</p></li>
+<li><p><a class="reference external" href="http://www.logix.cz/michal/doc/i386/">Intel 80386 Programmer’s Reference Manual</a>,
+1987 (HTML). Much shorter than the full current Intel Architecture manuals below, but describes all processor features used in 6.828.</p></li>
+<li><p><a class="reference external" href="http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html">IA-32 Intel Architecture Software Developer’s Manuals</a>,</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="r/ia32/IA32-1.pdf">Volume I: Basic Architecture</a></p></li>
+<li><p><a class="reference external" href="r/ia32/IA32-2A.pdf">Volume 2A: Instruction Set Reference, A-M</a></p></li>
+<li><p><a class="reference external" href="r/ia32/IA32-2B.pdf">Volume 2B: Instruction Set Reference, N-Z</a></p></li>
+<li><p><a class="reference external" href="r/ia32/IA32-2C.pdf">Volume 2C: Instruction Set Reference, Safer mode extensions</a></p></li>
+<li><p><a class="reference external" href="r/ia32/IA32-3A.pdf">Volume 3A: System Programming Guide, Part 1</a></p></li>
+<li><p><a class="reference external" href="r/ia32/IA32-3B.pdf">Volume 3B: System Programming Guide, Part 2</a></p></li>
+<li><p><a class="reference external" href="r/ia32/IA32-3C.pdf">Volume 3C: System Programming Guide, Part 3</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Multiprocessor references:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="r/ia32/MPspec.pdf">MP specification</a></p></li>
+<li><p><a class="reference external" href="r/ia32/ioapic.pdf">IO APIC</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><a class="reference external" href="http://developer.amd.com/documentation/guides/Pages/default.aspx#manuals">AMD64 Architecture Programmer’s Manual</a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Covers both the “classic” 32-bit x86 architecture and the new 64-bit extensions supported
+by the latest AMD and Intel processors.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Writing inline assembly language with GCC:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://www.delorie.com/djgpp/doc/brennan/brennan_att_inline_djgpp.html">Brennan’s Guide to Inline Assembly</a></p></li>
+<li><p><a class="reference external" href="http://www.ibm.com/developerworks/linux/library/l-ia.html">Inline assembly for x86 in Linux</a></p></li>
+<li><p><a class="reference external" href="http://www.ibiblio.org/gferg/ldp/GCC-Inline-Assembly-HOWTO.html">GCC-Inline-Assembly-HOWTO</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Loading x86 executables in the ELF format:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Executable_and_Linkable_Format">Wikipedia: ELF</a></p></li>
+<li><p><a class="reference external" href="r/elf.pdf">Tool Interface Standard (TIS) Executable and Linking Format (ELF)</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="pc-hardware-programming">
+<h2>PC Hardware Programming<a class="headerlink" href="#pc-hardware-programming" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>General PC architecture information:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://web.archive.org/web/20040603021346/http://members.iweb.net.au/~pstorr/pcbook/">Phil Storrs PC Hardware book</a>, Phil Storrs, December 1998.</p></li>
+<li><p><a class="reference external" href="http://bochs.sourceforge.net/techdata.html">Bochs technical hardware specifications directory</a>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>General BIOS and PC bootstrap:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/BIOS_interrupt_call">Wikipedia: BIOS</a></p></li>
+<li><p><a class="reference external" href="http://www.htl-steyr.ac.at/~morg/pcinfo/hardware/interrupts/inte1at0.htm">BIOS Services and Software Interrupts</a>, Roger Morgan, 1997.</p></li>
+<li><p><a class="reference external" href="r/boot-cdrom.pdf">“El Torito” Bootable CD-ROM Format Specification</a>, Phoenix/IBM, January 1995.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>VGA display - kern/console.c</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://wiki.osdev.org/VGA_Hardware">OS-Dev</a>,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Video_Graphics_Array">Wikipedia: VGA</a>,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Color_Graphics_Adapter">Wikipedia: CGA</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/VESA_BIOS_Extensions">Wikipedia: VESA</a>,  <a class="reference external" href="http://web.archive.org/web/20080302090304/http://www.vesa.org/public/VBE/vbe3.pdf">VESA BIOS Extension (VBE) 3.0</a>,  <a class="reference external" href="http://www.vesa.org/">Video Electronics Standards Association</a>, September 1998. <a class="reference external" href="r/hardware/vbe3.pdf">(local copy)</a></p></li>
+<li><p>VGADOC, Finn Thøgersen, 2000. <a class="reference external" href="r/hardware/vgadoc/">(local copy - text)</a>, <a class="reference external" href="r/hardware/vgadoc4b.zip">(local copy - ZIP)</a></p></li>
+<li><p><a class="reference external" href="http://www.osdever.net/FreeVGA/home.htm">Free VGA Project</a>, J.D. Neal, 1998.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Keyboard and Mouse - kern/console.c</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://www.computer-engineering.org/index.html">Adam Chapweske’s resources</a>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>8253/8254 Programmable Interval Timer (PIT) - inc/timerreg.h</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://www.intel.com/design/archives/periphrl/docs/23124406.htm">82C54 CHMOS Programmable Interval Timer</a>, Intel, October 1994. <a class="reference external" href="r/hardware/82C54.pdf">(local copy)</a></p></li>
+<li><p><a class="reference external" href="http://www.decisioncards.com/io/tutorials/8254_tut.html">Data Solutions 8253/8254 Tutorial</a>, Data Solutions.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>8259/8259A Programmable Interrupt Controller (PIC) - kern/picirq.*</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="r/hardware/8259A.pdf">8259A Programmable Interrupt Controller</a>, Intel, December 1988.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl>
+<dt>Real-Time Clock (RTC) - kern/kclock.*</dt><dd><ul>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Nonvolatile_BIOS_memory">Wikipedia:Nonvolatile BIOS memory</a></p></li>
+<li><p><a class="reference external" href="http://web.archive.org/web/20040603021346/http://members.iweb.net.au/~pstorr/pcbook/">Phil Storrs PC Hardware book</a>, Phil Storrs, December 1998. In particular:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://web.archive.org/web/20040603021346/http://members.iweb.net.au/~pstorr/pcbook/book5/cmos.htm">Understanding the CMOS</a></p></li>
+<li><p><a class="reference external" href="http://web.archive.org/web/20040603021346/http://members.iweb.net.au/~pstorr/pcbook/book5/cmoslist.htm">A list of what is in the CMOS</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><a class="reference external" href="http://www.bioscentral.com/misc/cmosmap.htm">CMOS Map Table</a>, <a class="reference external" href="http://bochs.sourceforge.net/techspec/CMOS-reference.txt">CMOS Map</a> (by Padgett Peterson, May 1996).</p></li>
+<li><p><a class="reference external" href="r/hardware/M48T86.pdf">M48T86 PC Real-Time Clock</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>16550 UART Serial Port - kern/console.c</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Serial_port">Wikipedia: Serial port</a></p></li>
+<li><p><a class="reference external" href="http://www.ti.com/lit/ds/symlink/pc16550d.pdf">PC16550D Universal Asynchronous Receiver/Transmitter with FIFOs</a>, National Semiconductor, 1995.</p></li>
+<li><p><a class="reference external" href="http://byterunner.com/16550.html">Technical Data on 16550</a>, Byterunner Technologies.</p></li>
+<li><p><a class="reference external" href="http://www.beyondlogic.org/serial/serial.htm">Interfacing the Serial / RS232 Port</a>, CraigPeacock, August 2001.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>IEEE 1284 Parallel Port - kern/console.c</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://janaxelson.com/parport.htm">Parallel Port Central</a>, Jan Axelson.</p></li>
+<li><p><a class="reference external" href="http://www.fapo.com/porthist.htm">Parallel Port Background</a>,Warp Nine Engineering.</p></li>
+<li><p><a class="reference external" href="http://zone.ni.com/devzone/cda/tut/p/id/3466">IEEE 1284 - Updating the PC Parallel Port</a>, National Instruments.</p></li>
+<li><p><a class="reference external" href="http://www.beyondlogic.org/spp/parallel.htm">Interfacing the Standard Parallel Port</a>, Craig Peacock, August 2001.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>IDE hard drive controller - fs/ide.c</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[ATA8-ACS]: <a class="reference external" href="r/hardware/ATA8-ACS.pdf">AT Attachment 8 - ATA/ATAPI Command Set</a>, ANSI, May 2007.</p></li>
+<li><p><a class="reference external" href="r/hardware/IDE-BusMaster.pdf">Programming Interface for Bus Master IDE Controller</a>, Brad Hosler, Intel, May 1994.</p></li>
+<li><p><a class="reference external" href="http://www.cs.utexas.edu/~dahlin/Classes/UGOS/reading/ide.html">The Guide to ATA/ATAPI documentation</a>, Constantine Sapuntzakis, January 2002.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Sound cards: (not supported in 6.828 kernel, but you’re welcome to do it as a challenge problem!)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="r/hardware/SoundBlaster.pdf">Sound Blaster Series Hardware Programming Guide</a>, Creative Technology, 1996.</p></li>
+<li><p><a class="reference external" href="r/hardware/8237A.pdf">8237A High Performance Programmable DMA Controller</a>, Intel, September 1993.</p></li>
+<li><p><a class="reference external" href="http://homepages.cae.wisc.edu/~brodskye/sb16doc/sb16doc.html">Sound Blaster 16 Programming Document</a>, Ethan Brodsky, June 1997.</p></li>
+<li><p><a class="reference external" href="http://www.inversereality.org/tutorials/sound%20programming/soundprogramming.html">Sound Programming</a>, Inverse Reality.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>E100 Network Interface Card:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="r/hardware/8255X_OpenSDM.pdf">Intel 8255x 10/100 Mbps Ethernet Controller Family Open Source Software Developer Manual</a></p></li>
+<li><p><a class="reference external" href="r/hardware/82559ER_datasheet.pdf">82559ER Fast Ethernet PCI Controller Datasheet</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>E1000 Network Interface Card:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="r/hardware/8254x_GBe_SDM.pdf">PCI/PCI-X Family of Gigabit Ethernet Controllers Software Developer’s Manual</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Booting:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://www.gnu.org/software/grub/manual/multiboot/multiboot.html">Multiboot</a></p></li>
+<li><p><a class="reference external" href="r/miniboot.pdf">Minimal Intel Architecture Boot Loader</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="reference-quizzes">
+<h2>Reference Quizzes<a class="headerlink" href="#reference-quizzes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-828-operating-system-engineering-fall-2012/exams/">MIT OCW</a></p>
+<ul>
+<li><p><a class="reference external" href="q/MIT_q02_2.pdf">Quiz2 2002</a></p></li>
+<li><p><a class="reference external" href="q/MIT_q03_2.pdf">Quiz2 2003</a></p></li>
+<li><p><a class="reference external" href="q/MIT_q04_2.pdf">Quiz2 2004</a></p></li>
+<li><p><a class="reference external" href="q/MIT_q05_2.pdf">Quiz2 2005</a></p></li>
+<li><p><a class="reference external" href="q/MIT_q06_2.pdf">Quiz2 2006</a></p></li>
+<li><p><a class="reference external" href="q/MIT_q07_2.pdf">Quiz2 2007</a></p></li>
+<li><p><a class="reference external" href="q/MIT_q08_2.pdf">Quiz2 2008</a></p></li>
+<li><p><a class="reference external" href="q/MIT_q09_2.pdf">Quiz2 2009</a></p></li>
+<li><p><a class="reference external" href="q/MIT_q10_2.pdf">Quiz2 2010</a></p></li>
+<li><p><a class="reference external" href="q/MIT_q11_2.pdf">Quiz2 2011</a></p></li>
+<li><p><a class="reference external" href="q/MIT_q12_2.pdf">Quiz2 2012</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lab.html" class="btn btn-neutral float-right" title="Lab">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="q.html" class="btn btn-neutral" title="Preparation Questions"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Last updated on Jul 02, 2022.
+    </p>
+  </div>
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+<script src="_static/email.js"></script>
+<script src="_static/custom.js"></script>
+
+</body>
+</html>

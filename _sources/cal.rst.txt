@@ -1,0 +1,20 @@
+========
+Schedule
+========
+
+.. toctree::
+   :hidden:
+
+   q
+
+- The schedule will change as the course progresses, in part based on student
+  interests. If you are particularly interested in some topic not covered here,
+  send mail to the course staff.
+- Submit your answers (and questions) of each lecture via
+  `GitHub <https://github.gatech.edu/cs3210-fall2017/>`_,
+  and post your questions to colleagues (and staffs) on
+  `Piazza <https://piazza.com/gatech/fall2017/cs3210agr>`_.
+
+.. raw:: html
+   :file: cal.html
+          

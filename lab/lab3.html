@@ -1,0 +1,1285 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lab 3: User Environments &mdash; CS 323, Fall 2022 1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CS 323, Fall 2022 1 documentation" href="../index.html"/>
+        <link rel="up" title="Lab" href="../lab.html"/>
+        <link rel="next" title="Lab 4: Preemptive Multitasking" href="lab4.html"/>
+        <link rel="prev" title="Lab 2: Memory Management" href="lab2.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> CS 323, Fall 2022</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../info.html">General Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#meetings">Meetings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#grades">Grades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#labs">Labs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#prep-questions">Prep Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#equipment-problems">Equipment Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#other-policies">Other Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#text">Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#staff-ta">Staff/TA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cal.html">Schedule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../q.html">Preparation Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">Reference Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#c-programming">C Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#unix">UNIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#x86-emulation">x86 Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#x86-assembly-language">x86 Assembly Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#pc-hardware-programming">PC Hardware Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#reference-quizzes">Reference Quizzes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lab.html">Lab</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1.html">Lab 1: Booting a PC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2.html">Lab 2: Memory Management</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lab 3: User Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4.html">Lab 4: Preemptive Multitasking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5.html">Lab 5: File system, Spawn and Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6.html">Lab 6: Network Driver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proj.html">Final Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#deliverables">Deliverables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#project-ideas-if-you-found-none">Project ideas (if you found none)</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CS 323, Fall 2022</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../lab.html">Lab</a> &raquo;</li>
+      
+    <li>Lab 3: User Environments</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/lab/lab3.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="lab-3-user-environments">
+<h1>Lab 3: User Environments<a class="headerlink" href="#lab-3-user-environments" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Handed out:</strong> Thursday, Sep 21, 2017</p></li>
+<li><p><strong>Part A due:</strong> Friday, Oct 6, 2017</p></li>
+<li><p><strong>Part B due:</strong> Friday, Oct 13, 2017</p></li>
+</ul>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>In this lab you will implement the basic kernel facilities required to
+get a protected user-mode environment (i.e., “process”) running. You
+will enhance the JOS kernel to set up the data structures to keep track
+of user environments, create a single user environment, load a program
+image into it, and start it running. You will also make the JOS kernel
+capable of handling any system calls the user environment makes and
+handling any other exceptions it causes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this lab, the terms <em>environment</em> and <em>process</em> are
+interchangeable - both refer to an abstraction that allows you to run a
+program. We introduce the term “environment” instead of the traditional
+term “process” in order to stress the point that JOS environments and
+UNIX processes provide different interfaces, and do not provide the same
+semantics.</p>
+</div>
+<section id="getting-started">
+<h3>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h3>
+<p>Use Git to commit your changes after your Lab 2 submission (if any),
+fetch the latest version of the course repository, and then create a
+local branch called <code class="docutils literal notranslate"><span class="pre">lab3</span></code> based on our lab3 branch, <code class="docutils literal notranslate"><span class="pre">origin/lab3</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/cs3210/lab
+$ add git
+$ git commit -am <span class="s1">&#39;changes to lab2 after handin&#39;</span>
+Created commit 734fab7: changes to lab2 after handin
+ <span class="m">4</span> files changed, <span class="m">42</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">9</span> deletions<span class="o">(</span>-<span class="o">)</span>
+$ git pull
+Already up-to-date.
+$ git checkout -b lab3 origin/lab3
+Branch lab3 <span class="nb">set</span> up to track remote branch refs/remotes/origin/lab3.
+Switched to a new branch <span class="s2">&quot;lab3&quot;</span>
+$ git merge lab2
+Merge made by recursive.
+ kern/pmap.c <span class="p">|</span>   <span class="m">42</span> +++++++++++++++++++
+ <span class="m">1</span> files changed, <span class="m">42</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+$
+</pre></div>
+</div>
+<p>Lab 3 contains a number of new source files, which you should browse:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inc/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env.h</span></code></p></td>
+<td><p>Public definitions for
+user-mode environments</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trap.h</span></code></p></td>
+<td><p>Public definitions for
+trap handling</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">syscall.h</span></code></p></td>
+<td><p>Public definitions for
+system calls from user
+environments to the
+kernel</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">lib.h</span></code></p></td>
+<td><p>Public definitions for
+the user-mode support
+library</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kern/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env.h</span></code></p></td>
+<td><p>Kernel-private
+definitions for
+user-mode environments</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env.c</span></code></p></td>
+<td><p>Kernel code
+implementing user-mode
+environments</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trap.h</span></code></p></td>
+<td><p>Kernel-private trap
+handling definitions</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trap.c</span></code></p></td>
+<td><p>Trap handling code</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trapentry.S</span></code></p></td>
+<td><p>Assembly-language trap
+handler entry-points</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">syscall.h</span></code></p></td>
+<td><p>Kernel-private
+definitions for system
+call handling</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">syscall.c</span></code></p></td>
+<td><p>System call
+implementation code</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lib/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Makefrag</span></code></p></td>
+<td><p>Makefile fragment to
+build user-mode
+library,
+<code class="docutils literal notranslate"><span class="pre">obj/lib/libuser.a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">entry.S</span></code></p></td>
+<td><p>Assembly-language
+entry-point for user
+environments</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">libmain.c</span></code></p></td>
+<td><p>User-mode library setup
+code called from
+<code class="docutils literal notranslate"><span class="pre">entry.S</span></code></p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">syscall.c</span></code></p></td>
+<td><p>User-mode system call
+stub functions</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console.c</span></code></p></td>
+<td><p>User-mode
+implementations of
+<code class="docutils literal notranslate"><span class="pre">putchar</span></code> and
+<code class="docutils literal notranslate"><span class="pre">getchar</span></code>, providing
+console I/O</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exit.c</span></code></p></td>
+<td><p>User-mode
+implementation of
+<code class="docutils literal notranslate"><span class="pre">exit</span></code></p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">panic.c</span></code></p></td>
+<td><p>User-mode
+implementation of
+<code class="docutils literal notranslate"><span class="pre">panic</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">user/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>Various test programs
+to check kernel lab 3
+code</p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition, a number of the source files we handed out for lab2 are
+modified in lab3. To see the differences, you can type:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ git diff lab2
+</pre></div>
+</div>
+<p>You may also want to take another look at the <a class="reference external" href="../lab/tools.html">lab tools guide</a>,
+as it includes information on debugging
+user code that becomes relevant in this lab.</p>
+</section>
+<section id="lab-requirements">
+<h3>Lab Requirements<a class="headerlink" href="#lab-requirements" title="Permalink to this heading">¶</a></h3>
+<p>This lab is divided into two parts, A and B. Part A is due two weeks after
+this lab was assigned; you should commit your changes and push to GitHub
+your lab before the Part A deadline, even though your code may not yet
+pass all of the grade script tests. (If it does, great!) You only need
+to have all the grade script tests passing by the Part B deadline at the
+end of the second week.</p>
+<p>As in lab 2, you will need to do all of the regular exercises described
+in the lab and <em>at least one</em> challenge problem (for the entire lab, not
+for each part). Write up brief answers to the questions posed in the lab
+and a one or two paragraph description of what you did to solve your
+chosen challenge problem in a file called <code class="docutils literal notranslate"><span class="pre">answers-lab3.txt</span></code> in the
+top level of your <code class="docutils literal notranslate"><span class="pre">lab</span></code> directory. (If you implement more than one
+challenge problem, you only need to describe one of them in the
+write-up.) Do not forget to include the answer file in your submission
+with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">answers-lab3.txt.</span></code></p>
+</section>
+<section id="inline-assembly">
+<h3>Inline Assembly<a class="headerlink" href="#inline-assembly" title="Permalink to this heading">¶</a></h3>
+<p>In this lab you may find GCC’s inline assembly language feature useful,
+although it is also possible to complete the lab without using it. At
+the very least, you will need to be able to understand the fragments of
+inline assembly language (”<code class="docutils literal notranslate"><span class="pre">asm</span></code>” statements) that already exist in
+the source code we gave you. You can find several sources of information
+on GCC inline assembly language on <a class="reference external" href="../refs.html">the reference page</a>.</p>
+</section>
+</section>
+<section id="part-a-user-environments-and-exception-handling">
+<h2>Part A: User Environments and Exception Handling<a class="headerlink" href="#part-a-user-environments-and-exception-handling" title="Permalink to this heading">¶</a></h2>
+<p>The new include file <code class="docutils literal notranslate"><span class="pre">inc/env.h</span></code> contains basic definitions for user
+environments in JOS. Read it now. The kernel uses the <code class="docutils literal notranslate"><span class="pre">Env</span></code> data
+structure to keep track of each user environment. In this lab you will
+initially create just one environment, but you will need to design the
+JOS kernel to support multiple environments; lab 4 will take advantage
+of this feature by allowing a user environment to <code class="docutils literal notranslate"><span class="pre">fork</span></code> other
+environments.</p>
+<p>As you can see in <code class="docutils literal notranslate"><span class="pre">kern/env.c</span></code>, the kernel maintains three main global
+variables pertaining to environments:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Env</span><span class="w"> </span><span class="o">*</span><span class="n">envs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w">           </span><span class="c1">// All environments</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Env</span><span class="w"> </span><span class="o">*</span><span class="n">curenv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w">         </span><span class="c1">// The current env</span>
+<span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Env</span><span class="w"> </span><span class="o">*</span><span class="n">env_free_list</span><span class="p">;</span><span class="w">  </span><span class="c1">// Free environment list</span>
+</pre></div>
+</div>
+<p>Once JOS gets up and running, the <code class="docutils literal notranslate"><span class="pre">envs</span></code> pointer points to an array of
+<code class="docutils literal notranslate"><span class="pre">Env</span></code> structures representing all the environments in the system. In
+our design, the JOS kernel will support a maximum of <code class="docutils literal notranslate"><span class="pre">NENV</span></code>
+simultaneously active environments, although there will typically be far
+fewer running environments at any given time. (<code class="docutils literal notranslate"><span class="pre">NENV</span></code> is a constant
+<code class="docutils literal notranslate"><span class="pre">#define</span></code>’d in <code class="docutils literal notranslate"><span class="pre">inc/env.h</span></code>.) Once it is allocated, the <code class="docutils literal notranslate"><span class="pre">envs</span></code>
+array will contain a single instance of the <code class="docutils literal notranslate"><span class="pre">Env</span></code> data structure for
+each of the <code class="docutils literal notranslate"><span class="pre">NENV</span></code> possible environments.</p>
+<p>The JOS kernel keeps all of the inactive <code class="docutils literal notranslate"><span class="pre">Env</span></code> structures on the
+<code class="docutils literal notranslate"><span class="pre">env_free_list</span></code>. This design allows easy allocation and deallocation
+of environments, as they merely have to be added to or removed from the
+free list.</p>
+<p>The kernel uses the <code class="docutils literal notranslate"><span class="pre">curenv</span></code> symbol to keep track of the <em>currently
+executing</em> environment at any given time. During boot up, before the
+first environment is run, <code class="docutils literal notranslate"><span class="pre">curenv</span></code> is initially set to <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<section id="environment-state">
+<h3>Environment State<a class="headerlink" href="#environment-state" title="Permalink to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Env</span></code> structure is defined in <code class="docutils literal notranslate"><span class="pre">inc/env.h</span></code> as follows (although
+more fields will be added in future labs):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Env</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Trapframe</span><span class="w"> </span><span class="n">env_tf</span><span class="p">;</span><span class="w">    </span><span class="c1">// Saved registers</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Env</span><span class="w"> </span><span class="o">*</span><span class="n">env_link</span><span class="p">;</span><span class="w">       </span><span class="c1">// Next free Env</span>
+<span class="w">    </span><span class="n">envid_t</span><span class="w"> </span><span class="n">env_id</span><span class="p">;</span><span class="w">             </span><span class="c1">// Unique environment identifier</span>
+<span class="w">    </span><span class="n">envid_t</span><span class="w"> </span><span class="n">env_parent_id</span><span class="p">;</span><span class="w">      </span><span class="c1">// env_id of this env&#39;s parent</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="n">EnvType</span><span class="w"> </span><span class="n">env_type</span><span class="p">;</span><span class="w">      </span><span class="c1">// Indicates special system environments</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">env_status</span><span class="p">;</span><span class="w">        </span><span class="c1">// Status of the environment</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">env_runs</span><span class="p">;</span><span class="w">          </span><span class="c1">// Number of times environment has run</span>
+
+<span class="w">    </span><span class="c1">// Address space</span>
+<span class="w">    </span><span class="n">pde_t</span><span class="w"> </span><span class="o">*</span><span class="n">env_pgdir</span><span class="p">;</span><span class="w">           </span><span class="c1">// Kernel virtual address of page dir</span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Here’s what the <code class="docutils literal notranslate"><span class="pre">Env</span></code> fields are for:</p>
+<ul>
+<li><dl class="simple">
+<dt><strong>env_tf</strong>:</dt><dd><p>This structure, defined in <code class="docutils literal notranslate"><span class="pre">inc/trap.h</span></code>, holds the saved register
+values for the environment while that environment is <em>not</em> running:
+i.e., when the kernel or a different environment is running. The
+kernel saves these when switching from user to kernel mode, so that
+the environment can later be resumed where it left off.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>env_link</strong>:</dt><dd><p>This is a link to the next <code class="docutils literal notranslate"><span class="pre">Env</span></code> on the <code class="docutils literal notranslate"><span class="pre">env_free_list</span></code>.
+<code class="docutils literal notranslate"><span class="pre">env_free_list</span></code> points to the first free environment on the list.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>env_id</strong>:</dt><dd><p>The kernel stores here a value that uniquely identifiers the
+environment currently using this <code class="docutils literal notranslate"><span class="pre">Env</span></code> structure (i.e., using this
+particular slot in the <code class="docutils literal notranslate"><span class="pre">envs</span></code> array). After a user environment
+terminates, the kernel may re-allocate the same <code class="docutils literal notranslate"><span class="pre">Env</span></code> structure to
+a different environment - but the new environment will have a
+different <code class="docutils literal notranslate"><span class="pre">env_id</span></code> from the old one even though the new
+environment is re-using the same slot in the <code class="docutils literal notranslate"><span class="pre">envs</span></code> array.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>env_parent_id</strong>:</dt><dd><p>The kernel stores here the <code class="docutils literal notranslate"><span class="pre">env_id</span></code> of the environment that
+created this environment. In this way the environments can form a
+“family tree,” which will be useful for making security decisions
+about which environments are allowed to do what to whom.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>env_type</strong>:</dt><dd><p>This is used to distinguish special environments. For most
+environments, it will be <code class="docutils literal notranslate"><span class="pre">ENV_TYPE_USER</span></code>. We’ll introduce a few
+more types for special system service environments in later labs.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>env_status</strong>:</dt><dd><p>This variable holds one of the following values:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">ENV_FREE</span></code>:</dt><dd><p>Indicates that the <code class="docutils literal notranslate"><span class="pre">Env</span></code> structure is inactive, and therefore
+on the <code class="docutils literal notranslate"><span class="pre">env_free_list</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ENV_RUNNABLE</span></code>:</dt><dd><p>Indicates that the <code class="docutils literal notranslate"><span class="pre">Env</span></code> structure represents an environment
+that is waiting to run on the processor.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ENV_RUNNING</span></code>:</dt><dd><p>Indicates that the <code class="docutils literal notranslate"><span class="pre">Env</span></code> structure represents the currently
+running environment.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ENV_NOT_RUNNABLE</span></code>:</dt><dd><p>Indicates that the <code class="docutils literal notranslate"><span class="pre">Env</span></code> structure represents a currently
+active environment, but it is not currently ready to run: for
+example, because it is waiting for an interprocess communication
+(IPC) from another environment.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ENV_DYING</span></code>:</dt><dd><p>Indicates that the <code class="docutils literal notranslate"><span class="pre">Env</span></code> structure represents a zombie
+environment. A zombie environment will be freed the next time it
+traps to the kernel. We will not use this flag until Lab 4.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>env_pgdir</strong>:</dt><dd><p>This variable holds the kernel <em>virtual address</em> of this
+environment’s page directory.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Like a Unix process, a JOS environment couples the concepts of “thread”
+and “address space”. The thread is defined primarily by the saved
+registers (the <code class="docutils literal notranslate"><span class="pre">env_tf</span></code> field), and the address space is defined by
+the page directory and page tables pointed to by <code class="docutils literal notranslate"><span class="pre">env_pgdir</span></code>. To run
+an environment, the kernel must set up the CPU with <em>both</em> the saved
+registers and the appropriate address space.</p>
+<p>Our <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Env</span></code> is analogous to <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">proc</span></code> in xv6. Both
+structures hold the environment’s (i.e., process’s) user-mode register
+state in a <code class="docutils literal notranslate"><span class="pre">Trapframe</span></code> structure. In JOS, individual environments do
+not have their own kernel stacks as processes do in xv6. There can be
+only one JOS environment active in the kernel at a time, so JOS needs
+only a <em>single</em> kernel stack.</p>
+</section>
+<section id="allocating-the-environments-array">
+<h3>Allocating the Environments Array<a class="headerlink" href="#allocating-the-environments-array" title="Permalink to this heading">¶</a></h3>
+<p>In lab 2, you allocated memory in <code class="docutils literal notranslate"><span class="pre">mem_init()</span></code> for the <code class="docutils literal notranslate"><span class="pre">pages[]</span></code>
+array, which is a table the kernel uses to keep track of which pages are
+free and which are not. You will now need to modify <code class="docutils literal notranslate"><span class="pre">mem_init()</span></code>
+further to allocate a similar array of <code class="docutils literal notranslate"><span class="pre">Env</span></code> structures, called
+<code class="docutils literal notranslate"><span class="pre">envs</span></code>.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 1.</strong>
+Modify <code class="docutils literal notranslate"><span class="pre">mem_init()</span></code> in <code class="docutils literal notranslate"><span class="pre">kern/pmap.c</span></code> to allocate and map
+the <code class="docutils literal notranslate"><span class="pre">envs</span></code> array. This array consists of exactly <code class="docutils literal notranslate"><span class="pre">NENV</span></code> instances of
+the <code class="docutils literal notranslate"><span class="pre">Env</span></code> structure allocated much like how you allocated the
+<code class="docutils literal notranslate"><span class="pre">pages</span></code> array. Also like the <code class="docutils literal notranslate"><span class="pre">pages</span></code> array, the memory backing
+<code class="docutils literal notranslate"><span class="pre">envs</span></code> should also be mapped user read-only at <code class="docutils literal notranslate"><span class="pre">UENVS</span></code> (defined in
+<code class="docutils literal notranslate"><span class="pre">inc/memlayout.h</span></code>) so user processes can read from this array.</p>
+<p>You should run your code and make sure <code class="docutils literal notranslate"><span class="pre">check_kern_pgdir()</span></code> succeeds.</p>
+</div>
+</section>
+<section id="creating-and-running-environments">
+<h3>Creating and Running Environments<a class="headerlink" href="#creating-and-running-environments" title="Permalink to this heading">¶</a></h3>
+<p>You will now write the code in <code class="docutils literal notranslate"><span class="pre">kern/env.c</span></code> necessary to run a user
+environment. Because we do not yet have a filesystem, we will set up the
+kernel to load a static binary image that is <em>embedded within the kernel
+itself</em>. JOS embeds this binary in the kernel as a ELF executable image.</p>
+<p>The Lab 3 <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> generates a number of binary images in the
+<code class="docutils literal notranslate"><span class="pre">obj/user/</span></code> directory. If you look at <code class="docutils literal notranslate"><span class="pre">kern/Makefrag</span></code>, you will
+notice some magic that “links” these binaries directly into the kernel
+executable as if they were <code class="docutils literal notranslate"><span class="pre">.o</span></code> files. The <code class="docutils literal notranslate"><span class="pre">-b</span> <span class="pre">binary</span></code> option on the
+linker command line causes these files to be linked in as “raw”
+uninterpreted binary files rather than as regular <code class="docutils literal notranslate"><span class="pre">.o</span></code> files produced
+by the compiler. (As far as the linker is concerned, these files do not
+have to be ELF images at all - they could be anything, such as text
+files or pictures!) If you look at <code class="docutils literal notranslate"><span class="pre">obj/kern/kernel.sym</span></code> after
+building the kernel, you will notice that the linker has “magically”
+produced a number of funny symbols with obscure names like
+<code class="docutils literal notranslate"><span class="pre">_binary_obj_user_hello_start</span></code>, <code class="docutils literal notranslate"><span class="pre">_binary_obj_user_hello_end</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">_binary_obj_user_hello_size</span></code>. The linker generates these symbol names
+by mangling the file names of the binary files; the symbols provide the
+regular kernel code with a way to reference the embedded binary files.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">i386_init()</span></code> in <code class="docutils literal notranslate"><span class="pre">kern/init.c</span></code>, you’ll see code to run one of
+these binary images in an environment. However, the critical functions
+to set up user environments are not complete; you will need to fill them
+in.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 2.</strong>
+In the file <code class="docutils literal notranslate"><span class="pre">env.c</span></code>, finish coding the following functions:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">env_init()</span></code></dt><dd><p>Initialize all of the <code class="docutils literal notranslate"><span class="pre">Env</span></code> structures in the <code class="docutils literal notranslate"><span class="pre">envs</span></code> array and
+add them to the <code class="docutils literal notranslate"><span class="pre">env_free_list</span></code>. Also calls <code class="docutils literal notranslate"><span class="pre">env_init_percpu</span></code>,
+which configures the segmentation hardware with separate segments
+for privilege level 0 (kernel) and privilege level 3 (user).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">env_setup_vm()</span></code></dt><dd><p>Allocate a page directory for a new environment and initialize the
+kernel portion of the new environment’s address space.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">region_alloc()</span></code></dt><dd><p>Allocates and maps physical memory for an environment</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">load_icode()</span></code></dt><dd><p>You will need to parse an ELF binary image, much like the boot
+loader already does, and load its contents into the user address
+space of a new environment.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">env_create()</span></code></dt><dd><p>Allocate an environment with <code class="docutils literal notranslate"><span class="pre">env_alloc</span></code> and call <code class="docutils literal notranslate"><span class="pre">load_icode</span></code>
+load an ELF binary into it.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">env_run()</span></code></dt><dd><p>Start a given environment running in user mode.</p>
+</dd>
+</dl>
+<p>As you write these functions, you might find the new cprintf verb <code class="docutils literal notranslate"><span class="pre">%e</span></code>
+useful – it prints a description corresponding to an error code. For
+example,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">E_NO_MEM</span><span class="p">;</span><span class="w"></span>
+<span class="n">panic</span><span class="p">(</span><span class="s">&quot;env_alloc: %e&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>will panic with the message “env_alloc: out of memory”.</p>
+</div>
+<p>Below is a call graph of the code up to the point where the user code is
+invoked. Make sure you understand the purpose of each step.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">+--&gt;</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="p">(</span><span class="n">kern</span><span class="o">/</span><span class="n">entry</span><span class="p">.</span><span class="n">S</span><span class="p">)</span><span class="w"></span>
+<span class="o">+--&gt;</span><span class="w"> </span><span class="n">i386_init</span><span class="w"> </span><span class="p">(</span><span class="n">kern</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">c</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="o">+--&gt;</span><span class="w"> </span><span class="n">cons_init</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="o">+--&gt;</span><span class="w"> </span><span class="n">mem_init</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="o">+--&gt;</span><span class="w"> </span><span class="n">env_init</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="o">+--&gt;</span><span class="w"> </span><span class="n">trap_init</span><span class="p">()</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">still</span><span class="w"> </span><span class="n">incomplete</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">point</span><span class="w"></span>
+<span class="w">    </span><span class="o">+--&gt;</span><span class="w"> </span><span class="n">env_create</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="o">+--&gt;</span><span class="w"> </span><span class="n">env_run</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="o">+--&gt;</span><span class="w"> </span><span class="n">env_pop_tf</span><span class="p">()</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Once you are done you should compile your kernel and run it under QEMU.
+If all goes well, your system should enter user space and execute the
+<code class="docutils literal notranslate"><span class="pre">hello</span></code> binary until it makes a system call with the <code class="docutils literal notranslate"><span class="pre">int</span></code>
+instruction. At that point there will be trouble, since JOS has not set
+up the hardware to allow any kind of transition from user space into the
+kernel. When the CPU discovers that it is not set up to handle this
+system call interrupt, it will generate a general protection exception,
+find that it can’t handle that, generate a double fault exception, find
+that it can’t handle that either, and finally give up with what’s known
+as a “triple fault”. Usually, you would then see the CPU reset and the
+system reboot. While this is important for legacy applications (see
+<a class="reference external" href="https://en.wikipedia.org/wiki/Triple_fault">Wikipedia: Triple Fault</a>),
+it’s a pain for kernel development, so QEMU produces a dump of the
+virtual machine upon a triple fault for debugging purposes.</p>
+<p>We’ll address this problem shortly, but for now we can use the debugger
+to check that we’re entering user mode. Use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">qemu-gdb</span></code> and set a GDB
+breakpoint at <code class="docutils literal notranslate"><span class="pre">env_pop_tf()</span></code>, which should be the last function you hit
+before actually entering user mode. Single step through this function
+using <code class="docutils literal notranslate"><span class="pre">si</span></code>; the processor should enter user mode after the <code class="docutils literal notranslate"><span class="pre">iret</span></code>
+instruction. You should then see the first instruction in the user
+environment’s executable, which is the <code class="docutils literal notranslate"><span class="pre">cmpl</span></code> instruction at the label
+<code class="docutils literal notranslate"><span class="pre">start</span></code> in <code class="docutils literal notranslate"><span class="pre">lib/entry.S</span></code>. Now use b *0x… to set a breakpoint at
+the <code class="docutils literal notranslate"><span class="pre">int $0x30</span></code> in <code class="docutils literal notranslate"><span class="pre">sys_cputs()</span></code> in <code class="docutils literal notranslate"><span class="pre">hello</span></code>
+(see <code class="docutils literal notranslate"><span class="pre">obj/user/hello.asm</span></code> for the user-space address).
+This <code class="docutils literal notranslate"><span class="pre">int</span></code> is the
+system call to display a character to the console. If you cannot execute
+as far as the <code class="docutils literal notranslate"><span class="pre">int</span></code>, then something is wrong with your address space
+setup or program loading code; go back and fix it before continuing.</p>
+</section>
+<section id="handling-interrupts-and-exceptions">
+<h3>Handling Interrupts and Exceptions<a class="headerlink" href="#handling-interrupts-and-exceptions" title="Permalink to this heading">¶</a></h3>
+<p>At this point, the first <code class="docutils literal notranslate"><span class="pre">int $0x30</span></code> system call instruction in user
+space is a dead end: once the processor gets into user mode, there is no
+way to get back out. You will now need to implement basic exception and
+system call handling, so that it is possible for the kernel to recover
+control of the processor from user-mode code. The first thing you should
+do is thoroughly familiarize yourself with the x86 interrupt and
+exception mechanism.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 3.</strong>
+Read Chapter 6, Interrupt and Exception Handling
+of the <a class="reference external" href="../r/ia32/IA32-3A.pdf">IA-32 Developer’s Manual</a>,
+if you haven’t already.</p>
+</div>
+<p>In this lab we generally follow Intel’s terminology for interrupts,
+exceptions, and the like. However, terms such as exception, trap,
+interrupt, fault and abort have no standard meaning across architectures
+or operating systems, and are often used without regard to the subtle
+distinctions between them on a particular architecture such as the x86.
+When you see these terms outside of this lab, the meanings might be
+slightly different.</p>
+</section>
+<section id="basics-of-protected-control-transfer">
+<h3>Basics of Protected Control Transfer<a class="headerlink" href="#basics-of-protected-control-transfer" title="Permalink to this heading">¶</a></h3>
+<p>Exceptions and interrupts are both “protected control transfers,” which
+cause the processor to switch from user to kernel mode (CPL=0) without
+giving the user-mode code any opportunity to interfere with the
+functioning of the kernel or other environments. In Intel’s terminology,
+an <em>interrupt</em> is a protected control transfer that is caused by an
+asynchronous event usually external to the processor, such as
+notification of external device I/O activity. An <em>exception</em>, in
+contrast, is a protected control transfer caused synchronously by the
+currently running code, for example due to a divide by zero or an
+invalid memory access.</p>
+<p>In order to ensure that these protected control transfers are actually
+<em>protected</em>, the processor’s interrupt/exception mechanism is designed
+so that the code currently running when the interrupt or exception
+occurs <em>does not get to choose arbitrarily where the kernel is entered
+or how</em>. Instead, the processor ensures that the kernel can be entered
+only under carefully controlled conditions. On the x86, two mechanisms
+work together to provide this protection:</p>
+<ol class="arabic">
+<li><p><strong>The Interrupt Descriptor Table.</strong> The processor ensures that
+interrupts and exceptions can only cause the kernel to be entered at
+a few specific, well-defined entry-points <em>determined by the kernel
+itself</em>, and not by the code running when the interrupt or exception
+is taken.</p>
+<p>The x86 allows up to 256 different interrupt or exception entry
+points into the kernel, each with a different <em>interrupt vector</em>. A
+vector is a number between 0 and 255. An interrupt’s vector is
+determined by the source of the interrupt: different devices, error
+conditions, and application requests to the kernel generate
+interrupts with different vectors. The CPU uses the vector as an
+index into the processor’s <em>interrupt descriptor table</em> (IDT), which
+the kernel sets up in kernel-private memory, much like the GDT. From
+the appropriate entry in this table the processor loads:</p>
+<ul class="simple">
+<li><p>the value to load into the instruction pointer (<code class="docutils literal notranslate"><span class="pre">EIP</span></code>) register,
+pointing to the kernel code designated to handle that type of
+exception.</p></li>
+<li><p>the value to load into the code segment (<code class="docutils literal notranslate"><span class="pre">CS</span></code>) register, which
+includes in bits 0-1 the privilege level at which the exception
+handler is to run. (In JOS, all exceptions are handled in kernel
+mode, privilege level 0.)</p></li>
+</ul>
+</li>
+<li><p><strong>The Task State Segment.</strong> The processor needs a place to save the
+<em>old</em> processor state before the interrupt or exception occurred,
+such as the original values of <code class="docutils literal notranslate"><span class="pre">EIP</span></code> and <code class="docutils literal notranslate"><span class="pre">CS</span></code> before the
+processor invoked the exception handler, so that the exception
+handler can later restore that old state and resume the interrupted
+code from where it left off. But this save area for the old processor
+state must in turn be protected from unprivileged user-mode code;
+otherwise buggy or malicious user code could compromise the kernel.</p>
+<p>For this reason, when an x86 processor takes an interrupt or trap
+that causes a privilege level change from user to kernel mode, it
+also switches to a stack in the kernel’s memory. A structure called
+the <em>task state segment</em> (TSS) specifies the segment selector and
+address where this stack lives. The processor pushes (on this new
+stack) <code class="docutils literal notranslate"><span class="pre">SS</span></code>, <code class="docutils literal notranslate"><span class="pre">ESP</span></code>, <code class="docutils literal notranslate"><span class="pre">EFLAGS</span></code>, <code class="docutils literal notranslate"><span class="pre">CS</span></code>, <code class="docutils literal notranslate"><span class="pre">EIP</span></code>, and an optional
+error code. Then it loads the <code class="docutils literal notranslate"><span class="pre">CS</span></code> and <code class="docutils literal notranslate"><span class="pre">EIP</span></code> from the interrupt
+descriptor, and sets the <code class="docutils literal notranslate"><span class="pre">ESP</span></code> and <code class="docutils literal notranslate"><span class="pre">SS</span></code> to refer to the new
+stack.</p>
+<p>Although the TSS is large and can potentially serve a variety of
+purposes, JOS only uses it to define the kernel stack that the
+processor should switch to when it transfers from user to kernel
+mode. Since “kernel mode” in JOS is privilege level 0 on the x86, the
+processor uses the <code class="docutils literal notranslate"><span class="pre">ESP0</span></code> and <code class="docutils literal notranslate"><span class="pre">SS0</span></code> fields of the TSS to define
+the kernel stack when entering kernel mode. JOS doesn’t use any other
+TSS fields.</p>
+</li>
+</ol>
+</section>
+<section id="types-of-exceptions-and-interrupts">
+<h3>Types of Exceptions and Interrupts<a class="headerlink" href="#types-of-exceptions-and-interrupts" title="Permalink to this heading">¶</a></h3>
+<p>All of the synchronous exceptions that the x86 processor can generate
+internally use interrupt vectors between 0 and 31, and therefore map to
+IDT entries 0-31. For example, a page fault always causes an exception
+through vector 14. Interrupt vectors greater than 31 are only used by
+<em>software interrupts</em>, which can be generated by the <code class="docutils literal notranslate"><span class="pre">int</span></code>
+instruction, or asynchronous <em>hardware interrupts</em>, caused by external
+devices when they need attention.</p>
+<p>In this section we will extend JOS to handle the internally generated
+x86 exceptions in vectors 0-31. In the next section we will make JOS
+handle software interrupt vector 48 (0x30), which JOS (fairly
+arbitrarily) uses as its system call interrupt vector. In Lab 4 we will
+extend JOS to handle externally generated hardware interrupts such as
+the clock interrupt.</p>
+</section>
+<section id="an-example">
+<h3>An Example<a class="headerlink" href="#an-example" title="Permalink to this heading">¶</a></h3>
+<p>Let’s put these pieces together and trace through an example. Let’s say
+the processor is executing code in a user environment and encounters a
+divide instruction that attempts to divide by zero.</p>
+<ol class="arabic">
+<li><p>The processor switches to the stack defined by the <code class="docutils literal notranslate"><span class="pre">SS0</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ESP0</span></code> fields of the TSS, which in JOS will hold the values
+<code class="docutils literal notranslate"><span class="pre">GD_KD</span></code> and <code class="docutils literal notranslate"><span class="pre">KSTACKTOP</span></code>, respectively.</p></li>
+<li><p>The processor pushes the exception parameters on the kernel stack,
+starting at address <code class="docutils literal notranslate"><span class="pre">KSTACKTOP</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+--------------------+</span> <span class="n">KSTACKTOP</span>
+<span class="o">|</span> <span class="mh">0x00000</span> <span class="o">|</span> <span class="n">old</span> <span class="n">SS</span>   <span class="o">|</span>     <span class="s2">&quot; - 4</span>
+<span class="o">|</span>      <span class="n">old</span> <span class="n">ESP</span>       <span class="o">|</span>     <span class="s2">&quot; - 8</span>
+<span class="o">|</span>     <span class="n">old</span> <span class="n">EFLAGS</span>     <span class="o">|</span>     <span class="s2">&quot; - 12</span>
+<span class="o">|</span> <span class="mh">0x00000</span> <span class="o">|</span> <span class="n">old</span> <span class="n">CS</span>   <span class="o">|</span>     <span class="s2">&quot; - 16</span>
+<span class="o">|</span>      <span class="n">old</span> <span class="n">EIP</span>       <span class="o">|</span>     <span class="s2">&quot; - 20 &lt;---- ESP</span>
+<span class="o">+--------------------+</span>
+</pre></div>
+</div>
+</li>
+<li><p>Because we’re handling a divide error, which is interrupt vector 0 on
+the x86, the processor reads IDT entry 0 and sets <code class="docutils literal notranslate"><span class="pre">CS:EIP</span></code> to point
+to the handler function described by the entry.</p></li>
+<li><p>The handler function takes control and handles the exception, for
+example by terminating the user environment.</p></li>
+</ol>
+<p>For certain types of x86 exceptions, in addition to the “standard” five
+words above, the processor pushes onto the stack another word containing
+an <em>error code</em>. The page fault exception, number 14, is an important
+example. See the 80386 manual to determine for which exception numbers
+the processor pushes an error code, and what the error code means in
+that case. When the processor pushes an error code, the stack would look
+as follows at the beginning of the exception handler when coming in from
+user mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+--------------------+</span> <span class="n">KSTACKTOP</span>
+<span class="o">|</span> <span class="mh">0x00000</span> <span class="o">|</span> <span class="n">old</span> <span class="n">SS</span>   <span class="o">|</span>     <span class="s2">&quot; - 4</span>
+<span class="o">|</span>      <span class="n">old</span> <span class="n">ESP</span>       <span class="o">|</span>     <span class="s2">&quot; - 8</span>
+<span class="o">|</span>     <span class="n">old</span> <span class="n">EFLAGS</span>     <span class="o">|</span>     <span class="s2">&quot; - 12</span>
+<span class="o">|</span> <span class="mh">0x00000</span> <span class="o">|</span> <span class="n">old</span> <span class="n">CS</span>   <span class="o">|</span>     <span class="s2">&quot; - 16</span>
+<span class="o">|</span>      <span class="n">old</span> <span class="n">EIP</span>       <span class="o">|</span>     <span class="s2">&quot; - 20</span>
+<span class="o">|</span>     <span class="n">error</span> <span class="n">code</span>     <span class="o">|</span>     <span class="s2">&quot; - 24 &lt;---- ESP</span>
+<span class="o">+--------------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="nested-exceptions-and-interrupts">
+<h3>Nested Exceptions and Interrupts<a class="headerlink" href="#nested-exceptions-and-interrupts" title="Permalink to this heading">¶</a></h3>
+<p>The processor can take exceptions and interrupts both from kernel and
+user mode. It is only when entering the kernel from user mode, however,
+that the x86 processor automatically switches stacks before pushing its
+old register state onto the stack and invoking the appropriate exception
+handler through the IDT. If the processor is <em>already</em> in kernel mode
+when the interrupt or exception occurs (the low 2 bits of the <code class="docutils literal notranslate"><span class="pre">CS</span></code>
+register are already zero), then the CPU just pushes more values on the
+same kernel stack. In this way, the kernel can gracefully handle <em>nested
+exceptions</em> caused by code within the kernel itself. This capability is
+an important tool in implementing protection, as we will see later in
+the section on system calls.</p>
+<p>If the processor is already in kernel mode and takes a nested exception,
+since it does not need to switch stacks, it does not save the old <code class="docutils literal notranslate"><span class="pre">SS</span></code>
+or <code class="docutils literal notranslate"><span class="pre">ESP</span></code> registers. For exception types that do not push an error
+code, the kernel stack therefore looks like the following on entry to
+the exception handler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+--------------------+</span> <span class="o">&lt;----</span> <span class="n">old</span> <span class="n">ESP</span>
+<span class="o">|</span>     <span class="n">old</span> <span class="n">EFLAGS</span>     <span class="o">|</span>     <span class="s2">&quot; - 4</span>
+<span class="o">|</span> <span class="mh">0x00000</span> <span class="o">|</span> <span class="n">old</span> <span class="n">CS</span>   <span class="o">|</span>     <span class="s2">&quot; - 8</span>
+<span class="o">|</span>      <span class="n">old</span> <span class="n">EIP</span>       <span class="o">|</span>     <span class="s2">&quot; - 12</span>
+<span class="o">+--------------------+</span>
+</pre></div>
+</div>
+<p>For exception types that push an error code, the processor pushes the
+error code immediately after the old <code class="docutils literal notranslate"><span class="pre">EIP</span></code>, as before.</p>
+<p>There is one important caveat to the processor’s nested exception
+capability. If the processor takes an exception while already in kernel
+mode, and <em>cannot push its old state onto the kernel stack</em> for any
+reason such as lack of stack space, then there is nothing the processor
+can do to recover, so it simply resets itself. Needless to say, the
+kernel should be designed so that this can’t happen.</p>
+</section>
+<section id="setting-up-the-idt">
+<h3>Setting Up the IDT<a class="headerlink" href="#setting-up-the-idt" title="Permalink to this heading">¶</a></h3>
+<p>You should now have the basic information you need in order to set up
+the IDT and handle exceptions in JOS. For now, you will set up the IDT
+to handle interrupt vectors 0-31 (the processor exceptions). We’ll
+handle system call interrupts later in this lab and add interrupts 32-47
+(the device IRQs) in a later lab.</p>
+<p>The header files <code class="docutils literal notranslate"><span class="pre">inc/trap.h</span></code> and <code class="docutils literal notranslate"><span class="pre">kern/trap.h</span></code> contain important
+definitions related to interrupts and exceptions that you will need to
+become familiar with. The file <code class="docutils literal notranslate"><span class="pre">kern/trap.h</span></code> contains definitions that
+are strictly private to the kernel, while <code class="docutils literal notranslate"><span class="pre">inc/trap.h</span></code> contains
+definitions that may also be useful to user-level programs and
+libraries.</p>
+<p>Note: Some of the exceptions in the range 0-31 are defined by Intel to
+be reserved. Since they will never be generated by the processor, it
+doesn’t really matter how you handle them. Do whatever you think is
+cleanest.</p>
+<p>The overall flow of control that you should achieve is depicted below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="n">IDT</span>                   <span class="n">trapentry</span><span class="o">.</span><span class="n">S</span>           <span class="n">trap</span><span class="o">.</span><span class="n">c</span>
+
+<span class="o">+----------------+</span>
+<span class="o">|</span>   <span class="o">&amp;</span><span class="n">handler1</span>    <span class="o">|---------&gt;</span> <span class="n">handler1</span><span class="p">:</span>       <span class="o">+--&gt;</span> <span class="n">trap</span> <span class="p">(</span><span class="n">struct</span> <span class="n">Trapframe</span> <span class="o">*</span><span class="n">tf</span><span class="p">)</span>
+<span class="o">|</span>                <span class="o">|</span>             <span class="o">//</span> <span class="n">do</span> <span class="n">stuff</span>   <span class="o">|</span>    <span class="p">{</span>
+<span class="o">|</span>                <span class="o">|</span>             <span class="n">call</span> <span class="n">trap</span> <span class="o">----+</span>      <span class="o">//</span> <span class="n">handle</span> <span class="n">the</span> <span class="n">exception</span><span class="o">/</span><span class="n">interrupt</span>
+<span class="o">|</span>                <span class="o">|</span>             <span class="o">//</span> <span class="o">...</span>             <span class="p">}</span>
+<span class="o">+----------------+</span>
+<span class="o">|</span>   <span class="o">&amp;</span><span class="n">handler2</span>    <span class="o">|--------&gt;</span> <span class="n">handler2</span><span class="p">:</span>
+<span class="o">|</span>                <span class="o">|</span>            <span class="o">//</span> <span class="n">do</span> <span class="n">stuff</span>
+<span class="o">|</span>                <span class="o">|</span>            <span class="n">call</span> <span class="n">trap</span>
+<span class="o">|</span>                <span class="o">|</span>            <span class="o">//</span> <span class="o">...</span>
+<span class="o">+----------------+</span>
+       <span class="o">.</span>
+       <span class="o">.</span>
+       <span class="o">.</span>
+<span class="o">+----------------+</span>
+<span class="o">|</span>   <span class="o">&amp;</span><span class="n">handlerX</span>    <span class="o">|--------&gt;</span> <span class="n">handlerX</span><span class="p">:</span>
+<span class="o">|</span>                <span class="o">|</span>             <span class="o">//</span> <span class="n">do</span> <span class="n">stuff</span>
+<span class="o">|</span>                <span class="o">|</span>             <span class="n">call</span> <span class="n">trap</span>
+<span class="o">|</span>                <span class="o">|</span>             <span class="o">//</span> <span class="o">...</span>
+<span class="o">+----------------+</span>
+</pre></div>
+</div>
+<p>Each exception or interrupt should have its own handler in
+<code class="docutils literal notranslate"><span class="pre">trapentry.S</span></code> and <code class="docutils literal notranslate"><span class="pre">trap_init()</span></code> should initialize the IDT with the
+addresses of these handlers. Each of the handlers should build a
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Trapframe</span></code> (see <code class="docutils literal notranslate"><span class="pre">inc/trap.h</span></code>) on the stack and call
+<code class="docutils literal notranslate"><span class="pre">trap()</span></code> (in <code class="docutils literal notranslate"><span class="pre">trap.c</span></code>) with a pointer to the Trapframe. <code class="docutils literal notranslate"><span class="pre">trap()</span></code>
+then handles the exception/interrupt or dispatches to a specific handler
+function.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 4.</strong>
+Edit <code class="docutils literal notranslate"><span class="pre">trapentry.S</span></code> and <code class="docutils literal notranslate"><span class="pre">trap.c</span></code> and implement the
+features described above. The macros <code class="docutils literal notranslate"><span class="pre">TRAPHANDLER</span></code> and
+<code class="docutils literal notranslate"><span class="pre">TRAPHANDLER_NOEC</span></code> in <code class="docutils literal notranslate"><span class="pre">trapentry.S</span></code> should help you, as well as the
+<code class="docutils literal notranslate"><span class="pre">T\_\*</span></code> defines in <code class="docutils literal notranslate"><span class="pre">inc/trap.h</span></code>. You will need to add an entry point in
+<code class="docutils literal notranslate"><span class="pre">trapentry.S</span></code> (using those macros) for each trap defined in
+<code class="docutils literal notranslate"><span class="pre">inc/trap.h</span></code>, and you’ll have to provide <code class="docutils literal notranslate"><span class="pre">_alltraps</span></code> which the
+<code class="docutils literal notranslate"><span class="pre">TRAPHANDLER</span></code> macros refer to. You will also need to modify
+<code class="docutils literal notranslate"><span class="pre">trap_init()</span></code> to initialize the <code class="docutils literal notranslate"><span class="pre">idt</span></code> to point to each of these
+entry points defined in <code class="docutils literal notranslate"><span class="pre">trapentry.S</span></code>; the <code class="docutils literal notranslate"><span class="pre">SETGATE</span></code> macro will be
+helpful here.</p>
+<p>Your <code class="docutils literal notranslate"><span class="pre">_alltraps</span></code> should:</p>
+<ol class="arabic simple">
+<li><p>push values to make the stack look like a struct Trapframe</p></li>
+<li><p>load <code class="docutils literal notranslate"><span class="pre">GD_KD</span></code> into <code class="docutils literal notranslate"><span class="pre">%ds</span></code> and <code class="docutils literal notranslate"><span class="pre">%es</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pushl</span> <span class="pre">%esp</span></code> to pass a pointer to the Trapframe as an argument to
+trap()</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">call</span> <span class="pre">trap</span></code> (can <code class="docutils literal notranslate"><span class="pre">trap</span></code> ever return?)</p></li>
+</ol>
+<p>Consider using the <code class="docutils literal notranslate"><span class="pre">pushal</span></code> instruction; it fits nicely with the
+layout of the <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Trapframe</span></code>.</p>
+<p>Test your trap handling code using some of the test programs in the
+<code class="docutils literal notranslate"><span class="pre">user</span></code> directory that cause exceptions before making any system calls,
+such as <code class="docutils literal notranslate"><span class="pre">user/divzero</span></code>. You should be able to get make grade to
+succeed on the <code class="docutils literal notranslate"><span class="pre">divzero</span></code>, <code class="docutils literal notranslate"><span class="pre">softint</span></code>, and <code class="docutils literal notranslate"><span class="pre">badsegment</span></code> tests at
+this point.</p>
+</div>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+You probably have a lot of very similar code right now,
+between the lists of <code class="docutils literal notranslate"><span class="pre">TRAPHANDLER</span></code> in <code class="docutils literal notranslate"><span class="pre">trapentry.S</span></code> and their
+installations in <code class="docutils literal notranslate"><span class="pre">trap.c</span></code>. Clean this up. Change the macros in
+<code class="docutils literal notranslate"><span class="pre">trapentry.S</span></code> to automatically generate a table for <code class="docutils literal notranslate"><span class="pre">trap.c</span></code> to use.
+Note that you can switch between laying down code and data in the
+assembler by using the directives <code class="docutils literal notranslate"><span class="pre">.text</span></code> and <code class="docutils literal notranslate"><span class="pre">.data</span></code>.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>Answer the following questions in your <code class="docutils literal notranslate"><span class="pre">answers-lab3.txt</span></code>:</p>
+<ol class="arabic simple">
+<li><p>What is the purpose of having an individual handler function for each
+exception/interrupt? (i.e., if all exceptions/interrupts were
+delivered to the same handler, what feature that exists in the
+current implementation could not be provided?)</p></li>
+<li><p>Did you have to do anything to make the <code class="docutils literal notranslate"><span class="pre">user/softint</span></code> program
+behave correctly? The grade script expects it to produce a general
+protection fault (trap 13), but <code class="docutils literal notranslate"><span class="pre">softint</span></code>’s code says <code class="docutils literal notranslate"><span class="pre">int $14</span></code>.
+<em>Why</em> should this produce interrupt vector 13? What happens if the
+kernel actually allows <code class="docutils literal notranslate"><span class="pre">softint</span></code>’s <code class="docutils literal notranslate"><span class="pre">int $14</span></code> instruction to
+invoke the kernel’s page fault handler (which is interrupt vector
+14)?</p></li>
+</ol>
+</div>
+<p>This concludes part A of the lab. Don’t forget to add
+<code class="docutils literal notranslate"><span class="pre">answers-lab3.txt</span></code>, commit your changes, tag, and push to GitHub by
+the part A deadline. (If you’ve already completed part B by that time,
+you only need to submit once.)</p>
+</section>
+</section>
+<section id="part-b-page-faults-breakpoints-exceptions-and-system-calls">
+<h2>Part B: Page Faults, Breakpoints Exceptions, and System Calls<a class="headerlink" href="#part-b-page-faults-breakpoints-exceptions-and-system-calls" title="Permalink to this heading">¶</a></h2>
+<p>Now that your kernel has basic exception handling capabilities, you will
+refine it to provide important operating system primitives that depend
+on exception handling.</p>
+<section id="handling-page-faults">
+<h3>Handling Page Faults<a class="headerlink" href="#handling-page-faults" title="Permalink to this heading">¶</a></h3>
+<p>The page fault exception, interrupt vector 14 (<code class="docutils literal notranslate"><span class="pre">T_PGFLT</span></code>), is a
+particularly important one that we will exercise heavily throughout this
+lab and the next. When the processor takes a page fault, it stores the
+linear (i.e., virtual) address that caused the fault in a special
+processor control register, <code class="docutils literal notranslate"><span class="pre">CR2</span></code>. In <code class="docutils literal notranslate"><span class="pre">trap.c</span></code> we have provided the
+beginnings of a special function, <code class="docutils literal notranslate"><span class="pre">page_fault_handler()</span></code>, to handle
+page fault exceptions.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 5.</strong>
+Modify <code class="docutils literal notranslate"><span class="pre">trap_dispatch()</span></code> to dispatch page fault exceptions
+to <code class="docutils literal notranslate"><span class="pre">page_fault_handler()</span></code>. You should now be able to get make grade to
+succeed on the <code class="docutils literal notranslate"><span class="pre">faultread</span></code>, <code class="docutils literal notranslate"><span class="pre">faultreadkernel</span></code>, <code class="docutils literal notranslate"><span class="pre">faultwrite</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">faultwritekernel</span></code> tests. If any of them don’t work, figure out why
+and fix them. Remember that you can boot JOS into a particular user
+program using <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">run-prog</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">run-faultred</span></code>)
+or <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">run-prog-gdb</span></code>.</p>
+</div>
+<p>You will further refine the kernel’s page fault handling below, as you
+implement system calls.</p>
+</section>
+<section id="the-breakpoint-exception">
+<h3>The Breakpoint Exception<a class="headerlink" href="#the-breakpoint-exception" title="Permalink to this heading">¶</a></h3>
+<p>The breakpoint exception, interrupt vector 3 (<code class="docutils literal notranslate"><span class="pre">T_BRKPT</span></code>), is normally
+used to allow debuggers to insert breakpoints in a program’s code by
+temporarily replacing the relevant program instruction with the special
+1-byte <code class="docutils literal notranslate"><span class="pre">int3</span></code> software interrupt instruction. In JOS we will abuse
+this exception slightly by turning it into a primitive pseudo-system
+call that any user environment can use to invoke the JOS kernel monitor.
+This usage is actually somewhat appropriate if we think of the JOS
+kernel monitor as a primitive debugger. The user-mode implementation of
+<code class="docutils literal notranslate"><span class="pre">panic()</span></code> in <code class="docutils literal notranslate"><span class="pre">lib/panic.c</span></code>, for example, performs an <code class="docutils literal notranslate"><span class="pre">int3</span></code> after
+displaying its panic message.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 6.</strong>
+Modify <code class="docutils literal notranslate"><span class="pre">trap_dispatch()</span></code> to make breakpoint exceptions
+invoke the kernel monitor. You should now be able to get make grade to
+succeed on the <code class="docutils literal notranslate"><span class="pre">breakpoint</span></code> test.</p>
+</div>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p>Challenge! Modify the JOS kernel monitor so that you can ‘continue’
+execution from the current location (e.g., after the <code class="docutils literal notranslate"><span class="pre">int3</span></code>, if the
+kernel monitor was invoked via the breakpoint exception), and so that
+you can single-step one instruction at a time. You will need to
+understand certain bits of the <code class="docutils literal notranslate"><span class="pre">EFLAGS</span></code> register in order to implement
+single-stepping.</p>
+<p>Optional: If you’re feeling really adventurous, find some x86
+disassembler source code - e.g., by ripping it out of QEMU, or out of
+GNU binutils, or just write it yourself - and extend the JOS kernel
+monitor to be able to disassemble and display instructions as you are
+stepping through them. Combined with the symbol table loading from lab
+2, this is the stuff of which real kernel debuggers are made.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<ol class="arabic simple" start="3">
+<li><p>The break point test case will either generate a break point
+exception or a general protection fault depending on how you
+initialized the break point entry in the IDT (i.e., your call to
+<code class="docutils literal notranslate"><span class="pre">SETGATE</span></code> from <code class="docutils literal notranslate"><span class="pre">trap_init</span></code>). Why? How do you need to set it up in
+order to get the breakpoint exception to work as specified above and
+what incorrect setup would cause it to trigger a general protection
+fault?</p></li>
+<li><p>What do you think is the point of these mechanisms, particularly in
+light of what the <code class="docutils literal notranslate"><span class="pre">user/softint</span></code> test program does?</p></li>
+</ol>
+</div>
+</section>
+<section id="system-calls">
+<h3>System calls<a class="headerlink" href="#system-calls" title="Permalink to this heading">¶</a></h3>
+<p>User processes ask the kernel to do things for them by invoking system
+calls. When the user process invokes a system call, the processor enters
+kernel mode, the processor and the kernel cooperate to save the user
+process’s state, the kernel executes appropriate code in order to carry
+out the system call, and then resumes the user process. The exact
+details of how the user process gets the kernel’s attention and how it
+specifies which call it wants to execute vary from system to system.</p>
+<p>In the JOS kernel, we will use the <code class="docutils literal notranslate"><span class="pre">int</span></code> instruction, which causes a
+processor interrupt. In particular, we will use <code class="docutils literal notranslate"><span class="pre">int $0x30</span></code> as the
+system call interrupt. We have defined the constant <code class="docutils literal notranslate"><span class="pre">T_SYSCALL</span></code> to 48
+(0x30) for you. You will have to set up the interrupt descriptor to
+allow user processes to cause that interrupt. Note that interrupt 0x30
+cannot be generated by hardware, so there is no ambiguity caused by
+allowing user code to generate it.</p>
+<p>The application will pass the system call number and the system call
+arguments in registers. This way, the kernel won’t need to grub around
+in the user environment’s stack or instruction stream. The system call
+number will go in <code class="docutils literal notranslate"><span class="pre">%eax</span></code>, and the arguments (up to five of them) will
+go in <code class="docutils literal notranslate"><span class="pre">%edx</span></code>, <code class="docutils literal notranslate"><span class="pre">%ecx</span></code>, <code class="docutils literal notranslate"><span class="pre">%ebx</span></code>, <code class="docutils literal notranslate"><span class="pre">%edi</span></code>, and <code class="docutils literal notranslate"><span class="pre">%esi</span></code>,
+respectively. The kernel passes the return value back in <code class="docutils literal notranslate"><span class="pre">%eax</span></code>. The
+assembly code to invoke a system call has been written for you, in
+<code class="docutils literal notranslate"><span class="pre">syscall()</span></code> in <code class="docutils literal notranslate"><span class="pre">lib/syscall.c</span></code>. You should read through it and make
+sure you understand what is going on.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 7.</strong>
+Add a handler in the kernel for interrupt vector
+<code class="docutils literal notranslate"><span class="pre">T_SYSCALL</span></code>. You will have to edit <code class="docutils literal notranslate"><span class="pre">kern/trapentry.S</span></code> and
+<code class="docutils literal notranslate"><span class="pre">kern/trap.c</span></code>’s <code class="docutils literal notranslate"><span class="pre">trap_init()</span></code>. You also need to change
+<code class="docutils literal notranslate"><span class="pre">trap_dispatch()</span></code> to handle the system call interrupt by calling
+<code class="docutils literal notranslate"><span class="pre">syscall()</span></code> (defined in <code class="docutils literal notranslate"><span class="pre">kern/syscall.c</span></code>) with the appropriate
+arguments, and then arranging for the return value to be passed back to
+the user process in <code class="docutils literal notranslate"><span class="pre">%eax</span></code>. Finally, you need to implement
+<code class="docutils literal notranslate"><span class="pre">syscall()</span></code> in <code class="docutils literal notranslate"><span class="pre">kern/syscall.c</span></code>. Make sure <code class="docutils literal notranslate"><span class="pre">syscall()</span></code> returns
+<code class="docutils literal notranslate"><span class="pre">-E_INVAL</span></code> if the system call number is invalid. You should read and
+understand <code class="docutils literal notranslate"><span class="pre">lib/syscall.c</span></code> (especially the inline assembly routine) in
+order to confirm your understanding of the system call interface. Handle
+all the systems calls listed in <code class="docutils literal notranslate"><span class="pre">inc/syscall.h</span></code> by invoking the
+corresponding kernel function for each call.</p>
+<p>Run the <code class="docutils literal notranslate"><span class="pre">user/hello</span></code> program under your kernel (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">run-hello</span></code>). It
+should print “hello, world” on the console and then cause a page
+fault in user mode. If this does not happen, it probably means your
+system call handler isn’t quite right. You should also now be able to
+get <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">grade</span></code> to succeed on the <code class="docutils literal notranslate"><span class="pre">testbss</span></code> test.</p>
+</div>
+<div class="admonition-challenge admonition">
+<p class="admonition-title">Challenge</p>
+<p><strong>Challenge!</strong>
+Implement system calls using the <code class="docutils literal notranslate"><span class="pre">sysenter</span></code> and <code class="docutils literal notranslate"><span class="pre">sysexit</span></code>
+instructions instead of using <code class="docutils literal notranslate"><span class="pre">int 0x30</span></code> and <code class="docutils literal notranslate"><span class="pre">iret</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sysenter/sysexit</span></code> instructions were designed by Intel to be
+faster than <code class="docutils literal notranslate"><span class="pre">int/iret</span></code>. They do this by using registers instead of the
+stack and by making assumptions about how the segmentation registers are
+used. The exact details of these instructions can be found in Volume 2B
+of the Intel reference manuals.</p>
+<p>The easiest way to add support for these instructions in JOS is to add a
+<code class="docutils literal notranslate"><span class="pre">sysenter_handler</span></code> in <code class="docutils literal notranslate"><span class="pre">kern/trapentry.S</span></code> that saves enough
+information about the user environment to return to it, sets up the
+kernel environment, pushes the arguments to <code class="docutils literal notranslate"><span class="pre">syscall()</span></code> and calls
+<code class="docutils literal notranslate"><span class="pre">syscall()</span></code> directly. Once <code class="docutils literal notranslate"><span class="pre">syscall()</span></code> returns, set everything up
+for and execute the <code class="docutils literal notranslate"><span class="pre">sysexit</span></code> instruction. You will also need to add
+code to <code class="docutils literal notranslate"><span class="pre">kern/init.c</span></code> to set up the necessary model specific registers
+(MSRs). Section 6.1.2 in Volume 2 of the AMD Architecture Programmer’s
+Manual and the reference on SYSENTER in Volume 2B of the Intel reference
+manuals give good descriptions of the relevant MSRs. You can find an
+implementation of <code class="docutils literal notranslate"><span class="pre">wrmsr</span></code> to add to <code class="docutils literal notranslate"><span class="pre">inc/x86.h</span></code> for writing to these
+MSRs <a class="reference external" href="http://www.garloff.de/kurt/linux/k6mod.c">here</a>.</p>
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">lib/syscall.c</span></code> must be changed to support making a system
+call with <code class="docutils literal notranslate"><span class="pre">sysenter</span></code>. Here is a possible register layout for the
+<code class="docutils literal notranslate"><span class="pre">sysenter</span></code> instruction:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">eax</span><span class="w">                </span><span class="o">-</span><span class="w"> </span><span class="n">syscall</span><span class="w"> </span><span class="n">number</span><span class="w"></span>
+<span class="n">edx</span><span class="p">,</span><span class="w"> </span><span class="n">ecx</span><span class="p">,</span><span class="w"> </span><span class="n">ebx</span><span class="p">,</span><span class="w"> </span><span class="n">edi</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">arg1</span><span class="p">,</span><span class="w"> </span><span class="n">arg2</span><span class="p">,</span><span class="w"> </span><span class="n">arg3</span><span class="p">,</span><span class="w"> </span><span class="n">arg4</span><span class="w"></span>
+<span class="n">esi</span><span class="w">                </span><span class="o">-</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">pc</span><span class="w"></span>
+<span class="n">ebp</span><span class="w">                </span><span class="o">-</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">esp</span><span class="w"></span>
+<span class="n">esp</span><span class="w">                </span><span class="o">-</span><span class="w"> </span><span class="n">trashed</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">sysenter</span><span class="w"></span>
+</pre></div>
+</div>
+<p>GCC’s inline assembler will automatically save registers that you tell
+it to load values directly into. Don’t forget to either save (push) and
+restore (pop) other registers that you clobber, or tell the inline
+assembler that you’re clobbering them. The inline assembler doesn’t
+support saving <code class="docutils literal notranslate"><span class="pre">%ebp</span></code>, so you will need to add code to save and
+restore it yourself. The return address can be put into <code class="docutils literal notranslate"><span class="pre">%esi</span></code> by
+using an instruction like <code class="docutils literal notranslate"><span class="pre">leal</span> <span class="pre">after_sysenter_label,</span> <span class="pre">%%esi</span></code>.</p>
+<p>Note that this only supports 4 arguments, so you will need to leave the
+old method of doing system calls around to support 5 argument system
+calls. Furthermore, because this fast path doesn’t update the current
+environment’s trap frame, it won’t be suitable for some of the system
+calls we add in later labs.</p>
+<p>You may have to revisit your code once we enable asynchronous interrupts
+in the next lab. Specifically, you’ll need to enable interrupts when
+returning to the user process, which <code class="docutils literal notranslate"><span class="pre">sysexit</span></code> doesn’t do for you.</p>
+</div>
+</section>
+<section id="user-mode-startup">
+<h3>User-mode startup<a class="headerlink" href="#user-mode-startup" title="Permalink to this heading">¶</a></h3>
+<p>A user program starts running at the top of <code class="docutils literal notranslate"><span class="pre">lib/entry.S</span></code>. After some
+setup, this code calls <code class="docutils literal notranslate"><span class="pre">libmain()</span></code>, in <code class="docutils literal notranslate"><span class="pre">lib/libmain.c</span></code>. You should
+modify <code class="docutils literal notranslate"><span class="pre">libmain()</span></code> to initialize the global pointer <code class="docutils literal notranslate"><span class="pre">thisenv</span></code> to
+point at this environment’s <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Env</span></code> in the <code class="docutils literal notranslate"><span class="pre">envs[]</span></code> array.
+(Note that <code class="docutils literal notranslate"><span class="pre">lib/entry.S</span></code> has already defined <code class="docutils literal notranslate"><span class="pre">envs</span></code> to point at the
+<code class="docutils literal notranslate"><span class="pre">UENVS</span></code> mapping you set up in Part A.) Hint: look in <code class="docutils literal notranslate"><span class="pre">inc/env.h</span></code> and
+use <code class="docutils literal notranslate"><span class="pre">sys_getenvid()</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">libmain()</span></code> then calls <code class="docutils literal notranslate"><span class="pre">umain()</span></code>, which, in the case of the <code class="docutils literal notranslate"><span class="pre">hello</span></code>
+program, is in <code class="docutils literal notranslate"><span class="pre">user/hello.c</span></code>. Note that after printing
+“hello, world”, it tries to access <code class="docutils literal notranslate"><span class="pre">thisenv-&gt;env_id</span></code>. This is
+why it faulted earlier. Now that you’ve initialized <code class="docutils literal notranslate"><span class="pre">thisenv</span></code>
+properly, it should not fault. If it still faults, you probably haven’t
+mapped the <code class="docutils literal notranslate"><span class="pre">UENVS</span></code> area user-readable (back in Part A in <code class="docutils literal notranslate"><span class="pre">kern/pmap.c</span></code>;
+this is the first time we’ve actually used the <code class="docutils literal notranslate"><span class="pre">UENVS</span></code> area).</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 8.</strong>
+Add the required code to the user library, then boot your
+kernel. You should see <code class="docutils literal notranslate"><span class="pre">user/hello</span></code> print “hello, world” and
+then print “i am environment 00001000”. <code class="docutils literal notranslate"><span class="pre">user/hello</span></code> then
+attempts to “exit” by calling <code class="docutils literal notranslate"><span class="pre">sys_env_destroy()</span></code> (see
+<code class="docutils literal notranslate"><span class="pre">lib/libmain.c</span></code> and <code class="docutils literal notranslate"><span class="pre">lib/exit.c</span></code>). Since the kernel currently only
+supports one user environment, it should report that it has destroyed
+the only environment and then drop into the kernel monitor. You should
+be able to get make grade to succeed on the <code class="docutils literal notranslate"><span class="pre">hello</span></code> test.</p>
+</div>
+</section>
+<section id="page-faults-and-memory-protection">
+<h3>Page faults and memory protection<a class="headerlink" href="#page-faults-and-memory-protection" title="Permalink to this heading">¶</a></h3>
+<p>Memory protection is a crucial feature of an operating system, ensuring
+that bugs in one program cannot corrupt other programs or corrupt the
+operating system itself.</p>
+<p>Operating systems usually rely on hardware support to implement memory
+protection. The OS keeps the hardware informed about which virtual
+addresses are valid and which are not. When a program tries to access an
+invalid address or one for which it has no permissions, the processor
+stops the program at the instruction causing the fault and then traps
+into the kernel with information about the attempted operation. If the
+fault is fixable, the kernel can fix it and let the program continue
+running. If the fault is not fixable, then the program cannot continue,
+since it will never get past the instruction causing the fault.</p>
+<p>As an example of a fixable fault, consider an automatically extended
+stack. In many systems the kernel initially allocates a single stack
+page, and then if a program faults accessing pages further down the
+stack, the kernel will allocate those pages automatically and let the
+program continue. By doing this, the kernel only allocates as much stack
+memory as the program needs, but the program can work under the illusion
+that it has an arbitrarily large stack.</p>
+<p>System calls present an interesting problem for memory protection. Most
+system call interfaces let user programs pass pointers to the kernel.
+These pointers point at user buffers to be read or written. The kernel
+then dereferences these pointers while carrying out the system call.
+There are two problems with this:</p>
+<ol class="arabic simple">
+<li><p>A page fault in the kernel is potentially a lot more serious than a
+page fault in a user program. If the kernel page-faults while
+manipulating its own data structures, that’s a kernel bug, and the
+fault handler should panic the kernel (and hence the whole system).
+But when the kernel is dereferencing pointers given to it by the user
+program, it needs a way to remember that any page faults these
+dereferences cause are actually on behalf of the user program.</p></li>
+<li><p>The kernel typically has more memory permissions than the user
+program. The user program might pass a pointer to a system call that
+points to memory that the kernel can read or write but that the
+program cannot. The kernel must be careful not to be tricked into
+dereferencing such a pointer, since that might reveal private
+information or destroy the integrity of the kernel.</p></li>
+</ol>
+<p>For both of these reasons the kernel must be extremely careful when
+handling pointers presented by user programs.</p>
+<p>You will now solve these two problems with a single mechanism that
+scrutinizes all pointers passed from userspace into the kernel. When a
+program passes the kernel a pointer, the kernel will check that the
+address is in the user part of the address space, and that the page
+table would allow the memory operation.</p>
+<p>Thus, the kernel will never suffer a page fault due to dereferencing a
+user-supplied pointer. If the kernel does page fault, it should panic
+and terminate.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 9.</strong>
+Change <code class="docutils literal notranslate"><span class="pre">kern/trap.c</span></code> to panic if a page fault happens in
+kernel mode.</p>
+<p>Hint: to determine whether a fault happened in user mode or in kernel
+mode, check the low bits of the <code class="docutils literal notranslate"><span class="pre">tf_cs</span></code>.</p>
+<p>Read <code class="docutils literal notranslate"><span class="pre">user_mem_assert()</span></code> in <code class="docutils literal notranslate"><span class="pre">kern/pmap.c</span></code> and implement
+<code class="docutils literal notranslate"><span class="pre">user_mem_check()</span></code> in that same file.</p>
+<p>Change <code class="docutils literal notranslate"><span class="pre">kern/syscall.c</span></code> to sanity check arguments to system calls.</p>
+<p>Boot your kernel, running <code class="docutils literal notranslate"><span class="pre">user/buggyhello</span></code>. The environment should be
+destroyed, and the kernel should <em>not</em> panic. You should see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[00001000] user_mem_check assertion failure for va 00000001
+[00001000] free env 00001000
+Destroyed the only environment - nothing more to do!
+</pre></div>
+</div>
+<p>Finally, change <code class="docutils literal notranslate"><span class="pre">debuginfo_eip()</span></code> in <code class="docutils literal notranslate"><span class="pre">kern/kdebug.c</span></code> to call
+<code class="docutils literal notranslate"><span class="pre">user_mem_check()</span></code> on <code class="docutils literal notranslate"><span class="pre">usd</span></code>, <code class="docutils literal notranslate"><span class="pre">stabs</span></code>, and <code class="docutils literal notranslate"><span class="pre">stabstr</span></code>. If you now
+run <code class="docutils literal notranslate"><span class="pre">user/breakpoint</span></code>, you should be able to run backtrace from the
+kernel monitor and see the backtrace traverse into <code class="docutils literal notranslate"><span class="pre">lib/libmain.c</span></code>
+before the kernel panics with a page fault. What causes this page fault?
+You don’t need to fix it, but you should understand why it happens.</p>
+</div>
+<p>Note that the same mechanism you just implemented also works for
+malicious user applications (such as <code class="docutils literal notranslate"><span class="pre">user/evilhello</span></code>).</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p><strong>Exercise 10.</strong>
+Boot your kernel, running <code class="docutils literal notranslate"><span class="pre">user/evilhello</span></code>. The
+environment should be destroyed, and the kernel should not panic. You
+should see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">00000000</span><span class="p">]</span> <span class="n">new</span> <span class="n">env</span> <span class="mi">00001000</span>
+<span class="p">[</span><span class="mi">00001000</span><span class="p">]</span> <span class="n">user_mem_check</span> <span class="n">assertion</span> <span class="n">failure</span> <span class="k">for</span> <span class="n">va</span> <span class="n">f010000c</span>
+<span class="p">[</span><span class="mi">00001000</span><span class="p">]</span> <span class="n">free</span> <span class="n">env</span> <span class="mi">00001000</span>
+</pre></div>
+</div>
+</div>
+<p><strong>This completes the lab.</strong> Make sure you pass all of the make grade
+tests and don’t forget to write up your answers to the questions and a
+description of your challenge exercise solution in <code class="docutils literal notranslate"><span class="pre">answers-lab3.txt</span></code>.
+Commit your changes, tag, and push to GitHub to
+submit your work.</p>
+<p>Before handing in, use git status and git diff to examine your changes
+and don’t forget to <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">answers-lab3.txt</span></code>. When you’re ready, commit
+your changes with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">'my</span> <span class="pre">solutions</span> <span class="pre">to</span> <span class="pre">lab</span> <span class="pre">3'</span></code>, then push to GitHub.</p>
+<script src="../_static/disqus/disqus.js"></script>
+<link rel="stylesheet" type="text/css" href="../_static/disqus/disqus.css" />
+
+<script>
+  disqus_shortname = 'gatechcs3210staff';
+  $(document).ready(function() {
+    $("p").inlineDisqussions();
+  });
+</script></section>
+</section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lab4.html" class="btn btn-neutral float-right" title="Lab 4: Preemptive Multitasking">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lab2.html" class="btn btn-neutral" title="Lab 2: Memory Management"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Last updated on Jul 02, 2022.
+    </p>
+  </div>
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+<script src="../_static/email.js"></script>
+<script src="../_static/custom.js"></script>
+
+</body>
+</html>

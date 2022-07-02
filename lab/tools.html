@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tools &mdash; CS 323, Fall 2022 1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CS 323, Fall 2022 1 documentation" href="../index.html"/>
+        <link rel="up" title="Lab" href="../lab.html"/>
+        <link rel="next" title="Lab 1: Booting a PC" href="lab1.html"/>
+        <link rel="prev" title="Lab" href="../lab.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> CS 323, Fall 2022</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../info.html">General Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#meetings">Meetings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#grades">Grades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#labs">Labs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#prep-questions">Prep Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#equipment-problems">Equipment Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#other-policies">Other Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#text">Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html#staff-ta">Staff/TA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cal.html">Schedule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../q.html">Preparation Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">Reference Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#c-programming">C Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#unix">UNIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#x86-emulation">x86 Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#x86-assembly-language">x86 Assembly Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#pc-hardware-programming">PC Hardware Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refs.html#reference-quizzes">Reference Quizzes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lab.html">Lab</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1.html">Lab 1: Booting a PC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2.html">Lab 2: Memory Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3.html">Lab 3: User Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4.html">Lab 4: Preemptive Multitasking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5.html">Lab 5: File system, Spawn and Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6.html">Lab 6: Network Driver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proj.html">Final Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#deliverables">Deliverables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proj.html#project-ideas-if-you-found-none">Project ideas (if you found none)</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CS 323, Fall 2022</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../lab.html">Lab</a> &raquo;</li>
+      
+    <li>Tools</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/lab/tools.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="tools">
+<h1>Tools<a class="headerlink" href="#tools" title="Permalink to this heading">¶</a></h1>
+<p>You’ll use two sets of tools in this class: an x86 emulator,
+<a class="reference external" href="#qemu">QEMU</a>, for running your kernel; and a <a class="reference external" href="#chain">compiler
+toolchain</a>, including assembler, linker, C compiler, and
+debugger, for compiling and testing your kernel. This page has the
+information you’ll need to download and install your own copies. This
+class assumes familiarity with Unix commands throughout.</p>
+<p>It should be possible to get this development environment running under
+windows with the help of <a class="reference external" href="http://www.cygwin.com">Cygwin</a>. Install
+cygwin, and be sure to install the flex and bison packages (they are
+under the development header).</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<section id="using-a-virtual-machine">
+<h3>Using a Virtual Machine<a class="headerlink" href="#using-a-virtual-machine" title="Permalink to this heading">¶</a></h3>
+<p>Otherwise, the easiest way to get a compatible toolchain is to install
+a modern Linux distribution on your computer. With platform virtualization,
+Linux can cohabitate with your normal computing environment.
+Installing a Linux virtual machine is a two step process.
+First, you download the virtualization platform.</p>
+<ol class="arabic simple">
+<li><p>Download and install Virtualbox/Vagrant</p></li>
+</ol>
+<ul class="simple">
+<li><p>Download and install the latest version of <a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">virtualbox</a></p></li>
+<li><p>Download and install the latest version of <a class="reference external" href="http://www.vagrantup.com/downloads.html">vagrant</a></p></li>
+<li><p>(Windows only, as ssh client) Download and install <a class="reference external" href="http://git-scm.com/download/win">git</a></p></li>
+<li><p>Ubuntu users may also use the following commands to get virtualbox and vagrant.</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>host<span class="o">]</span> $ apt-get install virtualbox
+<span class="o">[</span>host<span class="o">]</span> $ apt-get install vagrant
+</pre></div>
+</div>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<ul>
+<li><p>It is optional to use vagrant for our labs. You can use virtualbox only.</p></li>
+<li><p>If you decide to use virtualbox only.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>you could download Ubuntu desktop <a class="reference external" href="http://www.ubuntu.com/download/desktop">here</a> like ubuntu-14.04.3-desktop-i386.iso.</p></li>
+<li><p>Start up your virtualization platform and create a new (32-bit) virtual machine. Use the downloaded Ubuntu image as a boot disk</p></li>
+<li><p>Follow all steps that described below except vagrant parts.</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Add guest OS and run the VM <strong>(Vagrant’s user only)</strong></p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># add 32-bit VM</span>
+<span class="o">[</span>host<span class="o">]</span> $ vagrant box add ubuntu/trusty32
+
+<span class="c1"># Access the VM</span>
+<span class="o">[</span>host<span class="o">]</span> $ mkdir cs3210
+<span class="o">[</span>host<span class="o">]</span> $ vagrant init ubuntu/trusty32
+<span class="o">[</span>host<span class="o">]</span> $ vagrant up
+<span class="o">[</span>host<span class="o">]</span> $ vagrant ssh
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Once you have the VM up and running, initialize your VM for this course:</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># in VM, install git</span>
+<span class="o">[</span>VM<span class="o">]</span> $ sudo apt-get install git
+
+<span class="o">[</span>VM<span class="o">]</span> $ mkdir ~/cs3210
+<span class="o">[</span>VM<span class="o">]</span> $ <span class="nb">cd</span> ~/cs3210
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>If you haven’t previously, create an ssh key and upload it to github.gatech.edu by following the instructions here: <a class="reference external" href="https://help.github.com/articles/generating-an-ssh-key/">https://help.github.com/articles/generating-an-ssh-key/</a>. Then clone your repo replacing YOUR-USERNAME with your github username.</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># it&#39;s time for setting up your environment</span>
+<span class="o">[</span>vm<span class="o">]</span> $ git clone git@github.gatech.edu:cs3210-fall2017/cs3210-lab-YOUR-USERNAME lab
+Cloning into lab...
+$ <span class="nb">cd</span> lab
+</pre></div>
+</div>
+</section>
+<section id="qemu-emulator">
+<h3>QEMU Emulator<a class="headerlink" href="#qemu-emulator" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="http://www.qemu.org/">QEMU</a> (<a class="reference external" href="http://wiki.qemu.org/Qemu-doc.html">manual</a>) is a modern and fast PC emulator.</p>
+<ul>
+<li><p>Installing QEMU</p>
+<ul class="simple">
+<li><p>Most GNU/Linux distributions have simple installation processes based on package repositories. It is often best to use the repository approach
+for installing QEMU, as you can be confident that it will just install and run.</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>VM<span class="o">]</span> $ apt-get install qemu libvirt-bin
+</pre></div>
+</div>
+</li>
+<li><p>Compilation from the source</p>
+<ul class="simple">
+<li><p>You might prefer to install QEMU by compiling the source code, which is available <a class="reference external" href="http://wiki.qemu.org/Download">on the QEMU website</a></p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>First you must decompress the sources:</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>VM<span class="o">]</span> $ <span class="nb">cd</span> /tmp
+<span class="o">[</span>VM<span class="o">]</span> $ tar -zxvf qemu-x.y.z.tar.gz
+<span class="o">[</span>VM<span class="o">]</span> $ <span class="nb">cd</span> qemu-x.y.z
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Configure QEMU and build it</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>VM<span class="o">]</span> $ ./configure
+<span class="o">[</span>VM<span class="o">]</span> $ make
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Make</strong> to install QEMU in /usr/local</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>VM<span class="o">]</span> $ make install
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="tool-guide">
+<h2>Tool Guide<a class="headerlink" href="#tool-guide" title="Permalink to this heading">¶</a></h2>
+<p>Familiarity with your environment is crucial for productive development
+and debugging. This page gives a brief overview of the JOS environment
+and useful GDB and QEMU commands. Don’t take our word for it, though.
+Read the GDB and QEMU manuals. These are powerful tools that are worth
+knowing how to use.</p>
+<div class="admonition-index admonition">
+<p class="admonition-title">Index</p>
+<dl class="simple">
+<dt>Debugging tips:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="#kernel">Kernel</a></p></li>
+<li><p><a class="reference external" href="#user-environments-lab-3">User environments</a></p></li>
+</ul>
+</dd>
+<dt>Reference:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="#jos-makefile">JOS makefile</a></p></li>
+<li><p><a class="reference external" href="#jos-obj">JOS obj/</a></p></li>
+<li><p><a class="reference external" href="#gdb">GDB</a></p></li>
+<li><p><a class="reference external" href="#qemu">QEMU</a></p></li>
+</ul>
+</dd>
+</dl>
+</div>
+</section>
+<section id="debugging-tips">
+<h2>Debugging tips<a class="headerlink" href="#debugging-tips" title="Permalink to this heading">¶</a></h2>
+<section id="kernel">
+<h3>Kernel<a class="headerlink" href="#kernel" title="Permalink to this heading">¶</a></h3>
+<p>GDB is your friend. Use the <a class="reference external" href="#make-qemu-gdb">qemu-gdb</a> target (or its
+<a class="reference external" href="#make-qemu-gdb-nox">qemu-gdb-nox</a> variant) to make QEMU wait for
+GDB to attach. See the <a class="reference external" href="#gdb">GDB</a> reference below for some commands
+that are useful when debugging kernels.</p>
+<p>If you’re getting unexpected interrupts, exceptions, or triple faults,
+you can ask QEMU to generate a detailed log of interrupts using the
+<a class="reference external" href="#qemu--d">-d</a> argument.</p>
+<p>To debug virtual memory issues, try the QEMU monitor commands <a class="reference external" href="#qemu-info-mem">info
+mem</a> (for a high-level overview) or <a class="reference external" href="#qemu-info-pg">info
+pg</a> (for lots of detail). Note that these commands
+only display the <em>current</em> page table.</p>
+<p><strong>(Lab 4+)</strong> To debug multiple CPUs, use GDB’s thread-related commands like
+<a class="reference external" href="#gdb-thread">thread</a> and <a class="reference external" href="#gdb-info-threads">info threads</a>.</p>
+</section>
+<section id="user-environments-lab-3">
+<h3>User environments (lab 3+)<a class="headerlink" href="#user-environments-lab-3" title="Permalink to this heading">¶</a></h3>
+<p>GDB also lets you debug user environments, but there are a few things
+you need to watch out for, since GDB doesn’t know that there’s a
+distinction between multiple user environments, or between user and
+kernel.</p>
+<p>You can start JOS with a specific user environment using <a class="reference external" href="#make-run">make
+run-*name*</a> (or you can edit <code class="docutils literal notranslate"><span class="pre">kern/init.c</span></code> directly).
+To make QEMU wait for GDB to attach, use the
+<a class="reference external" href="#make-run-x">run-*name*-gdb</a> variant.</p>
+<p>You can symbolically debug user code, just like you can kernel code, but
+you have to tell GDB which <a class="reference external" href="#obj-elf">symbol table</a> to use with the
+<a class="reference external" href="#gdb-symbol-file">symbol-file</a> command, since it can only use one
+symbol table at a time. The provided <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> loads the kernel
+symbol table, <code class="docutils literal notranslate"><span class="pre">obj/kern/kernel</span></code>. The symbol table for a user
+environment is in its ELF binary, so you can load it using symbol-file
+obj/user/<em>name</em>. <em>Don’t</em> load symbols from any <code class="docutils literal notranslate"><span class="pre">.o</span></code> files, as those
+haven’t been relocated by the linker (libraries are statically linked
+into JOS user binaries, so those symbols are already included in each
+user binary). Make sure you get the <em>right</em> user binary; library
+functions will be linked at different EIPs in different binaries and GDB
+won’t know any better!</p>
+<p><strong>(Lab 4+)</strong> Since GDB is attached to the virtual machine as a whole, it
+sees clock interrupts as just another control transfer. This makes it
+basically impossible to step through user code because a clock interrupt
+is virtually guaranteed the moment you let the VM run again. The
+<a class="reference external" href="#gdb-si">stepi</a> command works because it suppresses interrupts, but
+it only steps one assembly instruction. <a class="reference external" href="#gdb-b">Breakpoints</a>
+generally work, but watch out because you can hit the same EIP in a
+different environment (indeed, a different binary altogether!).</p>
+</section>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">¶</a></h2>
+<section id="jos-makefile">
+<h3>JOS makefile<a class="headerlink" href="#jos-makefile" title="Permalink to this heading">¶</a></h3>
+<p>The JOS Makefile includes a number of phony targets for running JOS
+in various ways. All of these targets configure QEMU to listen for GDB
+connections (the <code class="docutils literal notranslate"><span class="pre">*-gdb</span></code> targets also wait for this connection). To
+start once QEMU is running, simply run gdb from your lab directory. We
+provide a <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> file that automatically points GDB at QEMU, loads
+the kernel symbol file, and switches between 16-bit and 32-bit mode.
+Exiting GDB will shut down QEMU.</p>
+<dl class="simple">
+<dt>make qemu</dt><dd><p>Build everything and start QEMU with the VGA console in a new window
+and the serial console in your terminal. To exit, either close the
+VGA window or press <code class="docutils literal notranslate"><span class="pre">Ctrl-c</span></code> or <code class="docutils literal notranslate"><span class="pre">Ctrl-a</span> <span class="pre">x</span></code> in your terminal.</p>
+</dd>
+<dt>make qemu-nox</dt><dd><p>Like <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">qemu</span></code>, but run with only the serial console. To exit,
+press <code class="docutils literal notranslate"><span class="pre">Ctrl-a</span> <span class="pre">x</span></code>. This is particularly useful over SSH connections
+to Athena dialups because the VGA window consumes a lot of
+bandwidth.</p>
+</dd>
+<dt>make qemu-gdb</dt><dd><p>Like <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">qemu</span></code>, but rather than passively accepting GDB
+connections at any time, this pauses at the first machine
+instruction and waits for a GDB connection.</p>
+</dd>
+<dt>make qemu-nox-gdb</dt><dd><p>A combination of the <code class="docutils literal notranslate"><span class="pre">qemu-nox</span></code> and <code class="docutils literal notranslate"><span class="pre">qemu-gdb</span></code> targets.</p>
+</dd>
+<dt>make run-<em>name</em></dt><dd><p>(Lab 3+) Run user program <em>name</em>. For example, <code class="docutils literal notranslate"><span class="pre">make</span>&#160;&#160; <span class="pre">run-hello</span></code>
+runs <code class="docutils literal notranslate"><span class="pre">user/hello.c</span></code>.</p>
+</dd>
+<dt>make run-<em>name</em>-nox, run-<em>name</em>-gdb, run-<em>name</em>-gdb-nox,</dt><dd><p>(Lab 3+) Variants of <code class="docutils literal notranslate"><span class="pre">run-name</span></code> that correspond to the variants of
+the <code class="docutils literal notranslate"><span class="pre">qemu</span></code> target.</p>
+</dd>
+</dl>
+<p>The makefile also accepts a few useful variables:</p>
+<dl class="simple">
+<dt>make V=1 …</dt><dd><p>Verbose mode. Print out every command being executed, including
+arguments.</p>
+</dd>
+<dt>make V=1 grade</dt><dd><p>Stop after any failed grade test and leave the QEMU output in
+<code class="docutils literal notranslate"><span class="pre">jos.out</span></code> for inspection.</p>
+</dd>
+<dt>make QEMUEXTRA=’<em>args</em>‘ …</dt><dd><p>Specify additional arguments to pass to QEMU.</p>
+</dd>
+</dl>
+</section>
+<section id="jos-obj">
+<h3>JOS obj/<a class="headerlink" href="#jos-obj" title="Permalink to this heading">¶</a></h3>
+<p>When building JOS, the makefile also produces some additional output
+files that may prove useful while debugging:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">obj/boot/boot.asm</span></code>, <code class="docutils literal notranslate"><span class="pre">obj/kern/kernel.asm</span></code>, <code class="docutils literal notranslate"><span class="pre">obj/user/hello.asm</span></code>, etc.</dt><dd><p>Assembly code listings for the bootloader, kernel, and user
+programs.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">obj/kern/kernel.sym</span></code>, <code class="docutils literal notranslate"><span class="pre">obj/user/hello.sym</span></code>, etc.</dt><dd><p>Symbol tables for the kernel and user programs.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">obj/boot/boot.out</span></code>, <code class="docutils literal notranslate"><span class="pre">obj/kern/kernel</span></code>, <code class="docutils literal notranslate"><span class="pre">obj/user/hello</span></code>, etc</dt><dd><p>Linked ELF images of the kernel and user programs. These contain
+symbol information that can be used by GDB.</p>
+</dd>
+</dl>
+</section>
+<section id="gdb">
+<h3>GDB<a class="headerlink" href="#gdb" title="Permalink to this heading">¶</a></h3>
+<p>See the <a class="reference external" href="http://sourceware.org/gdb/current/onlinedocs/gdb/">GDB
+manual</a> for a full
+guide to GDB commands. Here are some particularly useful commands for
+cs3210, some of which don’t typically come up outside of OS development.</p>
+<dl class="simple">
+<dt>Ctrl-c</dt><dd><p>Halt the machine and break in to GDB at the current instruction. If
+QEMU has multiple virtual CPUs, this halts all of them.</p>
+</dd>
+<dt>c (or continue)</dt><dd><p>Continue execution until the next breakpoint or <code class="docutils literal notranslate"><span class="pre">Ctrl-c</span></code>.</p>
+</dd>
+<dt>si (or stepi)</dt><dd><p>Execute one machine instruction.</p>
+</dd>
+<dt>b function or b file:line (or breakpoint)</dt><dd><p>Set a breakpoint at the given function or line.</p>
+</dd>
+<dt>b *<em>addr</em> (or breakpoint)</dt><dd><p>Set a breakpoint at the EIP <em>addr</em>.</p>
+</dd>
+<dt>set print pretty</dt><dd><p>Enable pretty-printing of arrays and structs.</p>
+</dd>
+<dt>info registers</dt><dd><p>Print the general purpose registers, <code class="docutils literal notranslate"><span class="pre">eip</span></code>, <code class="docutils literal notranslate"><span class="pre">eflags</span></code>, and the
+segment selectors. For a much more thorough dump of the machine
+register state, see QEMU’s own <code class="docutils literal notranslate"><span class="pre">info</span>&#160;&#160; <span class="pre">registers</span></code> command.</p>
+</dd>
+<dt>x/<em>N</em>x <em>addr</em></dt><dd><p>Display a hex dump of <em>N</em> words starting at virtual address <em>addr</em>.
+If <em>N</em> is omitted, it defaults to 1. <em>addr</em> can be any expression.</p>
+</dd>
+<dt>x/<em>N</em>i <em>addr</em></dt><dd><p>Display the <em>N</em> assembly instructions starting at <em>addr</em>. Using
+<code class="docutils literal notranslate"><span class="pre">$eip</span></code> as <em>addr</em> will display the instructions at the current
+instruction pointer.</p>
+</dd>
+<dt>symbol-file <em>file</em></dt><dd><p><strong>(Lab 3+)</strong> Switch to symbol file <em>file</em>. When GDB attaches to QEMU, it
+has no notion of the process boundaries within the virtual machine,
+so we have to tell it which symbols to use. By default, we configure
+GDB to use the kernel symbol file, <code class="docutils literal notranslate"><span class="pre">obj/kern/kernel</span></code>. If the
+machine is running user code, say <code class="docutils literal notranslate"><span class="pre">hello.c</span></code>, you can switch to the
+hello symbol file using <code class="docutils literal notranslate"><span class="pre">symbol-file</span> <span class="pre">obj/user/hello</span></code>.</p>
+</dd>
+</dl>
+<div class="admonition-info admonition">
+<p class="admonition-title">info</p>
+<p>QEMU represents each virtual CPU as a thread in GDB, so you can use all
+of GDB’s thread-related commands to view or manipulate QEMU’s virtual
+CPUs.</p>
+</div>
+<dl class="simple">
+<dt>thread <em>n</em></dt><dd><p>GDB focuses on one thread (i.e., CPU) at a time. This command
+switches that focus to thread <em>n</em>, numbered from zero.</p>
+</dd>
+<dt>info threads</dt><dd><p>List all threads (i.e., CPUs), including their state (active or
+halted) and what function they’re in.</p>
+</dd>
+</dl>
+</section>
+<section id="qemu">
+<h3>QEMU<a class="headerlink" href="#qemu" title="Permalink to this heading">¶</a></h3>
+<p>QEMU includes a built-in monitor that can inspect and modify the machine
+state in useful ways. To enter the monitor, press Ctrl-a c in the
+terminal running QEMU. Press Ctrl-a c again to switch back to the serial
+console.</p>
+<p>For a complete reference to the monitor commands, see the <a class="reference external" href="http://wiki.qemu.org/download/qemu-doc.html#pcsys_005fmonitor">QEMU
+manual</a>.
+Here are some particularly useful commands:</p>
+<dl>
+<dt>xp/<em>N</em>x <em>paddr</em></dt><dd><p>Display a hex dump of <em>N</em> words starting at <em>physical</em> address
+<em>paddr</em>. If <em>N</em> is omitted, it defaults to 1. This is the physical
+memory analogue of GDB’s <code class="docutils literal notranslate"><span class="pre">x</span></code> command.</p>
+</dd>
+<dt>info registers</dt><dd><p>Display a full dump of the machine’s internal register state. In
+particular, this includes the machine’s <em>hidden</em> segment state for
+the segment selectors and the local, global, and interrupt
+descriptor tables, plus the task register. This hidden state is the
+information the virtual CPU read from the GDT/LDT when the segment
+selector was loaded. Here’s the CS when running in the JOS kernel in
+lab 1 and the meaning of each field:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CS</span> <span class="o">=</span><span class="mi">0008</span> <span class="mi">10000000</span> <span class="n">ffffffff</span> <span class="mi">10</span><span class="n">cf9a00</span> <span class="n">DPL</span><span class="o">=</span><span class="mi">0</span> <span class="n">CS32</span> <span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="o">-</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CS</span> <span class="pre">=0008</span></code></dt><dd><p>The visible part of the code selector. We’re using segment 0x8.
+This also tells us we’re referring to the global descriptor
+table (0x8&amp;4=0), and our CPL (current privilege level) is
+0x8&amp;3=0.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">10000000</span></code></dt><dd><p>The base of this segment. Linear address = logical address +
+0x10000000.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ffffffff</span></code></dt><dd><p>The limit of this segment. Linear addresses above 0xffffffff
+will result in segment violation exceptions.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">10cf9a00</span></code></dt><dd><p>The raw flags of this segment, which QEMU helpfully decodes for
+us in the next few fields.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DPL=0</span></code></dt><dd><p>The privilege level of this segment. Only code running with
+privilege level 0 can load this segment.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">CS32</span></code></dt><dd><p>This is a 32-bit code segment. Other values include <code class="docutils literal notranslate"><span class="pre">DS</span></code> for
+data segments (not to be confused with the DS register), and
+<code class="docutils literal notranslate"><span class="pre">LDT</span></code> for local descriptor tables.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">[-R-]</span></code></dt><dd><p>This segment is read-only.</p>
+</dd>
+</dl>
+</dd>
+<dt>info mem</dt><dd><p><strong>(Lab 2+)</strong> Display mapped virtual memory and permissions. For example,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ef7c0000</span><span class="o">-</span><span class="n">ef800000</span> <span class="mi">00040000</span> <span class="n">urw</span>
+<span class="n">efbf8000</span><span class="o">-</span><span class="n">efc00000</span> <span class="mi">00008000</span> <span class="o">-</span><span class="n">rw</span>
+</pre></div>
+</div>
+<p>tells us that the 0x00040000 bytes of memory from 0xef7c0000 to
+0xef800000 are mapped read/write and user-accessible, while the
+memory from 0xefbf8000 to 0xefc00000 is mapped read/write, but only
+kernel-accessible.</p>
+</dd>
+</dl>
+<p>QEMU also takes some useful command line arguments, which can be passed
+into the JOS makefile using the <a class="reference external" href="#make-qemuextra">QEMUEXTRA</a>
+variable.</p>
+<dl>
+<dt>make QEMUEXTRA=’-d int’ …</dt><dd><p>Log all interrupts, along with a full register dump, to
+<code class="docutils literal notranslate"><span class="pre">qemu.log</span></code>. You can ignore the first two log entries, “SMM: enter”
+and “SMM: after RMS”, as these are generated before entering the
+boot loader. After this, log entries look like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span><span class="p">:</span> <span class="n">v</span><span class="o">=</span><span class="mi">30</span> <span class="n">e</span><span class="o">=</span><span class="mi">0000</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">cpl</span><span class="o">=</span><span class="mi">3</span> <span class="n">IP</span><span class="o">=</span><span class="mi">001</span><span class="n">b</span><span class="p">:</span><span class="mf">00800e2</span><span class="n">e</span> <span class="n">pc</span><span class="o">=</span><span class="mf">00800e2</span><span class="n">e</span> <span class="n">SP</span><span class="o">=</span><span class="mi">0023</span><span class="p">:</span><span class="n">eebfdf28</span> <span class="n">EAX</span><span class="o">=</span><span class="mi">00000005</span>
+<span class="n">EAX</span><span class="o">=</span><span class="mi">00000005</span> <span class="n">EBX</span><span class="o">=</span><span class="mi">00001002</span> <span class="n">ECX</span><span class="o">=</span><span class="mi">00200000</span> <span class="n">EDX</span><span class="o">=</span><span class="mi">00000000</span>
+<span class="n">ESI</span><span class="o">=</span><span class="mi">00000805</span> <span class="n">EDI</span><span class="o">=</span><span class="mi">00200000</span> <span class="n">EBP</span><span class="o">=</span><span class="n">eebfdf60</span> <span class="n">ESP</span><span class="o">=</span><span class="n">eebfdf28</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>The first line describes the interrupt. The <code class="docutils literal notranslate"><span class="pre">4:</span></code> is just a log
+record counter. <code class="docutils literal notranslate"><span class="pre">v</span></code> gives the vector number in hex. <code class="docutils literal notranslate"><span class="pre">e</span></code> gives
+the error code. <code class="docutils literal notranslate"><span class="pre">i=1</span></code> indicates that this was produced by an
+<code class="docutils literal notranslate"><span class="pre">int</span></code> instruction (versus a hardware interrupt). The rest of the
+line should be self-explanatory. See <a class="reference external" href="#qemu-info-registers">info
+registers</a> for a description of the
+register dump that follows.</p>
+<p>Note: If you’re running a pre-0.15 version of QEMU, the log will be
+written to <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> instead of the current directory.</p>
+</dd>
+</dl>
+<hr class="docutils" />
+<p>Questions or comments regarding cs3210?
+Send e-mail to the TAs at <a class="reference external" href="mailto:cs3210-staff&#37;&#52;&#48;cc&#46;gatech&#46;edu">*cs3210-staff<span>&#64;</span>cc<span>&#46;</span>gatech<span>&#46;</span>edu*</a>.</p>
+<script src="../_static/disqus/disqus.js"></script>
+<link rel="stylesheet" type="text/css" href="../_static/disqus/disqus.css" />
+
+<script>
+  disqus_shortname = 'gatechcs3210staff';
+  $(document).ready(function() {
+    $("p").inlineDisqussions();
+  });
+</script><script src="../_static/disqus/disqus.js"></script>
+<link rel="stylesheet" type="text/css" href="../_static/disqus/disqus.css" />
+
+<script>
+  disqus_shortname = 'gatechcs3210staff';
+  $(document).ready(function() {
+    $("p").inlineDisqussions();
+  });
+</script></section>
+</section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lab1.html" class="btn btn-neutral float-right" title="Lab 1: Booting a PC">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../lab.html" class="btn btn-neutral" title="Lab"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Last updated on Jul 02, 2022.
+    </p>
+  </div>
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+<script src="../_static/email.js"></script>
+<script src="../_static/custom.js"></script>
+
+</body>
+</html>

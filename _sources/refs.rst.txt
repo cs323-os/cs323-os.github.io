@@ -1,0 +1,173 @@
+Reference Materials
+===================
+
+C Programming
+-------------
+
+- `The C programming language <http://www.amazon.com/The-Programming-Language-Brian-Kernighan/dp/0131103628>`__
+- `Modern C <http://icube-icps.unistra.fr/index.php/Jens_Gustedt>`__
+- `Learn C The Hard Way <http://c.learncodethehardway.org/book/>`__
+
+UNIX
+----
+- `The UNIX Operating System <https://www.youtube.com/watch?v=tc4ROCJYbm0>`__, AT&T Archives at YouTube
+- `The UNIX Time-Sharing System <https://www.cs.berkeley.edu/~brewer/cs262/UNIX-annotated.pdf>`__, Dennis M. Ritchie and Ken L.Thompson, Bell System Technical Journal
+- `The Evolution of the Unix Time-sharing System <http://www.read.seas.harvard.edu/~kohler/class/aosref/ritchie84evolution.pdf>`__, Dennis M. Ritchie
+- `A Commentary on the Sixth Edition UNIX Operating System <r/unix6.pdf>`__, John Lions
+
+x86 Emulation
+-------------
+
+- `QEMU <http://www.qemu.org/>`__
+  (`manual <http://wiki.qemu.org/Qemu-doc.html>`__)
+- `Bochs <http://bochs.sourceforge.net>`__
+  (`manual <http://bochs.sourceforge.net/doc/docbook/user/index.html>`__,
+  `debugging <http://bochs.sourceforge.net/doc/docbook/user/internal-debugger.html>`__)
+
+x86 Assembly Language
+---------------------
+
+- `PC Assembly Language <http://pacman128.github.io/pcasm/>`__, Paul A. Carter, July 2006.
+- `Intel 80386 Programmer's Reference Manual <http://www.logix.cz/michal/doc/i386/>`__,
+  1987 (HTML). Much shorter than the full current Intel Architecture manuals below, but describes all processor features used in 6.828.
+- `IA-32 Intel Architecture Software Developer's Manuals <http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html>`__,
+
+   - `Volume I: Basic Architecture <r/ia32/IA32-1.pdf>`__
+   - `Volume 2A: Instruction Set Reference, A-M <r/ia32/IA32-2A.pdf>`__
+   - `Volume 2B: Instruction Set Reference, N-Z <r/ia32/IA32-2B.pdf>`__
+   - `Volume 2C: Instruction Set Reference, Safer mode extensions <r/ia32/IA32-2C.pdf>`__
+   - `Volume 3A: System Programming Guide, Part 1 <r/ia32/IA32-3A.pdf>`__
+   - `Volume 3B: System Programming Guide, Part 2 <r/ia32/IA32-3B.pdf>`__
+   - `Volume 3C: System Programming Guide, Part 3 <r/ia32/IA32-3C.pdf>`__
+
+- Multiprocessor references:
+
+   - `MP specification <r/ia32/MPspec.pdf>`__
+   - `IO APIC <r/ia32/ioapic.pdf>`__
+
+- `AMD64 Architecture Programmer's Manual <http://developer.amd.com/documentation/guides/Pages/default.aspx#manuals>`__.
+
+   - Covers both the "classic" 32-bit x86 architecture and the new 64-bit extensions supported
+     by the latest AMD and Intel processors.
+
+- Writing inline assembly language with GCC:
+
+   - `Brennan's Guide to Inline Assembly <http://www.delorie.com/djgpp/doc/brennan/brennan_att_inline_djgpp.html>`__
+   - `Inline assembly for x86 in Linux <http://www.ibm.com/developerworks/linux/library/l-ia.html>`__
+   - `GCC-Inline-Assembly-HOWTO <http://www.ibiblio.org/gferg/ldp/GCC-Inline-Assembly-HOWTO.html>`__
+
+- Loading x86 executables in the ELF format:
+
+   - `Wikipedia: ELF <http://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`__
+   - `Tool Interface Standard (TIS) Executable and Linking Format (ELF) <r/elf.pdf>`__
+
+PC Hardware Programming
+-----------------------
+
+- General PC architecture information:
+
+   - `Phil Storrs PC Hardware book <http://web.archive.org/web/20040603021346/http://members.iweb.net.au/~pstorr/pcbook/>`__, Phil Storrs, December 1998.
+   - `Bochs technical hardware specifications directory <http://bochs.sourceforge.net/techdata.html>`__.
+
+- General BIOS and PC bootstrap:
+
+   - `Wikipedia: BIOS <https://en.wikipedia.org/wiki/BIOS_interrupt_call>`__
+   - `BIOS Services and Software Interrupts <http://www.htl-steyr.ac.at/~morg/pcinfo/hardware/interrupts/inte1at0.htm>`__, Roger Morgan, 1997.
+   - `"El Torito" Bootable CD-ROM Format Specification <r/boot-cdrom.pdf>`__, Phoenix/IBM, January 1995.
+
+- VGA display - kern/console.c
+
+   - `OS-Dev <http://wiki.osdev.org/VGA_Hardware>`__,
+     `Wikipedia: VGA <https://en.wikipedia.org/wiki/Video_Graphics_Array>`__,
+     `Wikipedia: CGA <https://en.wikipedia.org/wiki/Color_Graphics_Adapter>`__
+   - `Wikipedia: VESA <https://en.wikipedia.org/wiki/VESA_BIOS_Extensions>`__,  `VESA BIOS Extension (VBE) 3.0 <http://web.archive.org/web/20080302090304/http://www.vesa.org/public/VBE/vbe3.pdf>`__,  `Video Electronics Standards Association <http://www.vesa.org/>`__, September 1998. `(local copy) <r/hardware/vbe3.pdf>`__
+   - VGADOC, Finn Thøgersen, 2000. `(local copy - text) <r/hardware/vgadoc/>`__, `(local copy - ZIP) <r/hardware/vgadoc4b.zip>`__
+   - `Free VGA Project <http://www.osdever.net/FreeVGA/home.htm>`__, J.D. Neal, 1998.
+
+- Keyboard and Mouse - kern/console.c
+
+   - `Adam Chapweske's resources <http://www.computer-engineering.org/index.html>`__.
+
+- 8253/8254 Programmable Interval Timer (PIT) - inc/timerreg.h
+
+   - `82C54 CHMOS Programmable Interval Timer <http://www.intel.com/design/archives/periphrl/docs/23124406.htm>`__, Intel, October 1994. `(local copy) <r/hardware/82C54.pdf>`__
+   - `Data Solutions 8253/8254 Tutorial <http://www.decisioncards.com/io/tutorials/8254_tut.html>`__, Data Solutions.
+
+- 8259/8259A Programmable Interrupt Controller (PIC) - kern/picirq.\*
+
+   - `8259A Programmable Interrupt Controller <r/hardware/8259A.pdf>`__, Intel, December 1988.
+
+- Real-Time Clock (RTC) - kern/kclock.\*
+   - `Wikipedia:Nonvolatile BIOS memory <https://en.wikipedia.org/wiki/Nonvolatile_BIOS_memory>`__
+   - `Phil Storrs PC Hardware book <http://web.archive.org/web/20040603021346/http://members.iweb.net.au/~pstorr/pcbook/>`__, Phil Storrs, December 1998. In particular:
+
+      - `Understanding the CMOS <http://web.archive.org/web/20040603021346/http://members.iweb.net.au/~pstorr/pcbook/book5/cmos.htm>`__
+      - `A list of what is in the CMOS <http://web.archive.org/web/20040603021346/http://members.iweb.net.au/~pstorr/pcbook/book5/cmoslist.htm>`__
+
+   - `CMOS Map Table <http://www.bioscentral.com/misc/cmosmap.htm>`__, `CMOS Map <http://bochs.sourceforge.net/techspec/CMOS-reference.txt>`__ (by Padgett Peterson, May 1996).
+   - `M48T86 PC Real-Time Clock <r/hardware/M48T86.pdf>`__
+
+- 16550 UART Serial Port - kern/console.c
+
+   - `Wikipedia: Serial port <https://en.wikipedia.org/wiki/Serial_port>`__
+   - `PC16550D Universal Asynchronous Receiver/Transmitter with FIFOs <http://www.ti.com/lit/ds/symlink/pc16550d.pdf>`__, National Semiconductor, 1995.
+   - `Technical Data on 16550 <http://byterunner.com/16550.html>`__, Byterunner Technologies.
+   - `Interfacing the Serial / RS232 Port <http://www.beyondlogic.org/serial/serial.htm>`__, CraigPeacock, August 2001.
+
+- IEEE 1284 Parallel Port - kern/console.c
+
+   - `Parallel Port Central <http://janaxelson.com/parport.htm>`__, Jan Axelson.
+   - `Parallel Port Background <http://www.fapo.com/porthist.htm>`__,Warp Nine Engineering.
+   - `IEEE 1284 - Updating the PC Parallel Port <http://zone.ni.com/devzone/cda/tut/p/id/3466>`__, National Instruments.
+   - `Interfacing the Standard Parallel Port <http://www.beyondlogic.org/spp/parallel.htm>`__, Craig Peacock, August 2001.
+
+- IDE hard drive controller - fs/ide.c
+
+   - [ATA8-ACS]: `AT Attachment 8 - ATA/ATAPI Command Set <r/hardware/ATA8-ACS.pdf>`__, ANSI, May 2007.
+   - `Programming Interface for Bus Master IDE Controller <r/hardware/IDE-BusMaster.pdf>`__, Brad Hosler, Intel, May 1994.
+   - `The Guide to ATA/ATAPI documentation <http://www.cs.utexas.edu/~dahlin/Classes/UGOS/reading/ide.html>`__, Constantine Sapuntzakis, January 2002.
+
+- Sound cards: (not supported in 6.828 kernel, but you're welcome to do it as a challenge problem!)
+
+   - `Sound Blaster Series Hardware Programming Guide <r/hardware/SoundBlaster.pdf>`__, Creative Technology, 1996.
+   - `8237A High Performance Programmable DMA Controller <r/hardware/8237A.pdf>`__, Intel, September 1993.
+   - `Sound Blaster 16 Programming Document <http://homepages.cae.wisc.edu/~brodskye/sb16doc/sb16doc.html>`__, Ethan Brodsky, June 1997.
+   - `Sound Programming <http://www.inversereality.org/tutorials/sound%20programming/soundprogramming.html>`__, Inverse Reality.
+
+- E100 Network Interface Card:
+
+   - `Intel 8255x 10/100 Mbps Ethernet Controller Family Open Source Software Developer Manual <r/hardware/8255X_OpenSDM.pdf>`__
+   - `82559ER Fast Ethernet PCI Controller Datasheet <r/hardware/82559ER_datasheet.pdf>`__
+
+- E1000 Network Interface Card:
+
+   - `PCI/PCI-X Family of Gigabit Ethernet Controllers Software Developer’s Manual <r/hardware/8254x_GBe_SDM.pdf>`__
+
+- Booting:
+
+   - `Multiboot <http://www.gnu.org/software/grub/manual/multiboot/multiboot.html>`__
+   - `Minimal Intel Architecture Boot Loader <r/miniboot.pdf>`__
+
+Reference Quizzes
+-----------------
+
+- `MIT OCW <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-828-operating-system-engineering-fall-2012/exams/>`__
+
+  - `Quiz2 2002 <q/MIT_q02_2.pdf>`__
+  - `Quiz2 2003 <q/MIT_q03_2.pdf>`__
+  - `Quiz2 2004 <q/MIT_q04_2.pdf>`__
+  - `Quiz2 2005 <q/MIT_q05_2.pdf>`__
+  - `Quiz2 2006 <q/MIT_q06_2.pdf>`__
+  - `Quiz2 2007 <q/MIT_q07_2.pdf>`__
+  - `Quiz2 2008 <q/MIT_q08_2.pdf>`__
+  - `Quiz2 2009 <q/MIT_q09_2.pdf>`__
+  - `Quiz2 2010 <q/MIT_q10_2.pdf>`__
+  - `Quiz2 2011 <q/MIT_q11_2.pdf>`__
+  - `Quiz2 2012 <q/MIT_q12_2.pdf>`__
+
+..
+   XXX. this looks like a good lists, http://www.seabios.org/Developer_links
+   XXX. https://ata.wiki.kernel.org/index.php/Developer_Resources
+   XXX. http://wiki.osdev.org/ATA_PIO_Mode
+   XXX. A20: http://www.win.tue.nl/~aeb/linux/kbd/A20.html
+        A20: http://wiki.osdev.org/A20
