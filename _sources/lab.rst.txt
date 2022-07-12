@@ -13,7 +13,6 @@ Lab
     lab/lab3
     lab/lab4
     lab/lab5
-    lab/lab6
 
 The operating system you will build, called *JOS*, will have Unix-like
 functions, but is implemented in an `Exokernel <r/exokernel:sosp95.pdf>`__ style (i.e., the
@@ -26,7 +25,6 @@ built-in to the kernel).
 - `Lab 3: User environments <lab/lab3.html>`__
 - `Lab 4: Preemptive multitasking <lab/lab4.html>`__
 - `Lab 5: File system and shell <lab/lab5.html>`__
-- `Lab 6: Network driver (optional) <lab/lab6.html>`__
 
 .. note::
 

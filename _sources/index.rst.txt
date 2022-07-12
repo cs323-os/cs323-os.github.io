@@ -10,8 +10,7 @@ CS-323: Introduction to Operating Systems
    cal
    refs
    lab
-   proj
-   
+
 ----
 News
 ----
