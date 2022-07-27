@@ -1,0 +1,33 @@
+===
+Lab
+===
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+    :glob:
+
+    lab/tools
+    lab/lab1
+    lab/lab2
+    lab/lab3
+    lab/lab4
+    lab/lab5
+
+The operating system you will build, called *JOS*, will have Unix-like
+functions, but is implemented in an `Exokernel <r/exokernel:sosp95.pdf>`__ style (i.e., the
+functions are implemented mostly as user-level library instead of
+built-in to the kernel).
+
+- `Tools Guide <lab/tools.html>`__
+- `Lab 1: Booting a PC <lab/lab1.html>`__
+- `Lab 2: Memory Management <lab/lab2.html>`__
+- `Lab 3: User environments <lab/lab3.html>`__
+- `Lab 4: Preemptive multitasking <lab/lab4.html>`__
+- `Lab 5: File system and shell <lab/lab5.html>`__
+
+.. note::
+
+ The labs used in CS3210 are largely based on the materials originally
+ developed for
+ `MIT 6.828: Operating System Engineering <https://pdos.csail.mit.edu/6.828/2014/index.html>`__.
